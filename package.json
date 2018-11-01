@@ -3,16 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "connect-history-api-fallback": "^1.5.0",
+    "express": "^4.16.4",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server",
+    "serve": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "if test \"$NODE_ENV\" = \"production\" ; then yarn build ; fi "
   },
   "eslintConfig": {
     "extends": "react-app"
