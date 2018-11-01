@@ -1,9 +1,7 @@
 image: node:latest
 
-before_script:
-  - yarn install
-
 stages:
+  - install
   - test
   - build
   - deploy
@@ -11,6 +9,11 @@ stages:
 cache:
   paths:
     - node_modules/
+
+install:
+  stage: install
+  script:
+    - yarn install
 
 build:
   stage: build
@@ -26,7 +29,9 @@ test:
     - CI=true yarn test
 
 deploy_staging:
+  type: deploy
   stage: deploy
+  image: ruby:latest
   environment:
     name: staging
     url: https://aloha-staging.herokuapp.com
