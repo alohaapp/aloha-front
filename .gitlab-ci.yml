@@ -32,16 +32,22 @@ deploy_staging:
   stage: deploy
   environment:
     name: staging
+    url: https://aloha-staging.herokuapp.com
   only:
     - develop
   script:
     - echo "Staging deploy"
+    # - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/aloha-staging.git
+    # - git push heroku develop:master
 
 deploy_production:
   stage: deploy
   environment:
     name: production
+    url: https://alohaapp.herokuapp.com
   only:
     - master
   script:
     - echo "Production deploy"
+    # - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/alohaapp.git
+    # - git push heroku master
