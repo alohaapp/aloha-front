@@ -36,9 +36,9 @@ deploy_staging:
   only:
     - develop
   script:
-    - echo "Staging deploy"
-    # - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/aloha-staging.git
-    # - git push heroku develop:master
+    - echo "Staging deployment"
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_STAGING_APP --api-key=$HEROKU_API_STAGING_KEY
 
 deploy_production:
   stage: deploy
@@ -48,6 +48,6 @@ deploy_production:
   only:
     - master
   script:
-    - echo "Production deploy"
+    - echo "Production deployment"
     # - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/alohaapp.git
     # - git push heroku master
