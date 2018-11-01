@@ -21,9 +21,8 @@ build:
     - yarn build
   artifacts:
     name: "$CI_COMMIT_REF_NAME"
-      paths:
-        - build/
-
+    paths:
+      - build/
 test:
   stage: test
   script:
