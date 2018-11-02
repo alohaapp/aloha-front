@@ -49,13 +49,13 @@ deploy_production:
   stage: deploy
   image: ruby:latest
   environment:
-    name: staging
+    name: production
     url: https://alohaapp.herokuapp.com
   only:
     - master
     - tags
   script:
-    - echo "Staging deployment"
+    - echo "Production deployment"
     - apt-get update -yq
     - apt-get install -y ruby-dev
     - gem install dpl
