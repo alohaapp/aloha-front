@@ -20,7 +20,7 @@ build:
   script:
     - yarn build
   artifacts:
-    name: "$CI_COMMIT_REF_NAME"
+    name: "$CI_COMMIT_REF_SLUG"
     paths:
       - build/
 test:
