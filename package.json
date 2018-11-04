@@ -18,13 +18,15 @@
     "eject": "react-scripts eject",
     "postinstall": "if test \"$NODE_ENV\" = \"production\" ; then yarn build ; fi "
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "prettier": "1.14.3"
+  }
 }
