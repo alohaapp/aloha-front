@@ -12,8 +12,7 @@
     "react-scripts": "2.1.1"
   },
   "scripts": {
-    "start": "node server",
-    "serve": "react-scripts start",
+    "start": "if test \"$NODE_ENV\" = \"production\" ; then node server ; else react-scripts start ; fi ",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
