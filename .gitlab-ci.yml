@@ -4,7 +4,6 @@ stages:
   - install
   - test
   - build
-  - audit
   - deploy
 
 cache:
@@ -27,11 +26,6 @@ test:
   stage: test
   script:
     - CI=true yarn test
-audit:
-  stage: audit
-  script:
-    - npm audit
-
 deploy_staging:
   type: deploy
   stage: deploy
@@ -47,7 +41,6 @@ deploy_staging:
     - apt-get install -y ruby-dev
     - gem install dpl
     - dpl --provider=heroku --app=$HEROKU_STAGING_APP --api-key=$HEROKU_API_STAGING_KEY
-
 deploy_production:
   type: deploy
   stage: deploy
