@@ -14,7 +14,7 @@ import {
   WORKER_ACTIONS
 } from "../../../constants";
 
-function WorkerList(props) {
+function WorkerList({ workers }) {
   const [isDialogOpened, setIsDialogOpened] = useState(false);
   const [workerSelected, setWorkerSelected] = useState({});
 
@@ -30,23 +30,26 @@ function WorkerList(props) {
 
   return (
     <>
-      <Table>
-        <thead>
-          <tr>
-            <th>{WORKER_PHOTO_URL}</th>
-            <th>{WORKER_NAME}</th>
-            <th>{WORKER_SURNAME}</th>
-            <th>{WORKER_EMAIL}</th>
-            <th>{WORKER_NOTES}</th>
-            <th>{WORKER_ACTIONS}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {props.workers.map(worker => (
-            <WorkerListItem openWorkerForm={openWorkerForm} worker={worker} />
-          ))}
-        </tbody>
-      </Table>
+      {workers.length > 0 ? (
+        <Table>
+          <thead>
+            <tr>
+              <th>{WORKER_PHOTO_URL}</th>
+              <th>{WORKER_NAME}</th>
+              <th>{WORKER_SURNAME}</th>
+              <th>{WORKER_EMAIL}</th>
+              <th>{WORKER_NOTES}</th>
+              <th>{WORKER_ACTIONS}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {workers.map(worker => (
+              <WorkerListItem openWorkerForm={openWorkerForm} worker={worker} />
+            ))}
+          </tbody>
+        </Table>
+      ) : null}
+
       {isDialogOpened ? (
         <WorkerDialog
           isActive={isDialogOpened}
@@ -54,7 +57,6 @@ function WorkerList(props) {
           worker={workerSelected}
         />
       ) : null}
-
       <Button isColor="primary" onClick={() => openWorkerForm()}>
         Create new worker
       </Button>
