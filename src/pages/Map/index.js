@@ -1,8 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Site from "./Site";
+import NotFound from "../NotFound";
+import useOffice from "./hooks/useOffice";
 
-function Map({ maps, setMaps, floorId }) {
-  return <Site floorId={floorId} offices={maps.offices} floors={maps.floors} />;
+const getFirstId = offices =>
+  offices && offices[0].floors[0] && offices[0].floors[0].id;
+
+const hasFloors = floors => Boolean(Object.keys(floors).length);
+
+function Map({ floorId }) {
+  const loading = useOffice(floorId, setMap);
+
+  const floor = floorId
+    ? map.floors[floorId]
+    : map.floors[getFirstId(map.offices)];
+
+  if (!loading && !floor && hasFloors(map.floors)) {
+    return <NotFound />;
+  }
+  return (
+    <div className={`Map${loading ? " loading" : ""}`}>
+      {!loading && <Site floor={floor} offices={map.offices} />}
+    </div>
+  );
 }
 
 export default Map;
