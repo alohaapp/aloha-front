@@ -9,15 +9,14 @@ import {
 } from "bloomer";
 import WorkerFormContainer from "../WorkerFormContainer";
 
-function WorkerDialog(props) {
-  const { isActive, closeDialog } = props;
+function WorkerDialog({ isActive, closeDialog, worker }) {
   return (
     <Modal isActive={isActive}>
       <ModalBackground />
       <ModalCard>
         <ModalCardBody>
           <Delete onClick={closeDialog} />
-          <WorkerFormContainer />
+          {worker.id ? <WorkerFormContainer worker={worker} /> : null}
         </ModalCardBody>
       </ModalCard>
     </Modal>
@@ -26,7 +25,8 @@ function WorkerDialog(props) {
 
 WorkerDialog.propTypes = {
   isActive: PropTypes.bool.isRequired,
-  closeDialog: PropTypes.func.isRequired
+  closeDialog: PropTypes.func.isRequired,
+  worker: PropTypes.object
 };
 
 export default WorkerDialog;

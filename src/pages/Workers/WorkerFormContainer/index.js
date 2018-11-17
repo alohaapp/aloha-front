@@ -3,14 +3,8 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import WorkerForm from "../WorkerForm";
 
-export default function(props) {
-  const initialValue = {
-    name: "",
-    surname: "",
-    photoUrl: "",
-    email: "",
-    notes: ""
-  };
+export default function({ worker }) {
+  const initialValue = worker;
 
   const requiredMessage = "Required field";
 

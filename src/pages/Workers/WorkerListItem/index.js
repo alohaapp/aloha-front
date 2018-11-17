@@ -1,22 +1,29 @@
-import React from "react";
-import PropTypes from "prop-types";
 import "./WorkerListItem.scss";
 
-function WorkerList(props) {
+import React from "react";
+import PropTypes from "prop-types";
+import { Icon, Button } from "bloomer";
+
+function WorkerList({ worker, openWorkerForm }) {
   return (
-    <tr className="WorkerList" key={props.key}>
-      <td>{props.worker.photoUrl}</td>
-      <td>{props.worker.name}</td>
-      <td>{props.worker.surname}</td>
-      <td>{props.worker.email}</td>
-      <td>{props.worker.notes}</td>
+    <tr className="WorkerList" key={worker.email}>
+      <td>{worker.photoUrl}</td>
+      <td>{worker.name}</td>
+      <td>{worker.surname}</td>
+      <td>{worker.email}</td>
+      <td>{worker.notes}</td>
+      <td>
+        <Button onClick={() => openWorkerForm(worker)}>
+          <Icon isSize="small" className="fa fa-pencil" />
+        </Button>
+      </td>
     </tr>
   );
 }
 
 WorkerList.propTypes = {
   worker: PropTypes.object.isRequired,
-  key: PropTypes.number.isRequired
+  openWorkerForm: PropTypes.func.isRequired
 };
 
 export default WorkerList;

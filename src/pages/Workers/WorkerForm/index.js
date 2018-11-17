@@ -4,7 +4,7 @@ import { Button } from "bloomer";
 
 export default function(props) {
   const ErrorMessageComponent = ({ errorMessage }) => (
-    <p class="help is-danger">{errorMessage} </p>
+    <p className="help is-danger">{errorMessage} </p>
   );
   return (
     <Form>
