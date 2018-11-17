@@ -8,8 +8,8 @@ import {
   DropdownTrigger,
   Icon
 } from "bloomer";
-import SidePanelOffice from "../SidePanelOffice";
-import SidePanelFloorAdder from "../SidePanelOffice";
+import SidePanelFloor from "../SidePanelFloor";
+import SidePanelFloorAdder from "../SidePanelFloorAdder";
 
 function SidePanel({ offices }) {
   const [selectedOffice, setSelectedOffice] = useState(null);
@@ -34,7 +34,7 @@ function SidePanel({ offices }) {
       </Dropdown>
       <div className="SidePanel-floors">
         {offices[selectedOffice].floors.map(floor => (
-          <SidePanelOffice floor={floor} />
+          <SidePanelFloor floor={floor} />
         ))}
         <SidePanelFloorAdder />
       </div>
