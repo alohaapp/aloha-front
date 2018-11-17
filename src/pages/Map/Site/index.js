@@ -1,16 +1,16 @@
 import React from "react";
 import SidePanel from "../SidePanel";
-import Visualization from "../Visualization";
+import MapPanel from "../MapPanel";
 import "./Site.scss";
 
-const Maps = ({ offices, floors, floorId }) => {
+function Site({ offices, floor }) {
   return (
-    <div className="Maps">
-      <header className="Maps-header" />
+    <div className="Site">
+      <header className="Site-header" />
       <SidePanel offices={offices} />
-      {floors && floorId && <Visualization floor={floors} />}
+      {floor && <MapPanel floor={floor} />}
     </div>
   );
-};
+}
 
-export default Maps;
+export default Site;
