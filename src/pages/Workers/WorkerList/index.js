@@ -44,7 +44,11 @@ function WorkerList({ workers }) {
           </thead>
           <tbody>
             {workers.map(worker => (
-              <WorkerListItem openWorkerForm={openWorkerForm} worker={worker} />
+              <WorkerListItem
+                key={worker.id}
+                openWorkerForm={openWorkerForm}
+                worker={worker}
+              />
             ))}
           </tbody>
         </Table>
