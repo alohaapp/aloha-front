@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Site from "./Site";
 import NotFound from "../NotFound";
 import useOffice from "./hooks/useOffice";
@@ -9,7 +9,7 @@ const getFirstId = offices =>
 const hasFloors = floors => Boolean(Object.keys(floors).length);
 
 function Map({ floorId }) {
-  const loading = useOffice(floorId, setMap);
+  const [map, loading] = useOffice(floorId);
 
   const floor = floorId
     ? map.floors[floorId]
