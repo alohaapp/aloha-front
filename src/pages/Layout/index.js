@@ -1,6 +1,6 @@
+import "./Layout.scss";
 import React, { Fragment } from "react";
 import { Columns, Column } from "bloomer";
-import "./Layout.scss";
 import "../../assets/logos/logo-corunet.svg";
 import "../../assets/logos/logo.svg";
 

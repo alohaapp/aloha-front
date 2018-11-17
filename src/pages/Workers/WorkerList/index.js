@@ -1,8 +1,8 @@
+import "./WorkerList.scss";
 import React from "react";
 import PropTypes from "prop-types";
 import WorkerListItem from "../WorkerListItem";
 import { Table } from "bloomer";
-import "./WorkerList.scss";
 import {
   WORKER_PHOTO_URL,
   WORKER_NAME,
