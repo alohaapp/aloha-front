@@ -1,60 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import useAPI from "../../hooks/useAPI";
 import "./Workers.scss";
 
 function Workers(props) {
-  const [workers, setWorkers] = useState([{}]);
+  const workers = useAPI({ url: "/Worker" });
 
-  useEffect(() => {
-    fetch("https://aloha-back.azurewebsites.net/api/v1/Worker", {
-      mode: "cors",
-      headers: {
-        "Content-type": "application/json; charset=utf-8",
-        "Access-Control-Allow-Origin": "*"
-      }
-    })
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(myJson) {
-        console.log(myJson);
-        setWorkers(myJson);
-      });
-
-    // const workersTemp = [
-    //   {
-    //     id: 1,
-    //     name: "Iván",
-    //     surname: "Cea Fontenla",
-    //     photoUrl: null,
-    //     email: null,
-    //     notes: null,
-    //     userId: null,
-    //     workstationId: null
-    //   },
-    //   {
-    //     id: 2,
-    //     name: "David",
-    //     surname: "Vázquez",
-    //     photoUrl: "http://fotito.guay",
-    //     email: "david@david.com",
-    //     notes: "aaa",
-    //     userId: null,
-    //     workstationId: null
-    //   }
-    // ];
-    // setWorkers(workersTemp);
-  });
-
-  return (
-    <div className="Workers">
-      <ul>
-        {workers.map((worker, index) => (
-          <li key={index}>
-            {worker.id} - {worker.name}
-          </li>
-        ))}
-      </ul>
-    </div>
+  return workers ? (
+    <ul>
+      {workers.map((worker, index) => (
+        <li key={index}>
+          <div>{worker.photoUrl}</div>
+          <div>{worker.name}</div>
+          <div>{worker.surname}</div>
+          <div>{worker.email}</div>
+          <div>{worker.notes}</div>
+          <div>Techs</div>
+          <div>Projects</div>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <h2>Loading...</h2>
   );
 }
 

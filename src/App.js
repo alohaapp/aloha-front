@@ -6,6 +6,7 @@ import {
   Redirect
 } from "react-router-dom";
 import Maps from "./pages/Maps";
+import Workers from "./pages/Workers";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 
@@ -16,6 +17,7 @@ class App extends Component {
         <Switch>
           <Redirect path="/" exact to="/maps" />
           <Route exact path="/maps" component={Maps} />
+          <Route exact path="/workers" component={Workers} />
           <Route path="/login" component={Login} />
           <Route component={NotFound} />
         </Switch>
