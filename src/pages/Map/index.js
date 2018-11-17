@@ -1,12 +1,8 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
 import Site from "./Site";
 
-function Map({ maps, setMaps, id }) {
-  console.log(maps);
-  console.log(setMaps);
-  console.log(id);
-  return null;
+function Map({ maps, setMaps, floorId }) {
+  return <Site floorId={floorId} offices={maps.offices} floors={maps.floors} />;
 }
 
 export default Map;
