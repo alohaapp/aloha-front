@@ -9,6 +9,7 @@ import {
   Icon
 } from "bloomer";
 import SidePanelOffice from "../SidePanelOffice";
+import SidePanelFloorAdder from "../SidePanelOffice";
 
 function SidePanel({ offices }) {
   const [selectedOffice, setSelectedOffice] = useState(null);
@@ -35,6 +36,7 @@ function SidePanel({ offices }) {
         {offices[selectedOffice].floors.map(floor => (
           <SidePanelOffice floor={floor} />
         ))}
+        <SidePanelFloorAdder />
       </div>
     </div>
   );
