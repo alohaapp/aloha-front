@@ -1,27 +1,24 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect
 } from "react-router-dom";
-import Maps from "./pages/Maps";
+import Map from "./pages/Map";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 
-class App extends Component {
-  render() {
-    return (
-      <Router>
-        <Switch>
-          <Redirect path="/" exact to="/maps" />
-          <Route exact path="/maps" component={Maps} />
-          <Route path="/login" component={Login} />
-          <Route component={NotFound} />
-        </Switch>
-      </Router>
-    );
-  }
-}
-
-export default App;
+export default () => {
+  const [maps, setMaps] = useState([]);
+  return (
+    <Router>
+      <Switch>
+        <Redirect path="/" exact to="/map" />
+        <Route exact path="/map" component={Map} setMaps maps />
+        <Route path="/login" component={Login} />
+        <Route component={NotFound} />
+      </Switch>
+    </Router>
+  );
+};
