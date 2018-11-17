@@ -15,13 +15,11 @@ export default function(floorId) {
   const offices = useAPI({ url: "/office" });
   const office =
     floorId && offices ? findOffice(offices, floorId) : offices && offices[0];
-  const floors = office
-    ? useAPI({ url: `/office/${office.id}` })
-    : offices && [];
+  const officeDetail = office ? useAPI({ url: `/office/${office.id}` }) : {};
 
   return [
     offices || [],
-    formatFloors(floors || []),
-    !offices || (office && !floors)
+    formatFloors((officeDetail && officeDetail.floors) || []),
+    !offices || (office && !officeDetail)
   ];
 }
