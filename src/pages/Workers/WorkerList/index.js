@@ -3,6 +3,7 @@ import "./WorkerList.scss";
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Table, Button } from "bloomer";
+import Confirm from "../../../components/Confirm";
 import WorkerListItem from "../WorkerListItem";
 import WorkerDialog from "../WorkerDialog";
 import {
@@ -17,6 +18,7 @@ import {
 function WorkerList({ workers }) {
   const [isDialogOpened, setIsDialogOpened] = useState(false);
   const [workerSelected, setWorkerSelected] = useState({});
+  const [isDeleteConfirmOpened, setIsDeleteConfirmOpened] = useState(false);
 
   const openWorkerForm = (worker = {}) => {
     setIsDialogOpened(true);
@@ -26,6 +28,21 @@ function WorkerList({ workers }) {
   const closeWorkerForm = () => {
     setIsDialogOpened(false);
     setWorkerSelected({});
+  };
+
+  const openDeleteConfirm = (worker = {}) => {
+    setWorkerSelected(worker);
+    setIsDeleteConfirmOpened(true);
+  };
+
+  const closeDeleteConfirm = () => {
+    setIsDeleteConfirmOpened(false);
+    setWorkerSelected({});
+  };
+
+  const deleteWorker = worker => {
+    // API Call
+    closeDeleteConfirm();
   };
 
   return (
@@ -47,6 +64,7 @@ function WorkerList({ workers }) {
               <WorkerListItem
                 key={worker.id}
                 openWorkerForm={openWorkerForm}
+                openDeleteConfirm={openDeleteConfirm}
                 worker={worker}
               />
             ))}
@@ -59,6 +77,18 @@ function WorkerList({ workers }) {
           isActive={isDialogOpened}
           closeDialog={closeWorkerForm}
           worker={workerSelected}
+        />
+      ) : null}
+
+      {isDeleteConfirmOpened ? (
+        <Confirm
+          isActive={isDeleteConfirmOpened}
+          onConfirm={deleteWorker}
+          onCancel={() => closeDeleteConfirm()}
+          title="Delete worker"
+          content={`Are you sure you want to delete the worker ${
+            workerSelected.name
+          } ${workerSelected.surname}?`}
         />
       ) : null}
       <Button isColor="primary" onClick={() => openWorkerForm()}>

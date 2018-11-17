@@ -4,7 +4,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Icon, Button } from "bloomer";
 
-function WorkerList({ worker, openWorkerForm }) {
+function WorkerList({ worker, openWorkerForm, openDeleteConfirm }) {
   return (
     <tr className="WorkerList" key={worker.email}>
       <td>{worker.photoUrl}</td>
@@ -16,6 +16,9 @@ function WorkerList({ worker, openWorkerForm }) {
         <Button onClick={() => openWorkerForm(worker)}>
           <Icon isSize="small" className="fa fa-pencil" />
         </Button>
+        <Button onClick={() => openDeleteConfirm(worker)}>
+          <Icon isSize="small" className="fa fa-trash" />
+        </Button>
       </td>
     </tr>
   );
@@ -23,7 +26,8 @@ function WorkerList({ worker, openWorkerForm }) {
 
 WorkerList.propTypes = {
   worker: PropTypes.object.isRequired,
-  openWorkerForm: PropTypes.func.isRequired
+  openWorkerForm: PropTypes.func.isRequired,
+  openDeleteConfirm: PropTypes.func.isRequired
 };
 
 export default WorkerList;
