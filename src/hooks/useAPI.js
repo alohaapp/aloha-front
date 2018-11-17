@@ -5,12 +5,16 @@ export default function({ method = "GET", url }) {
   const [result, setResult] = useState();
 
   useEffect(
-    () =>
-      fetch(API_URL + url, {
+    async () => {
+      const r = await fetch(API_URL + url, {
         method
-      })
-        .then(r => r.json())
-        .then(setResult),
+      });
+      if (r.ok) {
+        setResult(await r.json());
+      } else {
+        throw new Error(r.status);
+      }
+    },
     [method, url]
   );
 
