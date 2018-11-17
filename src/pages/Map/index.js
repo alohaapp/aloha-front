@@ -4,7 +4,7 @@ import NotFound from "../NotFound";
 import useOffice from "./hooks/useOffice";
 
 const getFirstId = offices =>
-  offices && offices[0].floors[0] && offices[0].floors[0].id;
+  offices[0] && offices[0].floors[0] && offices[0].floors[0].id;
 
 const hasFloors = floors => Boolean(Object.keys(floors).length);
 
