@@ -1,12 +1,14 @@
 import React from "react";
-import Floors from "../Floors";
+import SidePanel from "../SidePanel";
+import Visualization from "../Visualization";
 import "./Site.scss";
 
-const Maps = () => {
+const Maps = ({ offices, floors, floorId }) => {
   return (
     <div className="Maps">
       <header className="Maps-header" />
-      <Floors />
+      <SidePanel offices={offices} />
+      {floors && floorId && <Visualization floor={floors} />}
     </div>
   );
 };
