@@ -38,6 +38,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "bloomer": "^0.6.5",
     "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react-hooks": "^0.0.0",
