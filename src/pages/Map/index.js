@@ -9,18 +9,16 @@ const getFirstId = offices =>
 const hasFloors = floors => Boolean(Object.keys(floors).length);
 
 function Map({ floorId }) {
-  const [map, loading] = useOffice(floorId);
+  const [offices, floors, loading] = useOffice(floorId);
 
-  const floor = floorId
-    ? map.floors[floorId]
-    : map.floors[getFirstId(map.offices)];
+  const floor = floorId ? floors[floorId] : floors[getFirstId(offices)];
 
-  if (!loading && !floor && hasFloors(map.floors)) {
+  if (!loading && !floor && hasFloors(floors)) {
     return <NotFound />;
   }
   return (
     <div className={`Map${loading ? " loading" : ""}`}>
-      {!loading && <Site floor={floor} offices={map.offices} />}
+      {!loading && <Site floor={floor} offices={offices} />}
     </div>
   );
 }

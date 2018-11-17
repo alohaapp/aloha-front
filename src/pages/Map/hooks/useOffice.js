@@ -1,4 +1,3 @@
-import { useState } from "react";
 import useAPI from "../../../hooks/useAPI";
 
 const findOffice = (offices, floorId) =>
@@ -21,7 +20,8 @@ export default function(floorId) {
     : offices && [];
 
   return [
-    { offices: offices || [], floors: floors || {} },
+    offices || [],
+    formatFloors(floors || []),
     !offices || (office && !floors)
   ];
 }
