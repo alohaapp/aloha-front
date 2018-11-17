@@ -16,7 +16,7 @@ function WorkerDialog({ isActive, closeDialog, worker }) {
       <ModalCard>
         <ModalCardBody>
           <Delete onClick={closeDialog} />
-          {worker.id ? <WorkerFormContainer worker={worker} /> : null}
+          <WorkerFormContainer worker={worker} />
         </ModalCardBody>
       </ModalCard>
     </Modal>

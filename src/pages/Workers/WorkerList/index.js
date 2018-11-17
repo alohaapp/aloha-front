@@ -2,7 +2,7 @@ import "./WorkerList.scss";
 
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Table } from "bloomer";
+import { Table, Button } from "bloomer";
 import WorkerListItem from "../WorkerListItem";
 import WorkerDialog from "../WorkerDialog";
 import {
@@ -10,14 +10,15 @@ import {
   WORKER_NAME,
   WORKER_SURNAME,
   WORKER_EMAIL,
-  WORKER_NOTES
+  WORKER_NOTES,
+  WORKER_ACTIONS
 } from "../../../constants";
 
 function WorkerList(props) {
   const [isDialogOpened, setIsDialogOpened] = useState(false);
   const [workerSelected, setWorkerSelected] = useState({});
 
-  const openWorkerForm = worker => {
+  const openWorkerForm = (worker = {}) => {
     setIsDialogOpened(true);
     setWorkerSelected(worker);
   };
@@ -37,7 +38,7 @@ function WorkerList(props) {
             <th>{WORKER_SURNAME}</th>
             <th>{WORKER_EMAIL}</th>
             <th>{WORKER_NOTES}</th>
-            <th>Actions</th>
+            <th>{WORKER_ACTIONS}</th>
           </tr>
         </thead>
         <tbody>
@@ -46,12 +47,17 @@ function WorkerList(props) {
           ))}
         </tbody>
       </Table>
+      {isDialogOpened ? (
+        <WorkerDialog
+          isActive={isDialogOpened}
+          closeDialog={closeWorkerForm}
+          worker={workerSelected}
+        />
+      ) : null}
 
-      <WorkerDialog
-        isActive={isDialogOpened}
-        closeDialog={closeWorkerForm}
-        worker={workerSelected}
-      />
+      <Button isColor="primary" onClick={() => openWorkerForm()}>
+        Create new worker
+      </Button>
     </>
   );
 }

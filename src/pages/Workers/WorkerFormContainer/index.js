@@ -4,7 +4,12 @@ import * as Yup from "yup";
 import WorkerForm from "../WorkerForm";
 
 export default function({ worker }) {
-  const initialValue = worker;
+  const initialValue = {
+    name: worker.name || "",
+    surname: worker.surname || "",
+    email: worker.email || "",
+    notes: worker.notes || ""
+  };
 
   const requiredMessage = "Required field";
 
@@ -17,7 +22,7 @@ export default function({ worker }) {
     notes: Yup.string().required(requiredMessage)
   });
 
-  const onSubmit = (values, actions) => {
+  const onSubmit = values => {
     // API call
   };
 

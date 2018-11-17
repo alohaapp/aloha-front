@@ -5,3 +5,4 @@ export const WORKER_SURNAME = "Surname";
 export const WORKER_EMAIL = "Email";
 export const WORKER_DESCRIPTION = "Description";
 export const WORKER_NOTES = "Notes";
+export const WORKER_ACTIONS = "Actions";
