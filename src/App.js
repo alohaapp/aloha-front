@@ -11,11 +11,15 @@ import NotFound from "./pages/NotFound";
 
 export default () => {
   const [maps, setMaps] = useState([]);
+  const renderMap = ({ match }) => {
+    return <Map setMaps={setMaps} maps={maps} id={match.params.id} />;
+  };
   return (
     <Router>
       <Switch>
         <Redirect path="/" exact to="/map" />
-        <Route exact path="/map" component={Map} setMaps maps />
+        <Route exact path="/map" render={renderMap} />
+        <Route exact path="/map/:id" render={renderMap} />
         <Route path="/login" component={Login} />
         <Route component={NotFound} />
       </Switch>
