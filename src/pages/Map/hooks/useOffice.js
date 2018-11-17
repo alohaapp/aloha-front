@@ -13,19 +13,15 @@ const formatFloors = floors => {
 };
 
 export default function(floorId) {
-  const [loading, setLoading] = useState(true);
-  const [map, setMap] = useState({ offices: [], floors: {} });
-
-  const offices = useAPI({ url: "/offices" });
+  const offices = useAPI({ url: "/office" });
   const office =
     floorId && offices ? findOffice(offices, floorId) : offices && offices[0];
   const floors = office
-    ? useAPI({ url: `/offices/${office.id}` })
+    ? useAPI({ url: `/office/${office.id}` })
     : offices && [];
 
-  if (offices && (!office || floors)) {
-    setLoading(false);
-    setMap({ offices, floors: formatFloors(floors) });
-  }
-  return [map, loading];
+  return [
+    { offices: offices || [], floors: floors || {} },
+    !offices || (office && !floors)
+  ];
 }
