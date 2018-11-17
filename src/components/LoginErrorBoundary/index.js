@@ -8,9 +8,10 @@ class LoginErrorBoundary extends Component {
   };
 
   componentDidCatch(error) {
-    if (error === 401) {
+    if (error.message === "401") {
       this.setState({ loggedIn: false });
     } else {
+      debugger;
       throw error;
     }
   }

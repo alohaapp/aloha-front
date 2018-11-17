@@ -17,7 +17,7 @@ function Login(props) {
   return (
     <form className="login" onSubmit={handleSubmit}>
       <h2>Login</h2>
-      <label for="user">
+      <label htmlFor="user">
         <input
           type="text"
           id="user"
@@ -25,7 +25,7 @@ function Login(props) {
           value={user}
         />
       </label>
-      <label for="password">
+      <label htmlFor="password">
         <input
           type="password"
           id="password"
