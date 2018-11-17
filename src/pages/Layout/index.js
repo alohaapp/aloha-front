@@ -7,23 +7,21 @@ import logo from "../../assets/logos/logo.svg";
 function Layout(props) {
   return (
     <Fragment>
-      <Columns className="header" isCentered>
-        <Column isSize="1/4">
+      <Columns className="header">
+        <Column className="logo-company">
           <img src={logoCorunet} alt="logo-corunet" />
         </Column>
-        <Column isSize="2/4">
+        <Column className="logo-app" isSize="2/4">
           <img src={logo} alt="logo" />
         </Column>
-        <Column isSize="1/4" />
+        <Column className="user-link" />
       </Columns>
 
-      <Columns className="main-container" isCentered>
+      <Columns className="main-container is-8">
         <Column className="sidebar" isSize="1/4">
           {props.sidebar}
         </Column>
-        <Column className="content" isSize="3/4">
-          {props.content}
-        </Column>
+        <Column className="content">{props.content}</Column>
       </Columns>
     </Fragment>
   );
