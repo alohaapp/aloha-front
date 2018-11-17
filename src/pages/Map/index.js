@@ -1,11 +1,12 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import Site from "./Site";
 
-const Map = () => {};
+function Map({ maps, setMaps, id }) {
+  console.log(maps);
+  console.log(setMaps);
+  console.log(id);
+  return null;
+}
 
-export default () => (
-  <Switch>
-    <Route exact path="/:id" component={Map} />
-    <Redirect path="/" exact to="/map" />
-  </Switch>
-);
+export default Map;
