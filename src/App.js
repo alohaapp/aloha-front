@@ -1,22 +1,27 @@
 import React, { Component } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-import Maps from "../Maps";
-import Login from "../Login";
-import NotFound from "../NotFound";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
+import Maps from "./pages/Maps";
+import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
 
-class Main extends Component {
+class App extends Component {
   render() {
     return (
-      <div className="Main">
+      <Router>
         <Switch>
           <Redirect path="/" exact to="/maps" />
           <Route exact path="/maps" component={Maps} />
           <Route path="/login" component={Login} />
           <Route component={NotFound} />
         </Switch>
-      </div>
+      </Router>
     );
   }
 }
 
-export default Main;
+export default App;
