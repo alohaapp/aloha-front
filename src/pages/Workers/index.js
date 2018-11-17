@@ -1,14 +1,18 @@
-import React from "react";
+import "./Workers.scss";
+import React, { Fragment } from "react";
 import useAPI from "../../hooks/useAPI";
 import WorkerList from "./WorkerList";
+import WorkerFilter from "./WorkerFilter";
 import Layout from "../Layout";
-import "./Workers.scss";
 
 function Workers(props) {
   const workers = useAPI({ url: "/Worker" });
 
   const content = workers ? (
-    <WorkerList workers={workers} />
+    <Fragment>
+      <WorkerFilter />
+      <WorkerList workers={workers} />
+    </Fragment>
   ) : (
     <h2>Loading...</h2>
   );

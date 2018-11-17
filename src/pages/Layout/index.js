@@ -8,13 +8,13 @@ function Layout(props) {
   return (
     <Fragment>
       <Columns className="header" isCentered>
-        <Column isSize="1/4">
+        <Column>
           <img src={logoCorunet} alt="logo-corunet" />
         </Column>
         <Column isSize="2/4">
           <img src={logo} alt="logo" />
         </Column>
-        <Column isSize="1/4" />
+        <Column />
       </Columns>
 
       <Columns className="main-container" isCentered>
