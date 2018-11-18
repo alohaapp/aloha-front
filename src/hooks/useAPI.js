@@ -11,14 +11,14 @@ export default function({ options, url }) {
 
   useEffect(
     async () => {
-      const r = await fetch(API_URL + url, {
+      const response = await fetch(API_URL + url, {
         ...defaultOptions,
         ...options
       });
-      if (r.ok) {
-        setResult(await r.json());
+      if (response.ok) {
+        setResult(await response.json());
       } else {
-        setError(r.status);
+        setError(response.status);
       }
     },
     [options, url]
