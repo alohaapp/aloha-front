@@ -6,7 +6,7 @@ function Floors(props) {
   return floors ? (
     <ul>
       {floors.map(floor => (
-        <li>{floor.name}</li>
+        <li key={floor.name}>{floor.name}</li>
       ))}
     </ul>
   ) : (
