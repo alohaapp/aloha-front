@@ -13,7 +13,8 @@ import SidePanelFloorAdder from "../SidePanelFloorAdder";
 
 function SidePanel({ offices }) {
   const [selectedOffice, setSelectedOffice] = useState(null);
-  if (offices.length === 0) return null;
+  console.log(offices);
+  if (!offices.length) return null;
   return (
     <div className="SidePanel">
       <Dropdown>

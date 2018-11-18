@@ -1,24 +1,57 @@
 import React from "react";
 import Site from "./Site";
 import NotFound from "../NotFound";
-import useOffice from "./hooks/useOffice";
+import useAPI from "../../hooks/useAPI";
 
-const getFirstId = offices =>
-  offices[0] && offices[0].floors[0] && offices[0].floors[0].id;
+const getFloors = offices => {
+  const floorsObject = {};
+  offices.forEach(office => {
+    office.floors.forEach(floor => {
+      floorsObject[floor.id] = { ...floor, officeId: office.id };
+    });
+  });
+  return floorsObject;
+};
 
-const hasFloors = floors => Boolean(Object.keys(floors).length);
+const findOffice = (offices, floorId) =>
+  offices.find(office => office.floors.find(floor => floor.id === floorId));
 
 function Map({ floorId }) {
-  const [offices, floors, loading] = useOffice(floorId);
+  const offices = useAPI({ url: "/offices" });
+  const office =
+    floorId && offices ? findOffice(offices, floorId) : offices && offices[0];
 
-  const floor = floorId ? floors[floorId] : floors[getFirstId(offices)];
-
-  if (!loading && !floor && hasFloors(floors)) {
+  if (offices && !office) {
     return <NotFound />;
   }
+
+  if (offices.length) {
+    offices[0].floors = [
+      {
+        id: 1,
+        name: "Bajo",
+        imageUrl: null,
+        officeId: 1,
+        workstations: null
+      },
+      {
+        id: 2,
+        name: "Primero",
+        imageUrl: null,
+        officeId: 1,
+        workstations: null
+      }
+    ];
+  }
   return (
-    <div className={`Map${loading ? " loading" : ""}`}>
-      {!loading && <Site floor={floor} offices={offices} />}
+    <div className={`Map${!offices ? " loading" : ""}`}>
+      {offices && (
+        <Site
+          floorId={floorId || (office.floors[0] && office.floors[0].id)}
+          floors={getFloors(offices)}
+          offices={offices}
+        />
+      )}
     </div>
   );
 }

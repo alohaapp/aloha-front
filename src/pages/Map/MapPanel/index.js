@@ -1,8 +1,8 @@
 import React from "react";
 import MapPanelImage from "../MapPanelImage";
 
-const MapPanel = () => {
+function MapPanel() {
   return <MapPanelImage />;
-};
+}
 
 export default MapPanel;
