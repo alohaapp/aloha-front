@@ -12,7 +12,7 @@ import Workers from "./pages/Workers";
 
 export default function() {
   const renderMap = ({ match }) => {
-    return <Map floorId={match.params.floorId} />;
+    return <Map floorId={+match.params.floorId} />;
   };
   return (
     <Router>

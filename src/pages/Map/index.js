@@ -7,7 +7,7 @@ const getFloors = offices => {
   const floorsObject = {};
   offices.forEach(office => {
     office.floors.forEach(floor => {
-      floorsObject[floor.id] = { ...floor, officeId: office.id };
+      floorsObject[floor.id] = floor;
     });
   });
   return floorsObject;
@@ -17,7 +17,30 @@ const findOffice = (offices, floorId) =>
   offices.find(office => office.floors.find(floor => floor.id === floorId));
 
 function Map({ floorId }) {
-  const offices = useAPI({ url: "/offices" });
+  // TODO: Borrar
+  // const offices = useAPI({ url: "/offices" });
+  const offices = [
+    {
+      id: 1,
+      name: "Corune",
+      floors: [
+        {
+          id: 1,
+          name: "Bajo",
+          imageUrl: "http://archivos.coru.net/aloha/corunet.svg",
+          officeId: 1,
+          workstations: null
+        },
+        {
+          id: 2,
+          name: "Primero",
+          imageUrl: "http://archivos.coru.net/aloha/corunet.svg",
+          officeId: 1,
+          workstations: null
+        }
+      ]
+    }
+  ];
   const office =
     floorId && offices ? findOffice(offices, floorId) : offices && offices[0];
 
@@ -25,24 +48,6 @@ function Map({ floorId }) {
     return <NotFound />;
   }
 
-  if (offices.length) {
-    offices[0].floors = [
-      {
-        id: 1,
-        name: "Bajo",
-        imageUrl: null,
-        officeId: 1,
-        workstations: null
-      },
-      {
-        id: 2,
-        name: "Primero",
-        imageUrl: null,
-        officeId: 1,
-        workstations: null
-      }
-    ];
-  }
   return (
     <div className={`Map${!offices ? " loading" : ""}`}>
       {offices && (

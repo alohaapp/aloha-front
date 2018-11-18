@@ -11,10 +11,14 @@ import {
 import SidePanelFloor from "../SidePanelFloor";
 import SidePanelFloorAdder from "../SidePanelFloorAdder";
 
-function SidePanel({ offices }) {
-  const [selectedOffice, setSelectedOffice] = useState(null);
-  console.log(offices);
-  if (!offices.length) return null;
+function SidePanel({ offices, officeId, floorId }) {
+  const [selectedOffice, setSelectedOffice] = useState(officeId);
+  if (!offices.length) {
+    return null;
+  }
+
+  const findOffice = officeId => offices.find(office => office.id === officeId);
+
   return (
     <div className="SidePanel">
       <Dropdown>
@@ -35,7 +39,7 @@ function SidePanel({ offices }) {
         </DropdownMenu>
       </Dropdown>
       <div className="SidePanel-floors">
-        {offices[selectedOffice].floors.map(floor => (
+        {findOffice(selectedOffice).floors.map(floor => (
           <SidePanelFloor floor={floor} />
         ))}
         <SidePanelFloorAdder />
