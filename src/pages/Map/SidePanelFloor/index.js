@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const SidePanelFloor = ({ floor }) => {
   return (
     <div className="SidePanel-floor">
-      <Link>
+      <Link to={`/map/${floor.id}`}>
         <Card>
           <CardHeader>
             <CardHeaderTitle>{floor.name}</CardHeaderTitle>

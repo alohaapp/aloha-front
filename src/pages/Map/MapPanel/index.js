@@ -1,13 +1,15 @@
 import React from "react";
+import MapPanelFilterToolbar from "../MapPanelFilterToolbar";
 import MapPanelImage from "../MapPanelImage";
-import MapNewImage from "../MapNewImage";
+import MapNewImage from "../MapPanelImage";
 
 function MapPanel({ floor }) {
-  console.log(floor);
-
   return (
-    <div className="MapPanel">
-      {floor ? <MapPanelImage image={floor.imageUrl} /> : <MapNewImage />}
+    <div className="Map-panel">
+      <MapPanelFilterToolbar />
+      <div className="Map-panel-display-area">
+        {floor ? <MapPanelImage floor={floor} /> : <MapNewImage />}
+      </div>
     </div>
   );
 }
