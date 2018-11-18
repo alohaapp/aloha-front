@@ -1,3 +1,4 @@
+import "./MapPanelImage.scss";
 import React from "react";
 import MapPanelWorkstation from "../MapPanelWorkstation";
 
