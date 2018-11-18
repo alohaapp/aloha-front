@@ -22,7 +22,7 @@ function Map({ floorId }) {
   const offices = [
     {
       id: 1,
-      name: "Corune",
+      name: "Corunet Sor Joaquina",
       floors: [
         {
           id: 1,
@@ -36,6 +36,19 @@ function Map({ floorId }) {
           name: "Primero",
           imageUrl: "http://archivos.coru.net/aloha/corunet.svg",
           officeId: 1,
+          workstations: []
+        }
+      ]
+    },
+    {
+      id: 2,
+      name: "Corunet Ronda Outeiro",
+      floors: [
+        {
+          id: 3,
+          name: "Bajo",
+          imageUrl: "http://archivos.coru.net/aloha/corunet.svg",
+          officeId: 2,
           workstations: []
         }
       ]

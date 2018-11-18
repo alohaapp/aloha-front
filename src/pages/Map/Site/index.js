@@ -12,7 +12,7 @@ function Site({ floorId, offices, floors }) {
         officeId={floorId && floors[floorId].officeId}
         floorId={floorId}
       />
-      <MapPanel floor={floors[floorId]} />
+      {floors[floorId] && <MapPanel floor={floors[floorId]} />}
     </div>
   );
 }
