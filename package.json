@@ -7,11 +7,15 @@
     "bulma": "^0.7.2",
     "connect-history-api-fallback": "^1.5.0",
     "express": "^4.16.4",
+    "font-awesome": "^4.7.0",
+    "formik": "^1.3.2",
     "node-sass": "^4.10.0",
+    "prop-types": "^15.6.2",
     "react": "^16.7.0-alpha.0",
     "react-dom": "^16.7.0-alpha.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.1"
+    "react-scripts": "2.1.1",
+    "yup": "^0.26.6"
   },
   "scripts": {
     "start": "if test \"$NODE_ENV\" = \"production\" ; then node server ; else react-scripts start ; fi ",
@@ -44,6 +48,7 @@
     "eslint-plugin-react-hooks": "^0.0.0",
     "husky": "^1.1.3",
     "lint-staged": "^8.0.4",
+    "node-fetch": "^2.3.0",
     "prettier": "1.14.3"
   }
 }

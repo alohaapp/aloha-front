@@ -1,36 +1,100 @@
 import "./WorkerList.scss";
-import React from "react";
+
+import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { Table, Button } from "bloomer";
+import Confirm from "../../../components/Confirm";
 import WorkerListItem from "../WorkerListItem";
-import { Table } from "bloomer";
+import WorkerDialog from "../WorkerDialog";
 import {
   WORKER_PHOTO_URL,
   WORKER_NAME,
   WORKER_SURNAME,
   WORKER_EMAIL,
-  WORKER_DESCRIPTION,
-  WORKER_NOTES
+  WORKER_NOTES,
+  WORKER_ACTIONS
 } from "../../../constants";
 
-function WorkerList(props) {
+function WorkerList({ workers }) {
+  const [isDialogOpened, setIsDialogOpened] = useState(false);
+  const [workerSelected, setWorkerSelected] = useState({});
+  const [isDeleteConfirmOpened, setIsDeleteConfirmOpened] = useState(false);
+
+  const openWorkerForm = (worker = {}) => {
+    setIsDialogOpened(true);
+    setWorkerSelected(worker);
+  };
+
+  const closeWorkerForm = () => {
+    setIsDialogOpened(false);
+    setWorkerSelected({});
+  };
+
+  const openDeleteConfirm = (worker = {}) => {
+    setWorkerSelected(worker);
+    setIsDeleteConfirmOpened(true);
+  };
+
+  const closeDeleteConfirm = () => {
+    setIsDeleteConfirmOpened(false);
+    setWorkerSelected({});
+  };
+
+  const deleteWorker = worker => {
+    // API Call
+    closeDeleteConfirm();
+  };
+
   return (
-    <Table>
-      <thead>
-        <tr>
-          <th>{WORKER_PHOTO_URL}</th>
-          <th>{WORKER_NAME}</th>
-          <th>{WORKER_SURNAME}</th>
-          <th>{WORKER_EMAIL}</th>
-          <th>{WORKER_DESCRIPTION}</th>
-          <th>{WORKER_NOTES}</th>
-        </tr>
-      </thead>
-      <tbody>
-        {props.workers.map(worker => (
-          <WorkerListItem key={worker.id} worker={worker} />
-        ))}
-      </tbody>
-    </Table>
+    <>
+      {workers.length > 0 ? (
+        <Table>
+          <thead>
+            <tr>
+              <th>{WORKER_PHOTO_URL}</th>
+              <th>{WORKER_NAME}</th>
+              <th>{WORKER_SURNAME}</th>
+              <th>{WORKER_EMAIL}</th>
+              <th>{WORKER_NOTES}</th>
+              <th>{WORKER_ACTIONS}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {workers.map(worker => (
+              <WorkerListItem
+                key={worker.id}
+                openWorkerForm={openWorkerForm}
+                openDeleteConfirm={openDeleteConfirm}
+                worker={worker}
+              />
+            ))}
+          </tbody>
+        </Table>
+      ) : null}
+
+      {isDialogOpened ? (
+        <WorkerDialog
+          isActive={isDialogOpened}
+          closeDialog={closeWorkerForm}
+          worker={workerSelected}
+        />
+      ) : null}
+
+      {isDeleteConfirmOpened ? (
+        <Confirm
+          isActive={isDeleteConfirmOpened}
+          onConfirm={deleteWorker}
+          onCancel={() => closeDeleteConfirm()}
+          title="Delete worker"
+          content={`Are you sure you want to delete the worker ${
+            workerSelected.name
+          } ${workerSelected.surname}?`}
+        />
+      ) : null}
+      <Button isColor="primary" onClick={() => openWorkerForm()}>
+        Create new worker
+      </Button>
+    </>
   );
 }
 
