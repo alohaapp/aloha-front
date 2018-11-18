@@ -6,7 +6,8 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
-  Icon
+  Icon,
+  Tag
 } from "bloomer";
 import SidePanelFloor from "../SidePanelFloor";
 import SidePanelFloorAdder from "../SidePanelFloorAdder";
@@ -21,6 +22,8 @@ function SidePanel({ offices, officeId, floorId }) {
 
   return (
     <div className="SidePanel">
+      <Tag isColor="light">{offices.length}</Tag>
+      <span id="Side-panel-office-legend">OFFICE</span>
       <Dropdown>
         <DropdownTrigger>
           <Button isOutlined aria-haspopup="true" aria-controls="dropdown-menu">
@@ -41,6 +44,7 @@ function SidePanel({ offices, officeId, floorId }) {
           </DropdownContent>
         </DropdownMenu>
       </Dropdown>
+      <Button>Edit</Button>
       <div className="SidePanel-floors">
         {findOffice(selectedOffice).floors.map(floor => (
           <SidePanelFloor floor={floor} />
