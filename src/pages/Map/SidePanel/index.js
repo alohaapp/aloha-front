@@ -24,14 +24,17 @@ function SidePanel({ offices, officeId, floorId }) {
       <Dropdown>
         <DropdownTrigger>
           <Button isOutlined aria-haspopup="true" aria-controls="dropdown-menu">
-            <span>Dropdown button</span>
+            <span>{findOffice(selectedOffice).name}</span>
             <Icon icon="angle-down" isSize="small" />
           </Button>
         </DropdownTrigger>
         <DropdownMenu>
           <DropdownContent>
             {offices.map(office => (
-              <DropdownItem onClick={() => setSelectedOffice(office.id)}>
+              <DropdownItem
+                key={office.id}
+                onClick={() => setSelectedOffice(office.id)}
+              >
                 {office.name}
               </DropdownItem>
             ))}
