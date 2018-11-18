@@ -8,7 +8,7 @@ function MapPanel({ floor }) {
     <div className="Map-panel">
       <MapPanelFilterToolbar />
       <div className="Map-panel-display-area">
-        {floor ? <MapPanelImage floor={floor} /> : <MapNewImage />}
+        {floor.imageUrl ? <MapPanelImage floor={floor} /> : <MapNewImage />}
       </div>
     </div>
   );
