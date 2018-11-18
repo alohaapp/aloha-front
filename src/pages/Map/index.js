@@ -27,7 +27,7 @@ function Map({ floorId }) {
         {
           id: 1,
           name: "Bajo",
-          imageUrl: "http://archivos.coru.net/aloha/corunet.svg",
+          imageUrl: null,
           officeId: 1,
           workstations: []
         },
