@@ -29,14 +29,32 @@ function Map({ floorId }) {
           name: "Bajo",
           imageUrl: null,
           officeId: 1,
-          workstations: []
+          workstations: [
+            {
+              x: 25.6,
+              y: 32.4
+            }
+          ]
         },
         {
           id: 2,
           name: "Primero",
           imageUrl: "http://archivos.coru.net/aloha/corunet.svg",
           officeId: 1,
-          workstations: []
+          workstations: [
+            {
+              x: 25.6,
+              y: 32.4
+            },
+            {
+              x: 12.6,
+              y: 57.4
+            },
+            {
+              x: 89.6,
+              y: 50.8
+            }
+          ]
         }
       ]
     },
