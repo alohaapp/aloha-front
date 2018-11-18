@@ -1,19 +1,21 @@
 import React from "react";
+import Layout from "../../Layout";
 import SidePanel from "../SidePanel";
 import MapPanel from "../MapPanel";
 import "./Site.scss";
 
 function Site({ floorId, offices, floors }) {
   return (
-    <div className="Site">
-      <header className="Site-header" />
-      <SidePanel
-        offices={offices}
-        officeId={floorId && floors[floorId].officeId}
-        floorId={floorId}
-      />
-      {floors[floorId] && <MapPanel floor={floors[floorId]} />}
-    </div>
+    <Layout
+      sidebar={
+        <SidePanel
+          offices={offices}
+          officeId={floorId && floors[floorId].officeId}
+          floorId={floorId}
+        />
+      }
+      content={floors[floorId] && <MapPanel floor={floors[floorId]} />}
+    />
   );
 }
 
