@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import MapPanelFilterToolbar from "../MapPanelFilterToolbar";
 import MapPanelImage from "../MapPanelImage";
 import MapNewImage from "../MapNewImage";
 
 function MapPanel({ floor }) {
-  console.log(floor.imageUrl);
+  const [image, setImage] = useState(floor.imageUrl);
+
+  console.log(image);
   return (
     <div className="Map-panel">
       <MapPanelFilterToolbar />
       <div className="Map-panel-display-area">
-        {floor.imageUrl ? <MapPanelImage floor={floor} /> : <MapNewImage />}
+        {image ? (
+          <MapPanelImage image={image} floor={floor} />
+        ) : (
+          <MapNewImage setImage={setImage} />
+        )}
       </div>
     </div>
   );
