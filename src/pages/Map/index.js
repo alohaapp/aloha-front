@@ -1,7 +1,7 @@
 import React from "react";
 import Site from "./Site";
 import NotFound from "../NotFound";
-import useAPI from "../../hooks/useAPI";
+// import useAPI from "../../hooks/useAPI";
 
 const getFloors = offices => {
   const floorsObject = {};
