@@ -6,9 +6,8 @@ import {
   Redirect
 } from "react-router-dom";
 import Map from "./pages/Map";
-import Login from "./pages/Login";
-import NotFound from "./pages/NotFound";
 import Workers from "./pages/Workers";
+import NotFound from "./pages/NotFound";
 
 export default function() {
   const renderMap = ({ match }) => {
@@ -21,7 +20,6 @@ export default function() {
         <Route exact path="/map" render={renderMap} />
         <Route exact path="/map/:floorId" render={renderMap} />
         <Route exact path="/workers" component={Workers} />
-        <Route path="/login" component={Login} />
         <Route component={NotFound} />
       </Switch>
     </Router>
