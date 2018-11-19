@@ -1,27 +1,27 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect
 } from "react-router-dom";
-import Maps from "./pages/Maps";
+import Map from "./pages/Map";
 import Workers from "./pages/Workers";
 import NotFound from "./pages/NotFound";
 
-class App extends Component {
-  render() {
-    return (
-      <Router>
-        <Switch>
-          <Redirect path="/" exact to="/maps" />
-          <Route exact path="/maps" component={Maps} />
-          <Route exact path="/workers" component={Workers} />
-          <Route component={NotFound} />
-        </Switch>
-      </Router>
-    );
-  }
+export default function() {
+  const renderMap = ({ match }) => {
+    return <Map floorId={+match.params.floorId} />;
+  };
+  return (
+    <Router>
+      <Switch>
+        <Redirect path="/" exact to="/map" />
+        <Route exact path="/map" render={renderMap} />
+        <Route exact path="/map/:floorId" render={renderMap} />
+        <Route exact path="/workers" component={Workers} />
+        <Route component={NotFound} />
+      </Switch>
+    </Router>
+  );
 }
-
-export default App;
