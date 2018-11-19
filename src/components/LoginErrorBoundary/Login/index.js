@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Login.scss";
+import logoLogin from "../../../assets/logos/logo-login.svg";
 
 function Login(props) {
   const [user, setUser] = useState("");
@@ -15,26 +16,34 @@ function Login(props) {
   };
 
   return (
-    <form className="login" onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      <label htmlFor="user">
-        <input
-          type="text"
-          id="user"
-          onChange={e => setUser(e.target.value)}
-          value={user}
-        />
-      </label>
-      <label htmlFor="password">
-        <input
-          type="password"
-          id="password"
-          onChange={e => setPassword(e.target.value)}
-          value={password}
-        />
-      </label>
-      <input type="submit" value="Login" />
-    </form>
+    <div className="login">
+      <form onSubmit={handleSubmit}>
+        <img src={logoLogin} alt="Aloha!" />
+        <label htmlFor="user">
+          <input
+            class="input is-large"
+            type="text"
+            id="user"
+            placeholder="User"
+            onChange={e => setUser(e.target.value)}
+            value={user}
+          />
+        </label>
+        <label htmlFor="password">
+          <input
+            class="input is-large"
+            type="password"
+            placeholder="Password"
+            id="password"
+            onChange={e => setPassword(e.target.value)}
+            value={password}
+          />
+        </label>
+        <button class="button is-large is-link" type="submit" name="Login">
+          Come in
+        </button>
+      </form>
+    </div>
   );
 }
 
