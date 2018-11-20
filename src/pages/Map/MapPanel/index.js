@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MapPanelFilterToolbar from "../MapPanelFilterToolbar";
 import MapPanelImage from "../MapPanelImage";
 import MapNewImage from "../MapNewImage";
 
 function MapPanel({ floor }) {
   const [image, setImage] = useState(floor.imageUrl);
+  // Change map image when floor changes
+  useEffect(
+    () => {
+      setImage(floor.imageUrl);
+    },
+    [floor]
+  );
 
   console.log(image);
   return (
