@@ -5,7 +5,7 @@ import Layout from "../Layout";
 import "./Workers.scss";
 
 function Workers(props) {
-  const workers = useAPI({ url: "/Worker" });
+  const workers = useAPI({ url: "/Workers" });
 
   const content = workers ? (
     <WorkerList workers={workers} />
