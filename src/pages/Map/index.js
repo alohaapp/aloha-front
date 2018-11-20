@@ -1,3 +1,4 @@
+import "./Map.scss";
 import React from "react";
 import Site from "./Site";
 import NotFound from "../NotFound";
@@ -31,6 +32,7 @@ function Map({ floorId }) {
           officeId: 1,
           workstations: [
             {
+              id: 1,
               x: 25.6,
               y: 32.4
             }
@@ -43,14 +45,17 @@ function Map({ floorId }) {
           officeId: 1,
           workstations: [
             {
+              id: 2,
               x: 25.6,
               y: 32.4
             },
             {
+              id: 3,
               x: 12.6,
               y: 57.4
             },
             {
+              id: 4,
               x: 89.6,
               y: 50.8
             }

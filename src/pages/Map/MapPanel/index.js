@@ -13,7 +13,6 @@ function MapPanel({ floor }) {
     [floor]
   );
 
-  console.log(image);
   return (
     <div className="Map-panel">
       <MapPanelFilterToolbar />

@@ -2,7 +2,6 @@ import React from "react";
 import Layout from "../../Layout";
 import SidePanel from "../SidePanel";
 import MapPanel from "../MapPanel";
-import "./Site.scss";
 
 function Site({ floorId, offices, floors }) {
   return (

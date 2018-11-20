@@ -1,0 +1,52 @@
+$link-color: #61dafb;
+$secondary-color: #282c34;
+
+.Site {
+  text-align: center;
+}
+
+.Site-header {
+  background-color: $secondary-color;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.Site-link {
+  color: $link-color;
+}
+
+.Site-card {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.Site-card-header {
+    margin: 3px;
+}
+
+.Site-card-actions {
+    margin: 3px;
+}
+
+.MapPanelWorkstation {
+    position: absolute;
+    background-color: #3ec;
+    border-radius: 5px;
+    width: 1em;
+    height: 1em;
+}
+
+.MapPanelImage {
+    position: relative;
+}
+
+.SidePanelFloorAdder--active {
+    background-color: gray;
+}
