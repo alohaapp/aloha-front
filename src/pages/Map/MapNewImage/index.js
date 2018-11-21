@@ -13,7 +13,7 @@ function MapNewImage({ setImage }) {
       accept="image/svg+xml, image/jpeg, image/png"
       onDrop={onDrop}
     >
-      <p>Click or drag to add the mapof the first floor</p>
+      <p>Click or drag to add a map for this floor</p>
     </Dropzone>
   );
 }

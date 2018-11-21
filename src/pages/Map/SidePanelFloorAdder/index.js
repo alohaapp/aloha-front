@@ -1,23 +1,26 @@
-import React from "react";
-import {
-  Card,
-  CardHeader,
-  CardHeaderIcon,
-  CardHeaderTitle,
-  Icon
-} from "bloomer";
+import React, { useState } from "react";
 
 const SidePanelFloorAdder = () => {
+  const [adding, setAdding] = useState(false);
+
+  const addCard = (
+    <div onClick={() => setAdding(true)}>
+      <i className="material-icons md-36">add</i>
+      <span>Add another floor</span>
+    </div>
+  );
+  const promptCard = (
+    <div>
+      <input type="text" />
+      <div onClick={() => setAdding(false)}>
+        <i className="material-icons md-18">cancel</i>
+      </div>
+    </div>
+  );
+
   return (
-    <div className="SidePanel-floor-adder">
-      <Card>
-        <CardHeader>
-          <CardHeaderIcon>
-            <Icon isSize="large" className="mdi mdi-add mdi-36px" />
-          </CardHeaderIcon>
-          <CardHeaderTitle>Add another floor</CardHeaderTitle>
-        </CardHeader>
-      </Card>
+    <div className={`Site-card ${adding && "SidePanelFloorAdder--active"}`}>
+      {adding ? promptCard : addCard}
     </div>
   );
 };

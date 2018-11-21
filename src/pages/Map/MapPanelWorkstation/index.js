@@ -1,4 +1,3 @@
-import "./MapPanelWorkstation.scss";
 import React from "react";
 import { Icon } from "bloomer";
 

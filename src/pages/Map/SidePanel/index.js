@@ -1,14 +1,6 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Dropdown,
-  DropdownContent,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-  Icon,
-  Tag
-} from "bloomer";
+import { Button, Tag } from "bloomer";
+import SidePanelOfficeDropdown from "../SidePanelOfficeDropdown";
 import SidePanelFloor from "../SidePanelFloor";
 import SidePanelFloorAdder from "../SidePanelFloorAdder";
 
@@ -24,30 +16,16 @@ function SidePanel({ offices, officeId, floorId }) {
     <div className="SidePanel">
       <Tag isColor="light">{offices.length}</Tag>
       <span id="Side-panel-office-legend">OFFICE</span>
-      <Dropdown>
-        <DropdownTrigger>
-          <Button isOutlined aria-haspopup="true" aria-controls="dropdown-menu">
-            <span>{findOffice(selectedOffice).name}</span>
-            <Icon icon="angle-down" isSize="small" />
-          </Button>
-        </DropdownTrigger>
-        <DropdownMenu>
-          <DropdownContent>
-            {offices.map(office => (
-              <DropdownItem
-                key={office.id}
-                onClick={() => setSelectedOffice(office.id)}
-              >
-                {office.name}
-              </DropdownItem>
-            ))}
-          </DropdownContent>
-        </DropdownMenu>
-      </Dropdown>
+      <SidePanelOfficeDropdown
+        findOffice={findOffice}
+        setSelectedOffice={setSelectedOffice}
+        selectedOffice={selectedOffice}
+        offices={offices}
+      />
       <Button>Edit</Button>
       <div className="SidePanel-floors">
         {findOffice(selectedOffice).floors.map(floor => (
-          <SidePanelFloor floor={floor} />
+          <SidePanelFloor key={floor.id} floor={floor} />
         ))}
         <SidePanelFloorAdder />
       </div>
