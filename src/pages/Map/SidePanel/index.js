@@ -1,17 +1,40 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Tag } from "bloomer";
+import { Link } from "react-router-dom";
 import Dropdown from "../../../components/Dropdown";
 import SidePanelFloor from "../SidePanelFloor";
 import SidePanelFloorAdder from "../SidePanelFloorAdder";
 
+/* Get the id of the first floor for an office or "new" if no floors are defined */
+const firstFloor = office =>
+  office.floors && office.floors.length !== 0 ? office.floors[0].id : "new";
+
+/* Returns html for the offices dropdown */
+const renderDropdownItems = (offices, selectedOffice) =>
+  offices.map(
+    office =>
+      selectedOffice === office.id ? (
+        <div
+          key={office.id}
+          className="SidePanel-dropdown-item SidePanel-dropdown-item--active"
+        >
+          {office.name}
+        </div>
+      ) : (
+        <Link to={`/map/${firstFloor(office)}`}>
+          <div key={office.id} className="SidePanel-dropdown-item">
+            {office.name}
+          </div>
+        </Link>
+      )
+  );
+
 function SidePanel({ offices, officeId, floorId }) {
-  const [selectedOffice, setSelectedOffice] = useState(officeId);
   if (!offices.length) {
     return null;
   }
 
-  const findOffice = officeId => offices.find(office => office.id === officeId);
-  const selectedOfficeData = findOffice(selectedOffice);
+  const office = offices.find(office => office.id === officeId);
 
   return (
     <div className="SidePanel">
@@ -19,24 +42,14 @@ function SidePanel({ offices, officeId, floorId }) {
       <span id="Side-panel-office-legend">OFFICE</span>
       <div className="SidePanel-dropdown">
         <Dropdown
-          trigger={
-            <div className="Dropdown-button">{selectedOfficeData.name}</div>
-          }
+          trigger={<div className="Dropdown-button">{office.name}</div>}
         >
-          {offices.map(office => (
-            <div
-              key={office.id}
-              className="SidePanel-dropdown-item"
-              onClick={() => setSelectedOffice(office.id)}
-            >
-              {office.name}
-            </div>
-          ))}
+          {renderDropdownItems(offices, officeId)}
         </Dropdown>
         <Button>Edit</Button>
       </div>
       <div className="SidePanel-floors">
-        {selectedOfficeData.floors.map(floor => (
+        {office.floors.map(floor => (
           <SidePanelFloor key={floor.id} floor={floor} />
         ))}
         <SidePanelFloorAdder />

@@ -25,7 +25,9 @@ function AlohaDropdown({ children, trigger }) {
         <DropdownMenu>
           <DropdownContent>
             {children.map((child, index) => (
-              <DropdownItem key={index}>{child}</DropdownItem>
+              <DropdownItem onClick={() => setActive(false)} key={index}>
+                {child}
+              </DropdownItem>
             ))}
           </DropdownContent>
         </DropdownMenu>
