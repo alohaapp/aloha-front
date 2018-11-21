@@ -21,10 +21,8 @@ const renderDropdownItems = (offices, selectedOffice) =>
           {office.name}
         </div>
       ) : (
-        <Link to={`/map/${firstFloor(office)}`}>
-          <div key={office.id} className="SidePanel-dropdown-item">
-            {office.name}
-          </div>
+        <Link key={office.id} to={`/map/${firstFloor(office)}`}>
+          <div className="SidePanel-dropdown-item">{office.name}</div>
         </Link>
       )
   );
