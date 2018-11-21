@@ -1,51 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
-  Button,
   Dropdown,
   DropdownContent,
   DropdownItem,
   DropdownMenu,
   DropdownTrigger
 } from "bloomer";
+import "../../hooks/useClickOutside";
+import useClickOutside from "../../hooks/useClickOutside";
 
-function SidePanelOfficeDropdown({
-  findOffice,
-  setSelectedOffice,
-  selectedOffice,
-  offices
-}) {
+function AlohaDropdown({ children, trigger }) {
   const [active, setActive] = useState(false);
   const toggleActive = () => {
     setActive(!active);
   };
 
+  const ref = useRef(null);
+  useClickOutside(ref, () => setActive(false));
+
   return (
-    <Dropdown isActive={active}>
-      <DropdownTrigger>
-        <Button
-          isOutlined
-          aria-haspopup="true"
-          aria-controls="dropdown-menu"
-          onClick={toggleActive}
-        >
-          <span>{findOffice(selectedOffice).name}</span>
-          <i className="material-icons md-48">keyboard_arrow_down</i>
-        </Button>
-      </DropdownTrigger>
-      <DropdownMenu>
-        <DropdownContent>
-          {offices.map(office => (
-            <DropdownItem
-              key={office.id}
-              onClick={() => setSelectedOffice(office.id)}
-            >
-              {office.name}
-            </DropdownItem>
-          ))}
-        </DropdownContent>
-      </DropdownMenu>
-    </Dropdown>
+    <div className="Dropdown" ref={ref}>
+      <Dropdown isActive={active}>
+        <DropdownTrigger onClick={toggleActive}>{trigger}</DropdownTrigger>
+        <DropdownMenu>
+          <DropdownContent>
+            {children.map((child, index) => (
+              <DropdownItem key={index}>{child}</DropdownItem>
+            ))}
+          </DropdownContent>
+        </DropdownMenu>
+      </Dropdown>
+    </div>
   );
 }
 
-export default SidePanelOfficeDropdown;
+export default AlohaDropdown;
