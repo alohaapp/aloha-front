@@ -1,5 +1,4 @@
 import React from "react";
-import { Icon } from "bloomer";
 
 function MapPanelWorkstation({ workstation }) {
   const positionStyle = {
@@ -8,7 +7,7 @@ function MapPanelWorkstation({ workstation }) {
   };
   return (
     <div className="MapPanelWorkstation" style={positionStyle}>
-      <Icon isSize="small" className="mdi mdi-add mdi-24px" />
+      <i className="material-icons md-18">person_add</i>
     </div>
   );
 }

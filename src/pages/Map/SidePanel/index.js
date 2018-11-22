@@ -15,7 +15,12 @@ function SidePanel({ offices, officeId, floorId }) {
       {offices.length !== 0 && (
         <div className="SidePanel-dropdown">
           <Dropdown
-            trigger={<div className="Dropdown-button">{office.name}</div>}
+            trigger={
+              <div className="Dropdown-button">
+                {office.name}
+                <i className="material-icons md-36">keyboard_arrow_down</i>
+              </div>
+            }
           >
             {offices.map(office => (
               <SidePanelDropdownItem
