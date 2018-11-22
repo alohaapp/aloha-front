@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MapPanelFilterToolbar from "../MapPanelFilterToolbar";
 import MapPanelImage from "../MapPanelImage";
-import MapNewImage from "../MapNewImage";
+import MapPanelImageDropzone from "../MapPanelImageDropzone";
 
 function MapPanel({ floor }) {
   const [image, setImage] = useState(floor.imageUrl);
@@ -18,9 +18,13 @@ function MapPanel({ floor }) {
       <MapPanelFilterToolbar />
       <div className="Map-panel-display-area">
         {image ? (
-          <MapPanelImage image={image} floor={floor} />
+          <MapPanelImage
+            image={image}
+            alt={floor.name}
+            workstations={floor.workstations}
+          />
         ) : (
-          <MapNewImage setImage={setImage} />
+          <MapPanelImageDropzone onDrop={setImage} />
         )}
       </div>
     </div>
