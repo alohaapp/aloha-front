@@ -19,7 +19,7 @@ const SidePanelFloorAdder = () => {
   );
 
   return (
-    <div className={`Site-card ${adding && "SidePanelFloorAdder--active"}`}>
+    <div className={`floor-add ${adding && "SidePanelFloorAdder--active"}`}>
       {adding ? promptCard : addCard}
     </div>
   );
