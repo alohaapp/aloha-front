@@ -11,7 +11,9 @@ function SidePanel({ offices, officeId, floorId }) {
   return (
     <div className="SidePanel">
       <Tag isColor="light">{offices.length}</Tag>
-      <span id="Side-panel-office-legend">OFFICE</span>
+      <span id="Side-panel-office-legend">
+        {offices.length === 1 ? "OFFICE" : "OFFICES"}
+      </span>
       {offices.length !== 0 && (
         <div className="SidePanel-dropdown">
           <Dropdown
@@ -37,7 +39,7 @@ function SidePanel({ offices, officeId, floorId }) {
         {office.floors.map(floor => (
           <SidePanelFloor key={floor.id} floor={floor} />
         ))}
-        <SidePanelFloorAdder />
+        <SidePanelFloorAdder addFloor={name => console.log(name)} />
       </div>
     </div>
   );
