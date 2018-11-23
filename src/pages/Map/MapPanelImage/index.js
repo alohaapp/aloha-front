@@ -1,11 +1,11 @@
 import React from "react";
 import MapPanelWorkstation from "../MapPanelWorkstation";
 
-function MapPanelImage({ floor, image }) {
+function MapPanelImage({ alt, image, workstations }) {
   return (
     <div className="MapPanelImage">
-      <img alt={floor.name} src={image} />
-      {floor.workstations.map(workstation => (
+      <img alt={alt} src={image} />
+      {workstations.map(workstation => (
         <MapPanelWorkstation key={workstation.id} workstation={workstation} />
       ))}
     </div>
