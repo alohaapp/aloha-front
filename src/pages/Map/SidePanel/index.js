@@ -10,10 +10,12 @@ function SidePanel({ offices, officeId, floorId }) {
 
   return (
     <div className="SidePanel">
-      <Tag isColor="light">{offices.length}</Tag>
-      <span id="Side-panel-office-legend">OFFICE</span>
+      <div className="office-info">
+        <Tag>{offices.length}</Tag>
+        <span className="office-info__legend">OFFICE</span>
+      </div>
       {offices.length !== 0 && (
-        <div className="SidePanel-dropdown">
+        <div className="office-selector">
           <Dropdown
             trigger={
               <div className="Dropdown-button">
@@ -30,10 +32,10 @@ function SidePanel({ offices, officeId, floorId }) {
               />
             ))}
           </Dropdown>
-          <Button>Edit</Button>
+          <Button className="button is-small">Edit</Button>
         </div>
       )}
-      <div className="SidePanel-floors">
+      <div className="floors">
         {office.floors.map(floor => (
           <SidePanelFloor key={floor.id} floor={floor} />
         ))}

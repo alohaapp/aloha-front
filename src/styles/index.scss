@@ -9,6 +9,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: $primary;
+  font-size: 16px;
 }
 
 code {
@@ -25,8 +26,23 @@ code {
 .button {
   font-family: "Work Sans", sans-serif;
   font-weight: 700;
+  background: $link;
+  color: white;
+  border: none;
+
+  &:hover{
+    color: white;
+  }
 
   &.is-link {
     background-color: $link;
   }
+
+  &.is-small{
+    border-radius: 4px;
+  }
+}
+
+a{
+  color: $link;
 }
