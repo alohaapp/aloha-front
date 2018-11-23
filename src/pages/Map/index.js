@@ -5,16 +5,6 @@ import NotFound from "../NotFound";
 import { Redirect } from "react-router-dom";
 import useAPI from "../../hooks/useAPI";
 
-const getFloors = offices => {
-  const floorsObject = {};
-  offices.forEach(office => {
-    office.floors.forEach(floor => {
-      floorsObject[floor.id] = floor;
-    });
-  });
-  return floorsObject;
-};
-
 const findOffice = (offices, floorId) =>
   offices.find(office => office.floors.find(floor => floor.id === floorId));
 
@@ -36,11 +26,7 @@ function Map({ floorId }) {
         (redirect ? (
           <Redirect to={`/map/${redirect}`} />
         ) : (
-          <Site
-            floorId={floorId}
-            floors={getFloors(offices)}
-            offices={offices}
-          />
+          <Site floorId={floorId} offices={offices} />
         ))}
     </div>
   );

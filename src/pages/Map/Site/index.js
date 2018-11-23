@@ -3,7 +3,18 @@ import Layout from "../../Layout";
 import SidePanel from "../SidePanel";
 import MapPanel from "../MapPanel";
 
-function Site({ floorId, offices, floors }) {
+const getFloors = offices => {
+  const floorsObject = {};
+  offices.forEach(office => {
+    office.floors.forEach(floor => {
+      floorsObject[floor.id] = floor;
+    });
+  });
+  return floorsObject;
+};
+
+function Site({ floorId, offices }) {
+  const floors = getFloors(offices);
   return (
     <Layout
       sidebar={

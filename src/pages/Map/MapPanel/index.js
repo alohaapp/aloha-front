@@ -8,6 +8,10 @@ function MapPanel({ floor }) {
   // Change map image when floor changes
   useEffect(() => void setImage(floor.imageUrl), [floor]);
 
+  const updateImage = imageUrl => {
+    setImage(imageUrl);
+  };
+
   return (
     <div className="Map-panel">
       <MapPanelFilterToolbar />
@@ -19,7 +23,7 @@ function MapPanel({ floor }) {
             workstations={floor.workstations}
           />
         ) : (
-          <MapPanelImageDropzone onDrop={setImage} />
+          <MapPanelImageDropzone onDrop={updateImage} />
         )}
       </div>
     </div>
