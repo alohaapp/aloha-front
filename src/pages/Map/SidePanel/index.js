@@ -12,7 +12,9 @@ function SidePanel({ offices, officeId, floorId }) {
     <div className="SidePanel">
       <div className="office-info">
         <Tag>{offices.length}</Tag>
-        <span className="office-info__legend">OFFICE</span>
+        <span className="office-info__legend">
+          {offices.length === 1 ? "OFFICE" : "OFFICES"}
+        </span>
       </div>
       {offices.length !== 0 && (
         <div className="office-selector">
@@ -39,7 +41,7 @@ function SidePanel({ offices, officeId, floorId }) {
         {office.floors.map(floor => (
           <SidePanelFloor key={floor.id} floor={floor} />
         ))}
-        <SidePanelFloorAdder />
+        <SidePanelFloorAdder addFloor={name => void name} />
       </div>
     </div>
   );

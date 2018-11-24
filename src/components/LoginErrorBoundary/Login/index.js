@@ -21,7 +21,7 @@ function Login(props) {
         <img src={logoLogin} alt="Aloha!" />
         <label htmlFor="user">
           <input
-            class="input is-large"
+            className="input is-large"
             type="text"
             id="user"
             placeholder="User"
@@ -31,7 +31,7 @@ function Login(props) {
         </label>
         <label htmlFor="password">
           <input
-            class="input is-large"
+            className="input is-large"
             type="password"
             placeholder="Password"
             id="password"
@@ -39,7 +39,7 @@ function Login(props) {
             value={password}
           />
         </label>
-        <button class="button is-large is-link" type="submit" name="Login">
+        <button className="button is-large is-link" type="submit" name="Login">
           Come in
         </button>
       </form>

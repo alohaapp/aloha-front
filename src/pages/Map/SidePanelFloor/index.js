@@ -2,9 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "bloomer";
 
-const SidePanelFloor = ({ floor }) => {
+const SidePanelFloor = ({ floor, active }) => {
   return (
-    <Link className="floor" to={`/map/${floor.id}`}>
+    <Link
+      className={`floor${active ? " floor--active" : ""}`}
+      to={`/map/${floor.id}`}
+    >
       <div className="floor-header">{floor.name}</div>
       <div className="floor-actions">
         <Button>
