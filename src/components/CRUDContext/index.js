@@ -12,14 +12,14 @@ import createCRUDHook from "../../hooks/crud";
 
 const CRUDContext = createContext();
 
-const cruds = {
-  useOffices: createCRUDHook("/Offices"),
-  useFloors: createCRUDHook("/Floors"),
-  useWorkers: createCRUDHook("/Workers")
-};
+const useCRUDs = () => ({
+  officesCRUD: createCRUDHook("/Offices")(),
+  floorsCRUD: createCRUDHook("/Floors")(),
+  workersCRUD: createCRUDHook("/Workers")()
+});
 
 export const CRUDProvider = ({ children }) => (
-  <CRUDContext.Provider value={cruds}>{children}</CRUDContext.Provider>
+  <CRUDContext.Provider value={useCRUDs()}>{children}</CRUDContext.Provider>
 );
 
 export default CRUDContext;

@@ -1,9 +1,9 @@
 import "./Map.scss";
-import React from "react";
+import React, { useContext } from "react";
 import Site from "./Site";
 import NotFound from "../NotFound";
 import { Redirect } from "react-router-dom";
-import useAPI from "../../hooks/useAPI";
+import CRUDContext from "../../components/CRUDContext";
 
 const getFloors = offices => {
   const floorsObject = {};
@@ -19,7 +19,9 @@ const findOffice = (offices, floorId) =>
   offices.find(office => office.floors.find(floor => floor.id === floorId));
 
 function Map({ floorId }) {
-  const offices = useAPI({ url: "/offices" });
+  const { officesCRUD } = useContext(CRUDContext);
+  const offices = officesCRUD.store;
+
   const office =
     floorId && offices ? findOffice(offices, floorId) : offices && offices[0];
 
