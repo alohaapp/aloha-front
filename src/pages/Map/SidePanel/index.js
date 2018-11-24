@@ -41,7 +41,7 @@ function SidePanel({ offices, officeId, floorId }) {
         {office.floors.map(floor => (
           <SidePanelFloor key={floor.id} floor={floor} />
         ))}
-        <SidePanelFloorAdder addFloor={name => console.log(name)} />
+        <SidePanelFloorAdder addFloor={name => void name} />
       </div>
     </div>
   );
