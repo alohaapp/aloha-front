@@ -96,9 +96,9 @@ const actionRead = (dispatch, endpoint) => id => {
 };
 
 const actionUpdate = (dispatch, endpoint) => entity => {
-  const { id, ...payload } = entity;
+  const { id } = entity;
   dispatch({ type: LOADING, payload: true });
-  put({ url: `${endpoint}/${id}`, options: { body: payload } }).then(
+  put({ url: `${endpoint}/${id}`, options: { body: entity } }).then(
     response => {
       dispatch({ type: UPDATE, payload: response });
     }
