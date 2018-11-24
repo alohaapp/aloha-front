@@ -8,10 +8,10 @@ const SidePanelFloorAdder = ({ addFloor }) => {
     <SidePanelFloorEdit onSave={addFloor} onCancel={() => setAdding(false)} />
   ) : (
     <div
-      className={`Site-card${adding && " SidePanelFloorAdder--active"}`}
+      className={`floor-add${adding && " floor-add--active"}`}
       onClick={() => setAdding(true)}
     >
-      <i className="material-icons md-36">add</i>
+      <i className="material-icons md-18">add</i>
       <span>Add another floor</span>
     </div>
   );

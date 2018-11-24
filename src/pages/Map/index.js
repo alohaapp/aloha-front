@@ -2,7 +2,8 @@ import "./Map.scss";
 import React from "react";
 import Site from "./Site";
 import NotFound from "../NotFound";
-// import useAPI from "../../hooks/useAPI";
+import { Redirect } from "react-router-dom";
+import useAPI from "../../hooks/useAPI";
 
 const getFloors = offices => {
   const floorsObject = {};
@@ -18,65 +19,7 @@ const findOffice = (offices, floorId) =>
   offices.find(office => office.floors.find(floor => floor.id === floorId));
 
 function Map({ floorId }) {
-  // TODO: Borrar
-  // const offices = useAPI({ url: "/offices" });
-  const offices = [
-    {
-      id: 1,
-      name: "Corunet Sor Joaquina",
-      floors: [
-        {
-          id: 1,
-          name: "Bajo",
-          imageUrl: null,
-          officeId: 1,
-          workstations: [
-            {
-              id: 1,
-              x: 25.6,
-              y: 32.4
-            }
-          ]
-        },
-        {
-          id: 2,
-          name: "Primero",
-          imageUrl: "http://archivos.coru.net/aloha/corunet.svg",
-          officeId: 1,
-          workstations: [
-            {
-              id: 2,
-              x: 25.6,
-              y: 32.4
-            },
-            {
-              id: 3,
-              x: 12.6,
-              y: 57.4
-            },
-            {
-              id: 4,
-              x: 89.6,
-              y: 50.8
-            }
-          ]
-        }
-      ]
-    },
-    {
-      id: 2,
-      name: "Corunet Ronda Outeiro",
-      floors: [
-        {
-          id: 3,
-          name: "Bajo",
-          imageUrl: "http://archivos.coru.net/aloha/corunet.svg",
-          officeId: 2,
-          workstations: []
-        }
-      ]
-    }
-  ];
+  const offices = useAPI({ url: "/offices" });
   const office =
     floorId && offices ? findOffice(offices, floorId) : offices && offices[0];
 
@@ -84,15 +27,21 @@ function Map({ floorId }) {
     return <NotFound />;
   }
 
+  const redirect =
+    offices && !floorId && office.floors[0] && office.floors[0].id;
+
   return (
     <div className={`Map${!offices ? " loading" : ""}`}>
-      {offices && (
-        <Site
-          floorId={floorId || (office.floors[0] && office.floors[0].id)}
-          floors={getFloors(offices)}
-          offices={offices}
-        />
-      )}
+      {offices &&
+        (redirect ? (
+          <Redirect to={`/map/${redirect}`} />
+        ) : (
+          <Site
+            floorId={floorId}
+            floors={getFloors(offices)}
+            offices={offices}
+          />
+        ))}
     </div>
   );
 }

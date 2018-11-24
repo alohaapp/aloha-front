@@ -6,12 +6,7 @@ import MapPanelImageDropzone from "../MapPanelImageDropzone";
 function MapPanel({ floor }) {
   const [image, setImage] = useState(floor.imageUrl);
   // Change map image when floor changes
-  useEffect(
-    () => {
-      setImage(floor.imageUrl);
-    },
-    [floor]
-  );
+  useEffect(() => void setImage(floor.imageUrl), [floor]);
 
   return (
     <div className="Map-panel">

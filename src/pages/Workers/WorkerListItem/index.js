@@ -2,7 +2,7 @@ import "./WorkerListItem.scss";
 
 import React from "react";
 import PropTypes from "prop-types";
-import { Icon, Button } from "bloomer";
+import { Button } from "bloomer";
 
 function WorkerList({ worker, openWorkerForm, openDeleteConfirm }) {
   return (
@@ -14,10 +14,10 @@ function WorkerList({ worker, openWorkerForm, openDeleteConfirm }) {
       <td>{worker.notes}</td>
       <td>
         <Button onClick={() => openWorkerForm(worker)}>
-          <Icon isSize="small" className="fa fa-pencil" />
+          <i class="material-icons">edit</i>
         </Button>
         <Button onClick={() => openDeleteConfirm(worker)}>
-          <Icon isSize="small" className="fa fa-trash" />
+          <i class="material-icons">delete</i>
         </Button>
       </td>
     </tr>

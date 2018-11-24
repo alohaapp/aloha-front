@@ -3,7 +3,14 @@ import Dropzone from "react-dropzone";
 
 function MapPanelImageDropzone({ onDrop }) {
   const onImageDrop = ([image]) => {
-    onDrop(URL.createObjectURL(image));
+    const reader = new FileReader();
+    reader.readAsDataURL(image);
+    reader.onload = () => {
+      onDrop(reader.result);
+    };
+    reader.onerror = error => {
+      console.log("Error: ", error);
+    };
   };
 
   return (
