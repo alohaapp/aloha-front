@@ -5,44 +5,38 @@ import NotFound from "../NotFound";
 import { Redirect } from "react-router-dom";
 import CRUDContext from "../../components/CRUDContext";
 
-const getFloors = offices => {
-  const floorsObject = {};
-  offices.forEach(office => {
-    office.floors.forEach(floor => {
-      floorsObject[floor.id] = floor;
-    });
-  });
-  return floorsObject;
+const findFirstFloorId = (floors, officeId) => {
+  const floor = floors.find(floor => floor.officeId === officeId);
+  return floor && floor.id;
 };
 
-const findOffice = (offices, floorId) =>
-  offices.find(office => office.floors.find(floor => floor.id === floorId));
-
 function Map({ floorId }) {
-  const { officesCRUD } = useContext(CRUDContext);
+  const { officesCRUD, floorsCRUD } = useContext(CRUDContext);
   const offices = officesCRUD.store;
+  const floors = floorsCRUD.store;
 
+  const callEnd = Boolean(offices && floors);
+
+  const floor =
+    callEnd && floorId && floors.find(floor => floor.id === floorId);
   const office =
-    floorId && offices ? findOffice(offices, floorId) : offices && offices[0];
+    callEnd &&
+    (floor ? offices.find(office => office.id === floor.officeId) : offices[0]);
 
-  if (offices && !office) {
+  if (callEnd && floorId && !floor) {
     return <NotFound />;
   }
 
   const redirect =
-    offices && !floorId && office.floors[0] && office.floors[0].id;
+    callEnd && !floorId && office && findFirstFloorId(floors, office.id);
 
   return (
-    <div className={`Map${!offices ? " loading" : ""}`}>
+    <div className={`Map${!callEnd ? " loading" : ""}`}>
       {offices &&
         (redirect ? (
           <Redirect to={`/map/${redirect}`} />
         ) : (
-          <Site
-            floorId={floorId}
-            floors={getFloors(offices)}
-            offices={offices}
-          />
+          <Site floorId={floorId} floors={floors} offices={offices} />
         ))}
     </div>
   );
