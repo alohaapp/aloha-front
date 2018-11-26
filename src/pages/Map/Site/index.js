@@ -3,17 +3,13 @@ import Layout from "../../Layout";
 import SidePanel from "../SidePanel";
 import MapPanel from "../MapPanel";
 
-function Site({ floorId, offices, floors }) {
+function Site({ office, floor }) {
   return (
     <Layout
       sidebar={
-        <SidePanel
-          offices={offices}
-          officeId={floorId && floors[floorId].officeId}
-          floorId={floorId}
-        />
+        <SidePanel officeId={office && office.id} floorId={floor && floor.id} />
       }
-      content={floors[floorId] && <MapPanel floor={floors[floorId]} />}
+      content={floor && <MapPanel floor={floor} />}
     />
   );
 }

@@ -36,7 +36,7 @@ function Map({ floorId }) {
         (redirect ? (
           <Redirect to={`/map/${redirect}`} />
         ) : (
-          <Site floorId={floorId} floors={floors} offices={offices} />
+          <Site office={office} floor={floor} />
         ))}
     </div>
   );
