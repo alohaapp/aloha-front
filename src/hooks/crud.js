@@ -83,9 +83,11 @@ const crudReducer = (state, { type, payload }) => {
 
 const actionCreate = (dispatch, endpoint) => entity => {
   dispatch({ type: LOADING, payload: true });
-  post({ url: endpoint, options: { body: entity } }).then(response => {
-    dispatch({ type: CREATE, payload: response });
-  });
+  post({ url: endpoint, options: { body: JSON.stringify(entity) } }).then(
+    response => {
+      dispatch({ type: CREATE, payload: response });
+    }
+  );
 };
 
 const actionRead = (dispatch, endpoint) => id => {
@@ -98,11 +100,12 @@ const actionRead = (dispatch, endpoint) => id => {
 const actionUpdate = (dispatch, endpoint) => entity => {
   const { id } = entity;
   dispatch({ type: LOADING, payload: true });
-  put({ url: `${endpoint}/${id}`, options: { body: entity } }).then(
-    response => {
-      dispatch({ type: UPDATE, payload: response });
-    }
-  );
+  put({
+    url: `${endpoint}/${id}`,
+    options: { body: JSON.stringify(entity) }
+  }).then(response => {
+    dispatch({ type: UPDATE, payload: response });
+  });
 };
 
 const actionDelete = (dispatch, endpoint) => id => {
