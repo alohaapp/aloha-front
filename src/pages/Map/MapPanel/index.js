@@ -5,6 +5,8 @@ import MapPanelImageDropzone from "../MapPanelImageDropzone";
 import createCRUDHook from "../../../hooks/crud";
 import CRUDContext from "../../../components/CRUDContext";
 
+const useWorkstations = createCRUDHook(`/floors/${floor.id}/workstations`);
+
 function MapPanel({ floor }) {
   const [image, setImage] = useState(floor.imageUrl);
   // Change map image when floor changes
@@ -15,7 +17,6 @@ function MapPanel({ floor }) {
     floorsCRUD.update({ ...floor, imageUrl });
   };
 
-  const useWorkstations = createCRUDHook(`/floors/${floor.id}/workstations`);
   const workstationsCRUD = useWorkstations();
   useEffect(() => workstationsCRUD.fetch(), [floor.id]);
   const workstations = workstationsCRUD.store;
