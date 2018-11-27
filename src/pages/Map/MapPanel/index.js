@@ -21,9 +21,9 @@ function MapPanel({ floor }) {
   const workstations = workstationsCRUD.store;
 
   return (
-    <div className={`Map-panel${workstations ? "" : " loading"}`}>
+    <div className={`map-panel${workstations ? "" : " loading"}`}>
       <MapPanelFilterToolbar />
-      <div className="Map-panel-display-area">
+      <div className="map-panel-display-area">
         {image ? (
           workstations && (
             <MapPanelImage

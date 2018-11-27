@@ -15,7 +15,7 @@ function MapPanelImageDropzone({ onDrop }) {
 
   return (
     <Dropzone
-      className="MapNewImage"
+      className="map-new-image"
       multiple={false}
       accept="image/svg+xml, image/jpeg, image/png"
       onDrop={onImageDrop}

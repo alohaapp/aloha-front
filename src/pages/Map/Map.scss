@@ -1,11 +1,10 @@
-
 @import "../../styles/colors.scss";
 
-.office-info{
+.office-info {
   display: flex;
   align-items: center;
 
-  .tag{
+  .tag {
     background: $light-text;
     color: white;
     height: 16px;
@@ -16,33 +15,32 @@
     font-weight: 700;
   }
 
-  .office-info__legend{
+  .office-info__legend {
     font-size: 0.875rem;
     font-weight: 500;
     color: $light-text;
   }
-
 }
 
-.office-selector{
+.office-selector {
   display: flex;
   margin-bottom: 16px;
   font-size: 1.125rem;
 
-  button{
+  button {
     margin-left: auto;
   }
 
-  .Dropdown-button{
+  .Dropdown-button {
     cursor: pointer;
 
-    i{
+    i {
       vertical-align: bottom;
     }
   }
 
-  .dropdown-menu .dropdown-item{
-    a{
+  .dropdown-menu .dropdown-item {
+    a {
       color: $link;
       font-weight: 500;
     }
@@ -59,50 +57,50 @@
   color: $dark-purple;
   min-height: 100px;
 
-  .floor-header{
+  .floor-header {
     font-weight: 100;
     font-size: 1.125rem;
   }
 
-  .floor-actions{
+  .floor-actions {
     position: absolute;
     bottom: 12px;
     right: 12px;
   }
 
-  Button{
+  button {
     background: none;
     width: 24px;
     color: $light-purple;
     padding: 0;
 
-    &:hover{
+    &:hover {
       color: $light-purple;
     }
 
-    i{
+    i {
       font-size: 20px;
     }
   }
 }
 
-.floor--active{
+.floor--active {
   background: $dark-purple;
   color: white;
 
-  &:hover{
+  &:hover {
     color: white;
   }
 
-  Button{
+  button {
     color: $disabled-text;
-    &:hover{
+    &:hover {
       color: $disabled-text;
     }
   }
 }
 
-.floor-add{
+.floor-add {
   border: 1px dashed $disabled-text;
   background: $border;
   color: $light-text;
@@ -111,17 +109,16 @@
   font-size: 0.875rem;
   cursor: pointer;
 
-  i{
+  i {
     vertical-align: bottom;
     font-size: 1.5rem;
     margin-right: 4px;
   }
 
-  span{
+  span {
     font-weight: 500;
   }
 }
-
 
 .MapPanelImage {
   position: relative;
@@ -137,4 +134,32 @@
 
 .SidePanelFloorAdder--active {
   background-color: gray;
+}
+
+.map-panel {
+  height: 100%;
+}
+
+.map-panel-display-area {
+  height: 100%;
+}
+
+.map-new-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $grey;
+  border-radius: 6px;
+  color: $dark-purple;
+
+  p:before {
+    content: "";
+    background: url(../../assets/img/layers.svg) no-repeat center center;
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin: 0 auto;
+  }
 }
