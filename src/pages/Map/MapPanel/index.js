@@ -1,25 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import MapPanelFilterToolbar from "../MapPanelFilterToolbar";
 import MapPanelImage from "../MapPanelImage";
 import MapPanelImageDropzone from "../MapPanelImageDropzone";
+import createCRUDHook from "../../../hooks/crud";
+import CRUDContext from "../../../components/CRUDContext";
 
 function MapPanel({ floor }) {
   const [image, setImage] = useState(floor.imageUrl);
   // Change map image when floor changes
   useEffect(() => void setImage(floor.imageUrl), [floor]);
 
+  const { floorsCRUD } = useContext(CRUDContext);
+  const updateImage = imageUrl => {
+    floorsCRUD.update({ ...floor, imageUrl });
+  };
+
+  const useWorkstations = createCRUDHook(`/floors/${floor.id}/workstations`);
+  const workstationsCRUD = useWorkstations();
+  useEffect(() => workstationsCRUD.fetch(), [floor.id]);
+  const workstations = workstationsCRUD.store;
+
   return (
-    <div className="Map-panel">
+    <div className={`map-panel${workstations ? "" : " loading"}`}>
       <MapPanelFilterToolbar />
-      <div className="Map-panel-display-area">
+      <div className="map-panel-display-area">
         {image ? (
-          <MapPanelImage
-            image={image}
-            alt={floor.name}
-            workstations={floor.workstations}
-          />
+          workstations && (
+            <MapPanelImage
+              image={image}
+              alt={floor.name}
+              workstations={workstations}
+            />
+          )
         ) : (
-          <MapPanelImageDropzone onDrop={setImage} />
+          <MapPanelImageDropzone onDrop={updateImage} />
         )}
       </div>
     </div>
