@@ -39,7 +39,6 @@ function generateWorkstation(event) {
     y:
       (100 * (event.clientY - elementY + window.scrollY)) /
       event.target.offsetHeight,
-    floorId: null,
     workerId: null
   };
 }
