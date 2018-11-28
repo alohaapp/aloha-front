@@ -32,17 +32,13 @@ function elementPosition(e) {
 
 function generateWorkstation(event) {
   const [elementX, elementY] = elementPosition(event.target);
-  console.log(elementX, elementY);
-  const x =
-    (100 * (event.clientX - elementX + window.scrollX)) /
-    event.target.offsetWidth;
-  const y =
-    (100 * (event.clientY - elementY + window.scrollY)) /
-    event.target.offsetHeight;
   return {
-    x,
-    y,
-    officeId: null,
+    x:
+      (100 * (event.clientX - elementX + window.scrollX)) /
+      event.target.offsetWidth,
+    y:
+      (100 * (event.clientY - elementY + window.scrollY)) /
+      event.target.offsetHeight,
     floorId: null,
     workerId: null
   };
@@ -53,7 +49,7 @@ function MapPanelImage({ alt, image, workstations, onCreateWorkstation }) {
     <div className="MapPanelImage">
       <img
         onClick={event => {
-          console.log(generateWorkstation(event));
+          onCreateWorkstation(generateWorkstation(event));
         }}
         alt={alt}
         src={image}
