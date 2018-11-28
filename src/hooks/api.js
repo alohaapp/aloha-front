@@ -2,12 +2,26 @@
 import { API_URL } from "../constants";
 
 async function post({ url, options }) {
-  let response = await fetch(API_URL + url, { method: "POST", ...options });
+  let response = await fetch(API_URL + url, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    ...options
+  });
   return response.json();
 }
 
 async function put({ url, options }) {
-  let response = await fetch(API_URL + url, { method: "PUT", ...options });
+  let response = await fetch(API_URL + url, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    ...options
+  });
   return response.json();
 }
 

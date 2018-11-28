@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import { Button, Tag } from "bloomer";
 import Dropdown from "../../../components/Dropdown";
-import SidePanelFloor from "../SidePanelFloor";
-import SidePanelFloorAdder from "../SidePanelFloorAdder";
+import SidePanelFloors from "../SidePanelFloors";
 import SidePanelDropdownItem from "../SidePanelDropdownItem";
 import CRUDContext from "../../../components/CRUDContext";
 
@@ -47,16 +46,11 @@ function SidePanel({ officeId, floorId }) {
             <Button className="button is-small">Edit</Button>
           </div>
         )}
-        <div className="floors">
-          {floors.filter(floor => floor.officeId === officeId).map(floor => (
-            <SidePanelFloor
-              key={floor.id}
-              floor={floor}
-              active={floor.id === floorId}
-            />
-          ))}
-          <SidePanelFloorAdder addFloor={name => void name} />
-        </div>
+        <SidePanelFloors
+          floors={floors.filter(floor => floor.officeId === officeId)}
+          floorId={floorId}
+          officeId={officeId}
+        />
       </div>
     )
   );
