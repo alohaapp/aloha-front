@@ -30,6 +30,9 @@ function MapPanel({ floor }) {
               image={image}
               alt={floor.name}
               workstations={workstations}
+              onCreateWorkstation={workstation =>
+                workstationsCRUD.create(workstation)
+              }
             />
           )
         ) : (
