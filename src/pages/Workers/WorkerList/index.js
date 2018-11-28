@@ -1,6 +1,7 @@
 import "./WorkerList.scss";
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import CRUDContext from "../../../components/CRUDContext";
 import PropTypes from "prop-types";
 import { Table, Button } from "bloomer";
 import Confirm from "../../../components/Confirm";
@@ -19,6 +20,7 @@ function WorkerList({ workers }) {
   const [isDialogOpened, setIsDialogOpened] = useState(false);
   const [workerSelected, setWorkerSelected] = useState({});
   const [isDeleteConfirmOpened, setIsDeleteConfirmOpened] = useState(false);
+  const { workersCRUD } = useContext(CRUDContext);
 
   const openWorkerForm = (worker = {}) => {
     setIsDialogOpened(true);
@@ -41,7 +43,7 @@ function WorkerList({ workers }) {
   };
 
   const deleteWorker = worker => {
-    // API Call
+    workersCRUD.del(worker.id);
     closeDeleteConfirm();
   };
 

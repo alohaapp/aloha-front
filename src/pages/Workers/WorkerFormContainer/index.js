@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import CRUDContext from "../../../components/CRUDContext";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import WorkerForm from "../WorkerForm";
@@ -22,8 +23,10 @@ export default function({ worker }) {
     notes: Yup.string().required(requiredMessage)
   });
 
+  const { workersCRUD } = useContext(CRUDContext);
+
   const onSubmit = values => {
-    // API call
+    workersCRUD.create(values);
   };
 
   return (
