@@ -1,7 +1,6 @@
 import "./Map.scss";
 import React, { useContext } from "react";
 import Site from "./Site";
-import NotFound from "../NotFound";
 import { Redirect } from "react-router-dom";
 import CRUDContext from "../../components/CRUDContext";
 
