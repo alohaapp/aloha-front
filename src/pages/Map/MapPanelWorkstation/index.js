@@ -3,7 +3,7 @@ import React from "react";
 function MapPanelWorkstation({ workstation }) {
   const positionStyle = {
     left: `${workstation.x}%`,
-    bottom: `${workstation.y}%`
+    top: `${workstation.y}%`
   };
   return (
     <div className="MapPanelWorkstation" style={positionStyle}>
