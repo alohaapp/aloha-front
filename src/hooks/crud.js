@@ -110,8 +110,8 @@ const actionUpdate = (dispatch, endpoint) => entity => {
 
 const actionDelete = (dispatch, endpoint) => id => {
   dispatch({ type: LOADING, payload: true });
-  del({ url: `${endpoint}/${id}` }).then(response => {
-    dispatch({ type: DELETE, payload: response });
+  del({ url: `${endpoint}/${id}` }).then(() => {
+    dispatch({ type: DELETE, payload: id });
   });
 };
 

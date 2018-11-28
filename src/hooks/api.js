@@ -31,7 +31,14 @@ async function get({ url, options }) {
 }
 
 async function del({ url, options }) {
-  return fetch(API_URL + url, { method: "DELETE", ...options });
+  return fetch(API_URL + url, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    ...options
+  });
 }
 
 export { post, put, get, del };

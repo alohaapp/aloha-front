@@ -8,6 +8,9 @@ const SidePanelFloors = ({ floors, officeId, floorId }) => {
   const addFloor = name => {
     floorsCRUD.create({ name, officeId });
   };
+  const onDelete = floorId => {
+    floorsCRUD.del(floorId);
+  };
 
   return (
     <div className="SidePanelFloors">
@@ -16,6 +19,7 @@ const SidePanelFloors = ({ floors, officeId, floorId }) => {
           key={floor.id}
           floor={floor}
           active={floor.id === floorId}
+          onDelete={onDelete}
         />
       ))}
       <SidePanelFloorAdder addFloor={addFloor} />

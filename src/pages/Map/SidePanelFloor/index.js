@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "bloomer";
 
-const SidePanelFloor = ({ floor, active }) => {
+const SidePanelFloor = ({ floor, active, onDelete }) => {
   return (
     <Link
       className={`floor${active ? " floor--active" : ""}`}
@@ -13,7 +13,12 @@ const SidePanelFloor = ({ floor, active }) => {
         <Button>
           <i className="material-icons md-36">edit</i>
         </Button>
-        <Button>
+        <Button
+          onClick={e => {
+            e.preventDefault();
+            onDelete(floor.id);
+          }}
+        >
           <i className="material-icons md-36">delete</i>
         </Button>
       </div>

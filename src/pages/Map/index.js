@@ -23,12 +23,11 @@ function Map({ floorId }) {
     callEnd &&
     (floor ? offices.find(office => office.id === floor.officeId) : offices[0]);
 
-  if (callEnd && floorId && !floor) {
-    return <NotFound />;
-  }
-
   const redirect =
-    callEnd && !floorId && office && findFirstFloorId(floors, office.id);
+    callEnd &&
+    (!floorId || !floor) &&
+    office &&
+    findFirstFloorId(floors, office.id);
 
   return (
     <div className={`Map${!callEnd ? " loading" : ""}`}>
