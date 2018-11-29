@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { Fragment, useContext } from "react";
 import SidePanelFloor from "../SidePanelFloor";
 import SidePanelFloorAdder from "../SidePanelFloorAdder";
 import CRUDContext from "../../../components/CRUDContext";
@@ -16,18 +16,20 @@ const SidePanelFloors = ({ floors, officeId, floorId }) => {
   };
 
   return (
-    <div className="SidePanelFloors">
-      {floors.map(floor => (
-        <SidePanelFloor
-          key={floor.id}
-          floor={floor}
-          active={floor.id === floorId}
-          updateFloor={updateFloor}
-          deleteFloor={deleteFloor}
-        />
-      ))}
+    <Fragment>
+      <div className="floors">
+        {floors.map(floor => (
+          <SidePanelFloor
+            key={floor.id}
+            floor={floor}
+            active={floor.id === floorId}
+            updateFloor={updateFloor}
+            deleteFloor={deleteFloor}
+          />
+        ))}
+      </div>
       <SidePanelFloorAdder addFloor={addFloor} />
-    </div>
+    </Fragment>
   );
 };
 
