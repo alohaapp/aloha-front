@@ -1,11 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Tag } from "bloomer";
 import Dropdown from "../../../components/Dropdown";
 import SidePanelFloors from "../SidePanelFloors";
+import OfficesEdit from "../OfficesEdit";
 import SidePanelDropdownItem from "../SidePanelDropdownItem";
 import CRUDContext from "../../../components/CRUDContext";
 
 function SidePanel({ officeId, floorId }) {
+  const [isOfficesEditOpened, setIsOfficesEditOpened] = useState(false);
+
   const { officesCRUD, floorsCRUD } = useContext(CRUDContext);
   const offices = officesCRUD.store;
   const floors = floorsCRUD.store;
@@ -43,7 +46,21 @@ function SidePanel({ officeId, floorId }) {
                 />
               ))}
             </Dropdown>
-            <Button className="button is-small">Edit</Button>
+            <Button
+              onClick={() => setIsOfficesEditOpened(true)}
+              className="button is-small"
+            >
+              Edit
+            </Button>
+            {isOfficesEditOpened ? (
+              <OfficesEdit
+                offices={offices}
+                isActive={isOfficesEditOpened}
+                closeOfficesEdit={() => {
+                  setIsOfficesEditOpened(false);
+                }}
+              />
+            ) : null}
           </div>
         )}
         <SidePanelFloors
