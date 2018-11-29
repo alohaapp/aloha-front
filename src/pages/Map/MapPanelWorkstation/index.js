@@ -6,7 +6,7 @@ function MapPanelWorkstation({ workstation }) {
     top: `${workstation.y}%`
   };
   return (
-    <div className="MapPanelWorkstation" style={positionStyle}>
+    <div className="workstation" style={positionStyle}>
       <i className="material-icons md-18">person_add</i>
     </div>
   );
