@@ -8,7 +8,7 @@ import useClickOutside from "../../../hooks/useClickOutside";
 import WorkerFormContainer from "../../Workers/WorkerFormContainer";
 import PopupSelectUserWorkerPhoto from "../PopupSelectUserWorkerPhoto";
 
-function PopupSelectUser({ close }) {
+function PopupSelectUser({ close, workstation }) {
   const [isNewUser, setIsNewUser] = useState(false);
   const [isExistentUser, setIsExistentUser] = useState(false);
 
@@ -37,6 +37,7 @@ function PopupSelectUser({ close }) {
             worker={worker}
             key={worker.id}
             closePopup={close}
+            workstation={workstation}
           />
         ))}
       </div>
@@ -53,7 +54,8 @@ function PopupSelectUser({ close }) {
 }
 
 PopupSelectUser.propTypes = {
-  close: PropTypes.func.isRequired
+  close: PropTypes.func.isRequired,
+  workstation: PropTypes.object.isRequired
 };
 
 export default PopupSelectUser;

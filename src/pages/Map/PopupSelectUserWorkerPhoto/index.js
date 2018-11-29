@@ -2,11 +2,17 @@ import "./PopupSelectUserWorkerPhoto.scss";
 
 import React from "react";
 import PropTypes from "prop-types";
+import createCRUDHook from "../../../hooks/crud";
 import FallbackImage from "../../../assets/img/fallback.jpg";
 
-function PopupSelectUserWorkerPhoto({ worker, closePopup }) {
+function PopupSelectUserWorkerPhoto({ worker, closePopup, workstation }) {
+  const { floorId } = workstation;
+  const useWorkstations = createCRUDHook(`/floors/${floorId}/workstations`);
+  const workstationsCRUD = useWorkstations();
+
   const assignWorkerToWorkstation = () => {
-    // TODO: API call
+    const workstationToUpdate = { ...workstation, workerId: worker.id };
+    workstationsCRUD.update(workstationToUpdate);
     closePopup();
   };
 

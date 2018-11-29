@@ -30,7 +30,9 @@ function MapPanelWorkstation({ workstation }) {
         <i className="material-icons md-18">person_add</i>
       </Button>
 
-      {isPopupOpened ? <PopupSelectUser close={closePopup} /> : null}
+      {isPopupOpened ? (
+        <PopupSelectUser close={closePopup} workstation={workstation} />
+      ) : null}
     </div>
   );
 }
