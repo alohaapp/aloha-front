@@ -9,24 +9,35 @@ const findFirstFloorId = (floors, officeId) => {
   return floor && floor.id;
 };
 
-function Map({ floorId }) {
+function Map({ officeId, floorId }) {
   const { officesCRUD, floorsCRUD } = useContext(CRUDContext);
   const offices = officesCRUD.store;
   const floors = floorsCRUD.store;
-
   const callEnd = Boolean(offices && floors);
 
-  const floor =
-    callEnd && floorId && floors.find(floor => floor.id === floorId);
+  if (callEnd && !offices.length) {
+    // TODO: first office
+    return null;
+  }
+
   const office =
+    callEnd && officeId && offices.find(office => office.id === officeId);
+
+  const floor =
     callEnd &&
-    (floor ? offices.find(office => office.id === floor.officeId) : offices[0]);
+    office &&
+    floorId &&
+    floors.find(floor => floor.id === floorId && floor.officeId === officeId);
 
   const redirect =
     callEnd &&
-    (!floorId || !floor) &&
-    office &&
-    findFirstFloorId(floors, office.id);
+    (!office
+      ? `${offices[0].id}/${findFirstFloorId(floors, offices[0].id)}`
+      : !floor
+        ? findFirstFloorId(floors, offices.id)
+          ? `${offices.id}/${findFirstFloorId(floors, offices.id)}`
+          : false
+        : false);
 
   return (
     <div className={`Map${!callEnd ? " loading" : ""}`}>
