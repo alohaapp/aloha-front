@@ -30,7 +30,7 @@ code {
   color: white;
   border: none;
 
-  &:hover{
+  &:hover {
     color: white;
   }
 
@@ -38,11 +38,15 @@ code {
     background-color: $link;
   }
 
-  &.is-small{
+  &.is-small {
     border-radius: 4px;
   }
 }
 
-a{
+a {
   color: $link;
+}
+
+input {
+  font-family: "Work Sans", sans-serif;
 }
