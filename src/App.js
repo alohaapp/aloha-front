@@ -28,14 +28,17 @@ export default function() {
   );
 
   const renderMap = ({ match }) => {
-    return <Map floorId={+match.params.floorId} />;
+    return (
+      <Map officeId={+match.params.officeId} floorId={+match.params.floorId} />
+    );
   };
   return (
     <Router>
       <Switch>
         <Redirect path="/" exact to="/map" />
         <Route exact path="/map" render={renderMap} />
-        <Route exact path="/map/:floorId" render={renderMap} />
+        <Route exact path="/map/:officeId" render={renderMap} />
+        <Route exact path="/map/:officeId/:floorId" render={renderMap} />
         <Route exact path="/workers" component={Workers} />
         <Route component={NotFound} />
       </Switch>

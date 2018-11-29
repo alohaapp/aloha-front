@@ -18,7 +18,7 @@ const SidePanelFloor = ({ floor, active, updateFloor, deleteFloor }) => {
   ) : (
     <Link
       className={`floor${active ? " floor--active" : ""}`}
-      to={`/map/${floor.id}`}
+      to={`/map/${floor.officeId}/${floor.id}`}
     >
       <div className="floor-header">{floor.name}</div>
       <div className="floor-actions">
