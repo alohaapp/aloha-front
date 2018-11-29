@@ -5,7 +5,13 @@ const SidePanelFloorAdder = ({ addFloor }) => {
   const [adding, setAdding] = useState(false);
 
   return adding ? (
-    <SidePanelFloorEdit onSave={addFloor} onCancel={() => setAdding(false)} />
+    <SidePanelFloorEdit
+      onSave={name => {
+        addFloor(name);
+        setAdding(false);
+      }}
+      onCancel={() => setAdding(false)}
+    />
   ) : (
     <div
       className={`floor-add${adding ? " floor-add--active" : ""}`}
