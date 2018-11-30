@@ -7,7 +7,7 @@ function SidePanelDropdownItem({ office, active, firstFloor }) {
       {office.name}
     </div>
   ) : (
-    <Link to={`/map/${firstFloor ? firstFloor.id : "new"}`}>
+    <Link to={`/map/${office.id}/${firstFloor ? firstFloor.id : ""}`}>
       <div className="SidePanel-dropdown-item">{office.name}</div>
     </Link>
   );

@@ -9,28 +9,38 @@ const findFirstFloorId = (floors, officeId) => {
   return floor && floor.id;
 };
 
-function Map({ floorId }) {
+function Map({ officeId, floorId }) {
   const { officesCRUD, floorsCRUD } = useContext(CRUDContext);
   const offices = officesCRUD.store;
   const floors = floorsCRUD.store;
-
   const callEnd = Boolean(offices && floors);
 
-  const floor =
-    callEnd && floorId && floors.find(floor => floor.id === floorId);
-  const office =
-    callEnd &&
-    (floor ? offices.find(office => office.id === floor.officeId) : offices[0]);
+  if (callEnd && !offices.length) {
+    // TODO: first office
+    return null;
+  }
 
-  const redirect =
+  const office =
+    callEnd && officeId && offices.find(office => office.id === officeId);
+
+  const floor =
     callEnd &&
-    (!floorId || !floor) &&
     office &&
-    findFirstFloorId(floors, office.id);
+    floorId &&
+    floors.find(floor => floor.id === floorId && floor.officeId === officeId);
+
+  let redirect = false;
+  if (callEnd && (!office || !floor)) {
+    const officeIdRedirect = office ? office.id : offices[0].id;
+    const floorIdRedirect = findFirstFloorId(floors, officeIdRedirect);
+    if (!office || floorId || floorIdRedirect) {
+      redirect = `${officeIdRedirect}/${floorIdRedirect || ""}`;
+    }
+  }
 
   return (
     <div className={`Map${!callEnd ? " loading" : ""}`}>
-      {offices &&
+      {callEnd &&
         (redirect ? (
           <Redirect to={`/map/${redirect}`} />
         ) : (
