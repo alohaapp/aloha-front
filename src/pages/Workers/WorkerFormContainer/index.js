@@ -4,7 +4,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import WorkerForm from "../WorkerForm";
 
-export default function({ worker }) {
+export default function({ worker, closeDialog }) {
   const initialValue = {
     userName: worker.userName || "",
     name: worker.name || "",
@@ -29,6 +29,7 @@ export default function({ worker }) {
 
   const onSubmit = values => {
     workersCRUD.create(values);
+    closeDialog();
   };
 
   return (
