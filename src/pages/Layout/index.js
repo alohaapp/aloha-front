@@ -4,6 +4,7 @@ import { Columns, Column } from "bloomer";
 import logoCorunet from "../../assets/logos/logo-corunet.svg";
 import logo from "../../assets/logos/logo.svg";
 import FilterToolbar from "./FilterToolbar";
+import UserBadge from "./UserBadge";
 
 function Layout(props) {
   return (
@@ -15,7 +16,9 @@ function Layout(props) {
         <Column className="logo-app" isSize="2/4">
           <img src={logo} alt="logo" />
         </Column>
-        <Column className="user-link" />
+        <Column className="user-link" isSize="2/4">
+          <UserBadge />
+        </Column>
       </Columns>
 
       <Columns className="main-container is-8">
