@@ -4,9 +4,11 @@ import React, { useState, useContext } from "react";
 import { Button } from "bloomer";
 import CRUDContext from "../../../components/CRUDContext";
 import PopupSelectUser from "../PopupSelectUser";
+import MapPanelWorkstationWorkerDetail from "../MapPanelWorkstationWorkerDetail";
 
 function MapPanelWorkstation({ workstation }) {
   const [isPopupOpened, setIsPopupOpened] = useState(false);
+  const [isWorkerDetailOpened, setIsWorkerDetailOpened] = useState(false);
   const { workersCRUD } = useContext(CRUDContext);
 
   // Get the worker if the worksation has one
@@ -25,15 +27,22 @@ function MapPanelWorkstation({ workstation }) {
   const closePopup = () => {
     setIsPopupOpened(false);
   };
-
   const togglePopup = () => {
     setIsPopupOpened(!isPopupOpened);
+  };
+
+  const closeWorkerDetail = () => {
+    setIsWorkerDetailOpened(false);
+  };
+  const toggleWorkerDetail = () => {
+    setIsWorkerDetailOpened(!isWorkerDetailOpened);
   };
 
   return (
     <div>
       {assignedWorker ? (
         <img
+          onClick={() => toggleWorkerDetail()}
           className="assigned-worker-photo"
           src={assignedWorker.photoUrl}
           alt="user"
@@ -51,6 +60,14 @@ function MapPanelWorkstation({ workstation }) {
 
       {isPopupOpened ? (
         <PopupSelectUser close={closePopup} workstation={workstation} />
+      ) : null}
+
+      {isWorkerDetailOpened ? (
+        <MapPanelWorkstationWorkerDetail
+          close={closeWorkerDetail}
+          workstation={workstation}
+          assignedWorker={assignedWorker}
+        />
       ) : null}
     </div>
   );

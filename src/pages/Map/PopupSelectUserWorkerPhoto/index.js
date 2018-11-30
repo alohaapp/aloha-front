@@ -11,9 +11,11 @@ function PopupSelectUserWorkerPhoto({ worker, closePopup, workstation }) {
   const workstationsCRUD = useWorkstations();
 
   const assignWorkerToWorkstation = () => {
-    const workstationToUpdate = { ...workstation, workerId: worker.id };
-    workstationsCRUD.update(workstationToUpdate);
-    closePopup();
+    if (!worker.workstationId) {
+      const workstationToUpdate = { ...workstation, workerId: worker.id };
+      workstationsCRUD.update(workstationToUpdate);
+      closePopup();
+    }
   };
 
   return (
