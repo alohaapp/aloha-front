@@ -39,21 +39,16 @@ function MapPanelWorkstation({ workstation }) {
   };
 
   return (
-    <div>
+    <div className="workstation" style={positionStyle}>
       {assignedWorker ? (
         <img
           onClick={() => toggleWorkerDetail()}
           className="assigned-worker-photo"
           src={assignedWorker.photoUrl}
           alt="user"
-          style={positionStyle}
         />
       ) : (
-        <Button
-          onClick={() => togglePopup()}
-          className="MapPanelWorkstation"
-          style={positionStyle}
-        >
+        <Button onClick={() => togglePopup()}>
           <i className="material-icons md-18">person_add</i>
         </Button>
       )}

@@ -14,10 +14,10 @@ function WorkerList({ worker, openWorkerForm, openDeleteConfirm }) {
       <td>{worker.notes}</td>
       <td>
         <Button onClick={() => openWorkerForm(worker)}>
-          <i class="material-icons">edit</i>
+          <i className="material-icons">edit</i>
         </Button>
         <Button onClick={() => openDeleteConfirm(worker)}>
-          <i class="material-icons">delete</i>
+          <i className="material-icons">delete</i>
         </Button>
       </td>
     </tr>
