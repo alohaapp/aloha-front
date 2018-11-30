@@ -29,19 +29,18 @@ function Map({ officeId, floorId }) {
     floorId &&
     floors.find(floor => floor.id === floorId && floor.officeId === officeId);
 
-  const redirect =
-    callEnd &&
-    (!office
-      ? `${offices[0].id}/${findFirstFloorId(floors, offices[0].id)}`
-      : !floor
-        ? findFirstFloorId(floors, offices.id)
-          ? `${offices.id}/${findFirstFloorId(floors, offices.id)}`
-          : false
-        : false);
+  let redirect = false;
+  if (callEnd && (!office || !floor)) {
+    const officeIdRedirect = office ? office.id : offices[0].id;
+    const floorIdRedirect = findFirstFloorId(floors, officeIdRedirect);
+    if (!office || floorId || floorIdRedirect) {
+      redirect = `${officeIdRedirect}/${floorIdRedirect || ""}`;
+    }
+  }
 
   return (
     <div className={`Map${!callEnd ? " loading" : ""}`}>
-      {offices &&
+      {callEnd &&
         (redirect ? (
           <Redirect to={`/map/${redirect}`} />
         ) : (
