@@ -46,7 +46,7 @@ function PopupSelectUser({ close, workstation }) {
 
   return (
     <div className="popup-select-user" ref={ref}>
-      <span>Assign user</span>
+      <span class="popup-select-user__heading">Assign user</span>
       <span onClick={() => setIsNewUser(true)}>New user</span>
       <span onClick={() => setIsExistentUser(true)}>Existent user</span>
     </div>
