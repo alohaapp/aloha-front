@@ -6,6 +6,7 @@ import WorkerForm from "../WorkerForm";
 
 export default function({ worker }) {
   const initialValue = {
+    userName: worker.userName || "",
     name: worker.name || "",
     surname: worker.surname || "",
     email: worker.email || "",
@@ -15,6 +16,7 @@ export default function({ worker }) {
   const requiredMessage = "Required field";
 
   const WorkerSchema = Yup.object().shape({
+    userName: Yup.string().required(requiredMessage),
     name: Yup.string().required(requiredMessage),
     surname: Yup.string().required(requiredMessage),
     email: Yup.string()
