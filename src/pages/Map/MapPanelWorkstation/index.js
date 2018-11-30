@@ -39,7 +39,7 @@ function MapPanelWorkstation({ workstation }) {
   };
 
   return (
-    <div>
+    <>
       {assignedWorker ? (
         <img
           onClick={() => toggleWorkerDetail()}
@@ -69,7 +69,7 @@ function MapPanelWorkstation({ workstation }) {
           assignedWorker={assignedWorker}
         />
       ) : null}
-    </div>
+    </>
   );
 }
 
