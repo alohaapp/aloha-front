@@ -1,6 +1,6 @@
 import React from "react";
 import { ErrorMessage, Field, Form } from "formik";
-import { Button } from "bloomer";
+import { Button, Label } from "bloomer";
 
 export default function(props) {
   const ErrorMessageComponent = ({ errorMessage }) => (
@@ -9,6 +9,7 @@ export default function(props) {
   return (
     <Form>
       <div className="field">
+        <Label>Username</Label>
         <Field
           className="input"
           type="text"
@@ -23,6 +24,7 @@ export default function(props) {
         />
       </div>
       <div className="field">
+        <Label>Name</Label>
         <Field className="input" type="text" name="name" placeholder="Name" />
         <ErrorMessage
           name="name"
@@ -32,6 +34,7 @@ export default function(props) {
         />
       </div>
       <div className="field">
+        <Label>Surname</Label>
         <Field
           className="input"
           type="text"
@@ -46,6 +49,7 @@ export default function(props) {
         />
       </div>
       <div className="field">
+        <Label>Email</Label>
         <Field
           className="input"
           type="email"
@@ -60,6 +64,7 @@ export default function(props) {
         />
       </div>
       <div className="field">
+        <Label>Description</Label>
         <Field
           className="input"
           component="textarea"
