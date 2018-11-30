@@ -21,16 +21,15 @@
     font-weight: 500;
     color: $light-text;
   }
-}
-
-.office-selector {
-  display: flex;
-  margin-bottom: 16px;
-  font-size: 1.125rem;
 
   button {
     margin-left: auto;
   }
+}
+
+.office-selector {
+  margin-bottom: 16px;
+  font-size: 1.125rem;
 
   .Dropdown-button {
     cursor: pointer;
@@ -79,8 +78,6 @@
 
   button {
     background: none;
-    width: 24px;
-    color: $light-purple;
 
     &:hover {
       color: $light-purple;
@@ -112,16 +109,6 @@
   box-shadow: 0 0 6px rgba($light-purple, 0.3);
   border: 1px dashed $grey-purple;
   min-height: 112px;
-
-  input {
-    border: none;
-    border-bottom: 1px solid $border;
-    color: $light-text;
-    font-size: 1.125rem;
-    font-weight: 100;
-    padding-bottom: 4px;
-    outline: none;
-  }
 
   button {
     width: auto;

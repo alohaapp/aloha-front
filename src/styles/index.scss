@@ -23,19 +23,50 @@ code {
   font-family: "Work Sans", sans-serif;
 }
 
+input {
+  border: none;
+  border-bottom: 1px solid $border;
+  color: $light-text;
+  font-size: 1.125rem;
+  font-weight: 100;
+  padding-bottom: 4px;
+  outline: none;
+}
+
 .button {
   font-family: "Work Sans", sans-serif;
   font-weight: 700;
   background: $link;
   color: white;
   border: none;
+  outline: none;
 
   &:hover {
     color: white;
+    background: darken($link, 6%);
+  }
+
+  &:focus:not(:active),
+  &.is-focused:not(:active) {
+    box-shadow: none;
   }
 
   &.is-link {
     background-color: $link;
+  }
+
+  &.is-light {
+    background: none;
+    color: $light-text;
+
+    &:hover {
+      background: none;
+      color: darken($light-text, 10%);
+    }
+  }
+
+  .material-icons {
+    color: $light-purple;
   }
 
   &.is-small {
@@ -49,4 +80,20 @@ a {
 
 input {
   font-family: "Work Sans", sans-serif;
+}
+
+/* Modal */
+
+.modal-card-title {
+  color: $primary;
+}
+
+.modal-card-head,
+.modal-card-foot {
+  background: $border;
+  border-color: darken($border, 6%);
+}
+
+.modal-card-foot {
+  justify-content: flex-end;
 }

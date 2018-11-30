@@ -1,0 +1,39 @@
+@import "../../styles/colors.scss";
+
+.offices-modal {
+  ul li {
+    margin-bottom: 16px;
+    display: flex;
+
+    input {
+      width: 100%;
+      margin-right: 32px;
+    }
+
+    button {
+      margin-left: auto;
+    }
+  }
+
+  .office-add {
+    color: $link;
+    border-radius: 6px;
+    padding: 12px 0;
+    font-size: 0.875rem;
+    cursor: pointer;
+
+    &:hover {
+      color: darken($link, 10%);
+    }
+
+    i {
+      vertical-align: bottom;
+      font-size: 1.5rem;
+      margin-right: 4px;
+    }
+
+    span {
+      font-weight: 500;
+    }
+  }
+}

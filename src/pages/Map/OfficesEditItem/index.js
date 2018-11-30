@@ -12,8 +12,10 @@ function OfficesEditItem({ office, index, updateOffice, deleteOffice }) {
           updateOffice(index, event.target.value);
         }}
       />
-      <Button onClick={() => deleteOffice(index)}>
-        <i className="material-icons md-36">delete</i>
+      <Button className="is-light" onClick={() => deleteOffice(index)}>
+        <span class="icon is-small">
+          <i className="material-icons md-36">delete</i>
+        </span>
       </Button>
     </li>
   );
