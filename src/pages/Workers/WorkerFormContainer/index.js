@@ -28,7 +28,9 @@ export default function({ worker, closeDialog }) {
   const { workersCRUD } = useContext(CRUDContext);
 
   const onSubmit = values => {
-    workersCRUD.create(values);
+    worker.id
+      ? workersCRUD.update({ id: worker.id, ...values })
+      : workersCRUD.create(values);
     closeDialog();
   };
 

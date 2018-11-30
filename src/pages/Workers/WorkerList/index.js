@@ -43,8 +43,8 @@ function WorkerList({ workers }) {
     setWorkerSelected({});
   };
 
-  const deleteWorker = worker => {
-    workersCRUD.del(worker.id);
+  const deleteWorker = workerId => {
+    workersCRUD.del(workerId);
     closeDeleteConfirm();
   };
 
@@ -87,7 +87,7 @@ function WorkerList({ workers }) {
       {isDeleteConfirmOpened ? (
         <Confirm
           isActive={isDeleteConfirmOpened}
-          onConfirm={deleteWorker}
+          onConfirm={() => deleteWorker(workerSelected.id)}
           onCancel={() => closeDeleteConfirm()}
           title="Delete worker"
           content={`Are you sure you want to delete the worker ${
