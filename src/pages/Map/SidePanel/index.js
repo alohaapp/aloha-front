@@ -24,6 +24,12 @@ function SidePanel({ officeId, floorId }) {
           <span className="office-info__legend">
             {offices.length === 1 ? "OFFICE" : "OFFICES"}
           </span>
+          <Button
+            onClick={() => setIsOfficesEditOpened(true)}
+            className="button is-small"
+          >
+            Edit
+          </Button>
         </div>
         {offices.length !== 0 && (
           <div className="office-selector">
@@ -46,12 +52,6 @@ function SidePanel({ officeId, floorId }) {
                 />
               ))}
             </Dropdown>
-            <Button
-              onClick={() => setIsOfficesEditOpened(true)}
-              className="button is-small"
-            >
-              Edit
-            </Button>
             {isOfficesEditOpened ? (
               <OfficesEdit
                 offices={offices}

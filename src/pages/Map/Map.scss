@@ -21,16 +21,15 @@
     font-weight: 500;
     color: $light-text;
   }
-}
-
-.office-selector {
-  display: flex;
-  margin-bottom: 16px;
-  font-size: 1.125rem;
 
   button {
     margin-left: auto;
   }
+}
+
+.office-selector {
+  margin-bottom: 16px;
+  font-size: 1.125rem;
 
   .Dropdown-button {
     cursor: pointer;
