@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Button } from "bloomer";
+import useClickOutside from "../../../hooks/useClickOutside";
 
 const SidePanelFloorEdit = ({ name, onCancel, onSave }) => {
   const [newName, setNewName] = useState(name || "");
+
+  const ref = useRef(null);
+  useClickOutside(ref, () => onCancel());
+
   return (
-    <div className="floor floor-edit">
+    <div className="floor floor-edit" ref={ref}>
       <div className="floor-header">
         <input
           type="text"

@@ -6,7 +6,6 @@ import {
   DropdownMenu,
   DropdownTrigger
 } from "bloomer";
-import "../../hooks/useClickOutside";
 import useClickOutside from "../../hooks/useClickOutside";
 
 function AlohaDropdown({ children, trigger }) {
