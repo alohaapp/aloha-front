@@ -213,8 +213,6 @@
   justify-content: center;
   color: $dark-purple;
 
-  border: 10px solid red;
-
   p:before {
     content: "";
     background: url(../../assets/img/layers.svg) no-repeat center center;
@@ -222,35 +220,5 @@
     width: 32px;
     height: 32px;
     margin: 0 auto;
-  }
-}
-
-.workstation {
-  position: absolute;
-  background-color: $link;
-  border-radius: 4px;
-  width: 24px;
-  height: 24px;
-  color: white;
-  padding: 3px;
-  user-select: none;
-
-  &:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border: 4px solid transparent;
-    border-top-color: $link;
-    border-bottom: 0;
-    margin-left: -4px;
-    margin-bottom: -4px;
-  }
-
-  .material-icons {
-    font-size: 16px;
-    color: white;
   }
 }
