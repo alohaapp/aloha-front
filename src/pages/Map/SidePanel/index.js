@@ -18,7 +18,7 @@ function SidePanel({ officeId, floorId }) {
   return (
     offices &&
     floors && (
-      <div className="SidePanel">
+      <div className="side-panel">
         <div className="office-info">
           <Tag>{offices.length}</Tag>
           <span className="office-info__legend">

@@ -3,6 +3,7 @@
 .office-info {
   display: flex;
   align-items: center;
+  margin-bottom: 8px;
 
   .tag {
     background: $light-text;
@@ -47,6 +48,14 @@
   }
 }
 
+.floors {
+  position: relative;
+  max-height: calc(100% - 160px);
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding: 2px;
+}
+
 .floor {
   position: relative;
   display: block;
@@ -55,7 +64,7 @@
   padding: 16px;
   margin-bottom: 12px;
   color: $dark-purple;
-  min-height: 100px;
+  min-height: 92px;
 
   .floor-header {
     font-weight: 100;
@@ -72,7 +81,6 @@
     background: none;
     width: 24px;
     color: $light-purple;
-    padding: 0;
 
     &:hover {
       color: $light-purple;
@@ -97,6 +105,27 @@
     &:hover {
       color: $disabled-text;
     }
+  }
+}
+
+.floor-edit {
+  box-shadow: 0 0 6px rgba($light-purple, 0.3);
+  border: 1px dashed $grey-purple;
+  min-height: 112px;
+
+  input {
+    border: none;
+    border-bottom: 1px solid $border;
+    color: $light-text;
+    font-size: 1.125rem;
+    font-weight: 100;
+    padding-bottom: 4px;
+    outline: none;
+  }
+
+  button {
+    width: auto;
+    margin-left: 10px;
   }
 }
 
@@ -126,12 +155,33 @@
   position: relative;
 }
 
-.MapPanelWorkstation {
+.workstation {
   position: absolute;
-  background-color: #3ec;
-  border-radius: 5px;
+  background-color: $link;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
   color: white;
   padding: 3px;
+  user-select: none;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border: 4px solid transparent;
+    border-top-color: $link;
+    border-bottom: 0;
+    margin-left: -4px;
+    margin-bottom: -4px;
+  }
+
+  .material-icons {
+    font-size: 16px;
+  }
 }
 
 .SidePanelFloorAdder--active {
@@ -139,11 +189,29 @@
 }
 
 .map-panel {
-  height: 100%;
+  height: calc(100% - 40px);
+  background-color: $grey;
+  border-radius: 6px;
 }
 
 .map-panel-display-area {
   height: 100%;
+  width: 100%;
+  padding: 16px;
+}
+
+.map-panel-image {
+  position: relative;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+
+.map-panel-image img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 6px;
+  background: white;
 }
 
 .map-new-image {
@@ -152,8 +220,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $grey;
-  border-radius: 6px;
   color: $dark-purple;
 
   p:before {

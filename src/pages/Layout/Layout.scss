@@ -1,3 +1,10 @@
+.Map {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
 .columns {
   padding: 0 100px;
 }
@@ -9,5 +16,15 @@
   }
   .logo-app {
     text-align: center;
+  }
+}
+
+.main-container {
+  height: 100%;
+
+  .side-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 }

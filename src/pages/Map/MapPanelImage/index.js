@@ -46,7 +46,7 @@ function generateWorkstation(event) {
 
 function MapPanelImage({ alt, image, workstations, onCreateWorkstation }) {
   return (
-    <div className="MapPanelImage">
+    <div className="map-panel-image">
       <img
         onClick={event => {
           onCreateWorkstation(generateWorkstation(event));

@@ -4,10 +4,11 @@ import { Button } from "bloomer";
 const SidePanelFloorEdit = ({ name, onCancel, onSave }) => {
   const [newName, setNewName] = useState(name || "");
   return (
-    <div className="floor">
+    <div className="floor floor-edit">
       <div className="floor-header">
         <input
           type="text"
+          placeholder="Enter floor name"
           value={newName}
           name="name"
           onChange={event => {
@@ -16,8 +17,12 @@ const SidePanelFloorEdit = ({ name, onCancel, onSave }) => {
         />
       </div>
       <div className="floor-actions">
-        <Button onClick={onCancel}>Cancel</Button>
-        <Button onClick={() => onSave(newName)}>Save</Button>
+        <Button className="is-small is-light" onClick={onCancel}>
+          Cancel
+        </Button>
+        <Button className="is-small is-primary" onClick={() => onSave(newName)}>
+          Save
+        </Button>
       </div>
     </div>
   );
