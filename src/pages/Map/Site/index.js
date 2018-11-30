@@ -9,7 +9,7 @@ function Site({ office, floor }) {
       sidebar={
         <SidePanel officeId={office && office.id} floorId={floor && floor.id} />
       }
-      content={floor && <MapPanel floor={floor} />}
+      content={floor ? <MapPanel floor={floor} /> : false}
     />
   );
 }
