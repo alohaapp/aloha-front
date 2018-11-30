@@ -22,7 +22,7 @@ workersData.forEach(worker => {
 
 // Offices
 officesData.forEach(office => {
-  fetch(`${API_URL}/Workers`, {
+  fetch(`${API_URL}/Offices`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -37,7 +37,7 @@ officesData.forEach(office => {
 
 // Floors
 floorsData.forEach(floor => {
-  fetch(`${API_URL}/Workers`, {
+  fetch(`${API_URL}/Floors`, {
     method: "POST",
     headers: {
       Accept: "application/json",
