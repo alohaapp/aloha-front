@@ -18,7 +18,7 @@
     content: "";
     position: absolute;
     bottom: 0;
-    left: 16%;
+    left: 20px;
     width: 0;
     height: 0;
     border: 6px solid transparent;
@@ -40,5 +40,9 @@
     font-size: 0.625rem;
     cursor: default;
     margin-bottom: 6px;
+  }
+
+  &.existent-user {
+    width: 360px;
   }
 }

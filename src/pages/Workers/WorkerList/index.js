@@ -51,7 +51,7 @@ function WorkerList({ workers }) {
   return (
     <>
       {workers.length > 0 ? (
-        <Table>
+        <Table className="workers-list">
           <thead>
             <tr>
               <th>{WORKER_PHOTO_URL}</th>

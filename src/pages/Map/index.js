@@ -39,7 +39,7 @@ function Map({ officeId, floorId, queryString }) {
   }
 
   return (
-    <div className={`Map${!callEnd ? " loading" : ""}`}>
+    <div className={`map${!callEnd ? " loading" : ""}`}>
       {callEnd &&
         (redirect ? (
           <Redirect to={`/map/${redirect}`} />
