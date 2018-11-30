@@ -25,6 +25,10 @@
   .side-panel {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: calc(100% - 30px);
+  }
+
+  .content {
+    height: calc(100% - 30px);
   }
 }
