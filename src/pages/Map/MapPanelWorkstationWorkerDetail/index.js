@@ -5,9 +5,10 @@ import "../../../hooks/useClickOutside";
 import Confirm from "../../../components/Confirm";
 import useClickOutside from "../../../hooks/useClickOutside";
 import createCRUDHook from "../../../hooks/crud";
+import WorkerFormContainer from "../../Workers/WorkerFormContainer";
 
 export function MapPanelWorkstationWorkerDetail(props) {
-  const { close, workstation } = props;
+  const { close, workstation, assignedWorker } = props;
 
   const [isConfirmOpened, setIsConfirmOpened] = useState(false);
 
@@ -46,6 +47,7 @@ export function MapPanelWorkstationWorkerDetail(props) {
         />
       ) : (
         <div ref={ref}>
+          <WorkerFormContainer worker={assignedWorker} />
           <Button onClick={unnasign}>Unassign</Button>
           <Button onClick={() => setIsConfirmOpened(true)}>Delete</Button>
         </div>
