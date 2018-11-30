@@ -9,8 +9,9 @@ function WorkerListItem({ worker, openWorkerForm, openDeleteConfirm }) {
     <tr className="WorkerList">
       <td>{worker.photoUrl}</td>
       <td>{worker.userName}</td>
-      <td>{worker.name}</td>
-      <td>{worker.surname}</td>
+      <td>
+        {worker.name} {worker.surname}
+      </td>
       <td>{worker.email}</td>
       <td>{worker.notes}</td>
       <td>

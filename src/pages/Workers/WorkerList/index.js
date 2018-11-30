@@ -11,7 +11,6 @@ import {
   WORKER_PHOTO_URL,
   WORKER_USERNAME,
   WORKER_NAME,
-  WORKER_SURNAME,
   WORKER_EMAIL,
   WORKER_NOTES,
   WORKER_ACTIONS
@@ -57,7 +56,6 @@ function WorkerList({ workers }) {
               <th>{WORKER_PHOTO_URL}</th>
               <th>{WORKER_USERNAME}</th>
               <th>{WORKER_NAME}</th>
-              <th>{WORKER_SURNAME}</th>
               <th>{WORKER_EMAIL}</th>
               <th>{WORKER_NOTES}</th>
               <th>{WORKER_ACTIONS}</th>
