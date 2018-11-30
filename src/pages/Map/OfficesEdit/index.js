@@ -62,7 +62,7 @@ function OfficesEdit({ offices, isActive, closeOfficesEdit }) {
         })}
       </ul>
       <div
-        className={`OfficeAdd`}
+        className={`office-add`}
         onClick={() => updateOffice(officesEdited.length)}
       >
         <i className="material-icons md-18">add</i>

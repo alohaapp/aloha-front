@@ -1,3 +1,4 @@
+import "./modal.scss";
 import React from "react";
 import PropTypes from "prop-types";
 import {
@@ -14,7 +15,7 @@ import {
 
 function AlohaModal({ isActive, title, onConfirm, onCancel, children }) {
   return (
-    <Modal isActive={isActive}>
+    <Modal className="offices-modal" isActive={isActive}>
       <ModalBackground />
       <ModalCard>
         <ModalCardHeader>
@@ -23,8 +24,10 @@ function AlohaModal({ isActive, title, onConfirm, onCancel, children }) {
         </ModalCardHeader>
         <ModalCardBody>{children}</ModalCardBody>
         <ModalCardFooter>
+          <Button className="is-light" onClick={onCancel}>
+            Cancel
+          </Button>
           <Button onClick={onConfirm}>Confirm</Button>
-          <Button onClick={onCancel}>Cancel</Button>
         </ModalCardFooter>
       </ModalCard>
     </Modal>
