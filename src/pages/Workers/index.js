@@ -18,7 +18,9 @@ function Workers(props) {
   const sidebar = <div>SIDEBAR</div>;
 
   return (
-    <Layout sidebar={sidebar} content={content} queryString={queryString} />
+    <div className="workers">
+      <Layout sidebar={sidebar} content={content} queryString={queryString} />
+    </div>
   );
 }
 

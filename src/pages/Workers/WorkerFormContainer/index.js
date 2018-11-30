@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import CRUDContext from "../../../components/CRUDContext";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import WorkerForm from "../WorkerForm";
+import WorkerImageDropzone from "../WorkerImageDropzone";
 
 export default function({ worker, closeDialog }) {
+  const [workerPhoto, setWorkerPhoto] = useState(null);
   const initialValue = {
     userName: worker.userName || "",
     name: worker.name || "",
@@ -14,6 +16,10 @@ export default function({ worker, closeDialog }) {
   };
 
   const requiredMessage = "Required field";
+
+  const getPhoto = value => {
+    setWorkerPhoto(value);
+  };
 
   const WorkerSchema = Yup.object().shape({
     userName: Yup.string().required(requiredMessage),
@@ -29,17 +35,22 @@ export default function({ worker, closeDialog }) {
 
   const onSubmit = values => {
     worker.id
-      ? workersCRUD.update({ id: worker.id, ...values })
-      : workersCRUD.create(values);
+      ? workersCRUD.update({ ...values, id: worker.id, photoUrl: workerPhoto })
+      : workersCRUD.create({ ...values, photoUrl: workerPhoto });
     closeDialog();
   };
 
   return (
-    <Formik
-      initialValues={initialValue}
-      render={WorkerForm}
-      validationSchema={WorkerSchema}
-      onSubmit={onSubmit}
-    />
+    <>
+      <div>
+        <WorkerImageDropzone onDrop={getPhoto} />
+      </div>
+      <Formik
+        initialValues={initialValue}
+        render={WorkerForm}
+        validationSchema={WorkerSchema}
+        onSubmit={onSubmit}
+      />
+    </>
   );
 }

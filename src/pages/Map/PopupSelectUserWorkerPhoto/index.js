@@ -32,6 +32,7 @@ function PopupSelectUserWorkerPhoto({ worker, closePopup, workstation }) {
         src={worker.photoUrl ? worker.photoUrl : FallbackImage}
         alt="user"
       />
+      <span>{worker.name}</span>
     </div>
   );
 }
