@@ -25,7 +25,7 @@ function PopupSelectUser({ close, workstation }) {
     if (!searchCriteria) {
       setFilteredList(workers);
     }
-    const filteredWorkers = filteredList.filter(worker => {
+    const filteredWorkers = workers.filter(worker => {
       return (
         worker.name.toLowerCase().includes(searchCriteria.toLowerCase()) ||
         worker.surname.toLowerCase().includes(searchCriteria.toLowerCase()) ||
