@@ -27,9 +27,14 @@ export default function() {
     ]
   );
 
-  const renderMap = ({ match }) => {
+  const renderMap = ({ match, location }) => {
+    const queryString = location.search && location.search.slice(1);
     return (
-      <Map officeId={+match.params.officeId} floorId={+match.params.floorId} />
+      <Map
+        officeId={+match.params.officeId}
+        floorId={+match.params.floorId}
+        queryString={queryString}
+      />
     );
   };
   return (

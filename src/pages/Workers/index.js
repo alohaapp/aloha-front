@@ -5,6 +5,7 @@ import Layout from "../Layout";
 import "./Workers.scss";
 
 function Workers(props) {
+  const queryString = props.location.search && props.location.search.slice(1);
   const workers = useAPI({ url: "/Workers" });
 
   const content = workers ? (
@@ -15,7 +16,9 @@ function Workers(props) {
 
   const sidebar = <div>SIDEBAR</div>;
 
-  return <Layout sidebar={sidebar} content={content} />;
+  return (
+    <Layout sidebar={sidebar} content={content} queryString={queryString} />
+  );
 }
 
 export default Workers;

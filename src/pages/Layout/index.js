@@ -23,7 +23,10 @@ function Layout(props) {
           {props.sidebar}
         </Column>
         <Column className="content">
-          <FilterToolbar isMap={Boolean(props.isMap)} />
+          <FilterToolbar
+            isMap={Boolean(props.isMap)}
+            queryString={props.queryString}
+          />
           {props.content}
         </Column>
       </Columns>

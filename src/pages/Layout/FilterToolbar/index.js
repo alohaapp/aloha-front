@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const FilterToolbar = ({ isMap }) => {
-  const [searchText, setSearchText] = useState("");
+const FilterToolbar = ({ isMap, queryString = "" }) => {
+  const [searchText, setSearchText] = useState(queryString);
 
   return (
     <div className="filter-toolbar">
-      <div className="">
+      <div className="filter-text">
         <input
           type="text"
           value={searchText}
@@ -14,15 +14,16 @@ const FilterToolbar = ({ isMap }) => {
             setSearchText(event.target.value);
           }}
         />
-        <i className="material-icons">search</i>
+        <Link to={`?${searchText}`}>
+          <i className="material-icons">search</i>
+        </Link>
       </div>
-      <div>
-        <Link to={`/map`}>
-          <input type="radio" value="option1" checked={isMap} />
-        </Link>
-        <Link to={`/workers`}>
-          <input type="radio" value="option2" checked={!isMap} />
-        </Link>
+      <div className="filter-switch">
+        <Link className={`map-link${isMap ? " active" : ""}`} to={`/map`} />
+        <Link
+          className={`workers-link${isMap ? "" : " active"}`}
+          to={`/workers`}
+        />
       </div>
     </div>
   );
