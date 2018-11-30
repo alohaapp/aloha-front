@@ -1,5 +1,44 @@
+@import "../../../styles/colors.scss";
+
 .popup-select-user {
-  border: 1px solid red;
+  min-width: 140px;
+  min-height: 100px;
   z-index: 99;
-  background-color: violet;
+  background: $primary;
+  position: absolute;
+  bottom: 30px;
+  left: -10px;
+  color: white;
+  text-align: left;
+  padding: 16px;
+  font-size: 0.75rem;
+  border-radius: 2px;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 16%;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-top-color: $primary;
+    border-bottom: 0;
+    margin-left: -6px;
+    margin-bottom: -6px;
+  }
+
+  span {
+    display: block;
+    margin-bottom: 4px;
+    cursor: pointer;
+  }
+
+  .popup-select-user__heading {
+    text-transform: uppercase;
+    color: $disabled-text;
+    font-size: 0.625rem;
+    cursor: default;
+    margin-bottom: 6px;
+  }
 }
