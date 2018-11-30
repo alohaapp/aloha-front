@@ -1,6 +1,7 @@
 import "./WorkerList.scss";
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import CRUDContext from "../../../components/CRUDContext";
 import PropTypes from "prop-types";
 import { Table, Button } from "bloomer";
 import Confirm from "../../../components/Confirm";
@@ -8,6 +9,7 @@ import WorkerListItem from "../WorkerListItem";
 import WorkerDialog from "../WorkerDialog";
 import {
   WORKER_PHOTO_URL,
+  WORKER_USERNAME,
   WORKER_NAME,
   WORKER_SURNAME,
   WORKER_EMAIL,
@@ -19,6 +21,7 @@ function WorkerList({ workers }) {
   const [isDialogOpened, setIsDialogOpened] = useState(false);
   const [workerSelected, setWorkerSelected] = useState({});
   const [isDeleteConfirmOpened, setIsDeleteConfirmOpened] = useState(false);
+  const { workersCRUD } = useContext(CRUDContext);
 
   const openWorkerForm = (worker = {}) => {
     setIsDialogOpened(true);
@@ -40,8 +43,8 @@ function WorkerList({ workers }) {
     setWorkerSelected({});
   };
 
-  const deleteWorker = worker => {
-    // API Call
+  const deleteWorker = workerId => {
+    workersCRUD.del(workerId);
     closeDeleteConfirm();
   };
 
@@ -52,6 +55,7 @@ function WorkerList({ workers }) {
           <thead>
             <tr>
               <th>{WORKER_PHOTO_URL}</th>
+              <th>{WORKER_USERNAME}</th>
               <th>{WORKER_NAME}</th>
               <th>{WORKER_SURNAME}</th>
               <th>{WORKER_EMAIL}</th>
@@ -83,7 +87,7 @@ function WorkerList({ workers }) {
       {isDeleteConfirmOpened ? (
         <Confirm
           isActive={isDeleteConfirmOpened}
-          onConfirm={deleteWorker}
+          onConfirm={() => deleteWorker(workerSelected.id)}
           onCancel={() => closeDeleteConfirm()}
           title="Delete worker"
           content={`Are you sure you want to delete the worker ${

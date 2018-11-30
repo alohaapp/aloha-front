@@ -4,10 +4,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "bloomer";
 
-function WorkerList({ worker, openWorkerForm, openDeleteConfirm }) {
+function WorkerListItem({ worker, openWorkerForm, openDeleteConfirm }) {
   return (
-    <tr className="WorkerList" key={worker.email}>
+    <tr className="WorkerList">
       <td>{worker.photoUrl}</td>
+      <td>{worker.userName}</td>
       <td>{worker.name}</td>
       <td>{worker.surname}</td>
       <td>{worker.email}</td>
@@ -24,10 +25,10 @@ function WorkerList({ worker, openWorkerForm, openDeleteConfirm }) {
   );
 }
 
-WorkerList.propTypes = {
+WorkerListItem.propTypes = {
   worker: PropTypes.object.isRequired,
   openWorkerForm: PropTypes.func.isRequired,
   openDeleteConfirm: PropTypes.func.isRequired
 };
 
-export default WorkerList;
+export default WorkerListItem;
