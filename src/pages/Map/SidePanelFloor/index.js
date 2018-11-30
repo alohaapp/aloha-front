@@ -29,18 +29,27 @@ const SidePanelFloor = ({ floor, active, updateFloor, deleteFloor }) => {
         to={`/map/${floor.officeId}/${floor.id}`}
       >
         <div className="floor-header">{floor.name}</div>
-        <div className="floor-actions">
-          <Button onClick={() => setEditing(true)}>
-            <i className="material-icons md-36">edit</i>
-          </Button>
-          <Button
-            onClick={e => {
-              e.preventDefault();
-              setIsDeleteConfirmOpened(true);
-            }}
-          >
-            <i className="material-icons md-36">delete</i>
-          </Button>
+        <div className="floor-footer">
+          <div className="floor-workers">
+            <span>
+              {floor.workerCount || "No"} mate
+              {floor.workerCount === 1 ? "" : "s"}
+              {floor.workerCount ? "" : " yet"}
+            </span>
+          </div>
+          <div className="floor-actions">
+            <Button onClick={() => setEditing(true)}>
+              <i className="material-icons md-36">edit</i>
+            </Button>
+            <Button
+              onClick={e => {
+                e.preventDefault();
+                setIsDeleteConfirmOpened(true);
+              }}
+            >
+              <i className="material-icons md-36">delete</i>
+            </Button>
+          </div>
         </div>
       </Link>
       {isDeleteConfirmOpened ? (

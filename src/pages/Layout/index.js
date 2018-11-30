@@ -3,6 +3,7 @@ import React, { Fragment } from "react";
 import { Columns, Column } from "bloomer";
 import logoCorunet from "../../assets/logos/logo-corunet.svg";
 import logo from "../../assets/logos/logo.svg";
+import FilterToolbar from "./FilterToolbar";
 
 function Layout(props) {
   return (
@@ -21,7 +22,10 @@ function Layout(props) {
         <Column className="sidebar" isSize="1/4">
           {props.sidebar}
         </Column>
-        <Column className="content">{props.content}</Column>
+        <Column className="content">
+          <FilterToolbar isMap={Boolean(props.isMap)} />
+          {props.content}
+        </Column>
       </Columns>
     </Fragment>
   );

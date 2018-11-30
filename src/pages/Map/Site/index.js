@@ -10,6 +10,7 @@ function Site({ office, floor }) {
         <SidePanel officeId={office && office.id} floorId={floor && floor.id} />
       }
       content={floor ? <MapPanel floor={floor} /> : false}
+      isMap={true}
     />
   );
 }

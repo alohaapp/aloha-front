@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import MapPanelFilterToolbar from "../MapPanelFilterToolbar";
 import MapPanelImage from "../MapPanelImage";
 import MapPanelImageDropzone from "../MapPanelImageDropzone";
 import createCRUDHook from "../../../hooks/crud";
@@ -22,7 +21,6 @@ function MapPanel({ floor }) {
 
   return (
     <div className={`map-panel${workstations ? "" : " loading"}`}>
-      <MapPanelFilterToolbar />
       <div className="map-panel-display-area">
         {image ? (
           workstations && (
