@@ -2,14 +2,15 @@ import "./PopupSelectUserWorkerPhoto.scss";
 
 import React from "react";
 import PropTypes from "prop-types";
-import createCRUDHook from "../../../hooks/crud";
-import FallbackImage from "../../../assets/img/fallback.jpg";
+import Person from "../../../assets/img/person.svg";
+import { API_URL } from "../../../constants";
 
-function PopupSelectUserWorkerPhoto({ worker, closePopup, workstation }) {
-  const { floorId } = workstation;
-  const useWorkstations = createCRUDHook(`/floors/${floorId}/workstations`);
-  const workstationsCRUD = useWorkstations();
-
+function PopupSelectUserWorkerPhoto({
+  worker,
+  closePopup,
+  workstation,
+  workstationsCRUD
+}) {
   const assignWorkerToWorkstation = () => {
     if (!worker.workstationId) {
       const workstationToUpdate = { ...workstation, workerId: worker.id };
@@ -29,16 +30,19 @@ function PopupSelectUserWorkerPhoto({ worker, closePopup, workstation }) {
       ) : null}
       <img
         className="worker-photo"
-        src={worker.photoUrl ? worker.photoUrl : FallbackImage}
+        src={worker.photoId ? `${API_URL}/files/${worker.photoId}` : Person}
         alt="user"
       />
+      <span>{worker.name}</span>
     </div>
   );
 }
 
 PopupSelectUserWorkerPhoto.propTypes = {
   worker: PropTypes.object.isRequired,
-  closePopup: PropTypes.func.isRequired
+  closePopup: PropTypes.func.isRequired,
+  workstation: PropTypes.object.isRequired,
+  workstationsCRUD: PropTypes.object.isRequired
 };
 
 export default PopupSelectUserWorkerPhoto;

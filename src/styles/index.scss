@@ -23,14 +23,21 @@ code {
   font-family: "Work Sans", sans-serif;
 }
 
-input {
+input,
+.input {
   border: none;
   border-bottom: 1px solid $border;
   color: $light-text;
   font-size: 1.125rem;
   font-weight: 100;
-  padding-bottom: 4px;
+  padding: 0;
   outline: none;
+  border-radius: 0;
+}
+
+.input:focus {
+  border-bottom: 1px solid $border;
+  box-shadow: none;
 }
 
 .button {
@@ -84,8 +91,12 @@ input {
 
 /* Modal */
 
-.modal-card-title {
+h1.modal-card-title {
   color: $primary;
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
 }
 
 .modal-card-head,

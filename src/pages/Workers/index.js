@@ -4,7 +4,7 @@ import WorkerList from "./WorkerList";
 import Layout from "../Layout";
 import "./Workers.scss";
 
-function Workers(props) {
+function Workers({ filters }) {
   const { workersCRUD } = useContext(CRUDContext);
   const workers = workersCRUD.store;
 
@@ -14,9 +14,11 @@ function Workers(props) {
     <h2>Loading...</h2>
   );
 
-  const sidebar = <div>SIDEBAR</div>;
-
-  return <Layout sidebar={sidebar} content={content} />;
+  return (
+    <div className="workers">
+      <Layout content={content} filters={filters} />
+    </div>
+  );
 }
 
 export default Workers;

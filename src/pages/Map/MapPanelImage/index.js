@@ -1,5 +1,6 @@
 import React from "react";
 import MapPanelWorkstation from "../MapPanelWorkstation";
+import { API_URL } from "../../../constants";
 
 /* https://stackoverflow.com/questions/5755312/getting-mouse-position-relative-to-content-area-of-an-element */
 
@@ -43,18 +44,29 @@ function generateWorkstation(event) {
   };
 }
 
-function MapPanelImage({ alt, image, workstations, onCreateWorkstation }) {
+function MapPanelImage({
+  alt,
+  image,
+  workstations,
+  onCreateWorkstation,
+  workstationsCRUD
+}) {
   return (
     <div className="map-panel-image">
       <img
+        className="panel-image"
         onClick={event => {
           onCreateWorkstation(generateWorkstation(event));
         }}
         alt={alt}
-        src={image}
+        src={`${API_URL}/files/${image}`}
       />
       {workstations.map(workstation => (
-        <MapPanelWorkstation key={workstation.id} workstation={workstation} />
+        <MapPanelWorkstation
+          key={workstation.id}
+          workstation={workstation}
+          workstationsCRUD={workstationsCRUD}
+        />
       ))}
     </div>
   );

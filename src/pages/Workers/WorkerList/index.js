@@ -3,19 +3,10 @@ import "./WorkerList.scss";
 import React, { useState, useContext } from "react";
 import CRUDContext from "../../../components/CRUDContext";
 import PropTypes from "prop-types";
-import { Table, Button } from "bloomer";
+import { Button } from "bloomer";
 import Confirm from "../../../components/Confirm";
 import WorkerListItem from "../WorkerListItem";
 import WorkerDialog from "../WorkerDialog";
-import {
-  WORKER_PHOTO_URL,
-  WORKER_USERNAME,
-  WORKER_NAME,
-  WORKER_SURNAME,
-  WORKER_EMAIL,
-  WORKER_NOTES,
-  WORKER_ACTIONS
-} from "../../../constants";
 
 function WorkerList({ workers }) {
   const [isDialogOpened, setIsDialogOpened] = useState(false);
@@ -51,29 +42,16 @@ function WorkerList({ workers }) {
   return (
     <>
       {workers.length > 0 ? (
-        <Table>
-          <thead>
-            <tr>
-              <th>{WORKER_PHOTO_URL}</th>
-              <th>{WORKER_USERNAME}</th>
-              <th>{WORKER_NAME}</th>
-              <th>{WORKER_SURNAME}</th>
-              <th>{WORKER_EMAIL}</th>
-              <th>{WORKER_NOTES}</th>
-              <th>{WORKER_ACTIONS}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {workers.map(worker => (
-              <WorkerListItem
-                key={worker.id}
-                openWorkerForm={openWorkerForm}
-                openDeleteConfirm={openDeleteConfirm}
-                worker={worker}
-              />
-            ))}
-          </tbody>
-        </Table>
+        <ul className="workers-list">
+          {workers.map(worker => (
+            <WorkerListItem
+              key={worker.id}
+              openWorkerForm={openWorkerForm}
+              openDeleteConfirm={openDeleteConfirm}
+              worker={worker}
+            />
+          ))}
+        </ul>
       ) : null}
 
       {isDialogOpened ? (
@@ -95,7 +73,11 @@ function WorkerList({ workers }) {
           } ${workerSelected.surname}?`}
         />
       ) : null}
-      <Button isColor="primary" onClick={() => openWorkerForm()}>
+      <Button
+        className="add-worker"
+        isColor="primary"
+        onClick={() => openWorkerForm()}
+      >
         Create new worker
       </Button>
     </>

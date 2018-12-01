@@ -5,9 +5,9 @@ import createCRUDHook from "../../../hooks/crud";
 import CRUDContext from "../../../components/CRUDContext";
 
 function MapPanel({ floor }) {
-  const [image, setImage] = useState(floor.imageUrl);
+  const [image, setImage] = useState(floor.imageId);
   // Change map image when floor changes
-  useEffect(() => void setImage(floor.imageUrl), [floor]);
+  useEffect(() => void setImage(floor.imageId), [floor]);
 
   const { floorsCRUD } = useContext(CRUDContext);
   const updateImage = imageUrl => {
@@ -31,6 +31,7 @@ function MapPanel({ floor }) {
               onCreateWorkstation={workstation =>
                 workstationsCRUD.create(workstation)
               }
+              workstationsCRUD={workstationsCRUD}
             />
           )
         ) : (

@@ -1,0 +1,64 @@
+@import "../../../styles/colors.scss";
+
+.worker-modal {
+  .modal-card {
+    border-radius: 4px;
+  }
+
+  .modal-card-body {
+    padding: 0;
+    position: relative;
+
+    .form-fields {
+      padding: 20px;
+      margin-left: 166px;
+      max-height: calc(100vh - 200px);
+      overflow-y: auto;
+
+      input,
+      textarea {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+.user-new-image-block {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+
+  img {
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    width: 132px;
+    height: 132px;
+  }
+}
+
+.user-new-image {
+  background: $grey;
+  border-radius: 50%;
+  width: 132px;
+  height: 132px;
+  margin: 0 auto;
+  cursor: pointer;
+
+  p {
+    font-size: 0.75rem;
+    text-align: center;
+    padding: 20px;
+    line-height: 1rem;
+
+    &:before {
+      content: "";
+      background: url(../../../assets/img/person.svg) no-repeat center center;
+      display: block;
+      width: 32px;
+      height: 32px;
+      margin: 0 auto;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+.content ul.workers-list {
+  font-size: 0.875rem;
+  margin: 0 0 20px 0;
+  padding: 0;
+  list-style-type: none;
+  max-height: calc(100% - 100px);
+  overflow: auto;
+}
+
+.add-worker {
+  align-self: flex-start;
+}
