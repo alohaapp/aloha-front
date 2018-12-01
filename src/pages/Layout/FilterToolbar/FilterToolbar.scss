@@ -1,4 +1,54 @@
+@import "../../../styles/colors.scss";
+
 .filter-toolbar {
   border: 2px solid red;
   margin-bottom: 12px;
+  display: flex;
+
+  .filter-switch {
+    border-radius: 4px;
+    height: 32px;
+    width: 80px;
+    margin-left: auto;
+    background: $grey;
+
+    a {
+      display: inline-block;
+      text-align: center;
+      width: 40px;
+      height: 32px;
+
+      &.active {
+        background: $medium-purple;
+        border-radius: 4px;
+      }
+
+      &:after {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        content: "";
+        margin-top: 4px;
+        background: no-repeat;
+        background-position: center center;
+        background-size: 24px 24px;
+      }
+
+      &.map-link:after {
+        background-image: url(../../../assets/img/map.svg);
+      }
+
+      &.map-link.active:after {
+        background-image: url(../../../assets/img/map_w.svg);
+      }
+
+      &.workers-link:after {
+        background-image: url(../../../assets/img/list.svg);
+      }
+
+      &.workers-link.active:after {
+        background-image: url(../../../assets/img/list_w.svg);
+      }
+    }
+  }
 }
