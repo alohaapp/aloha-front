@@ -7,65 +7,55 @@ import { Button } from "bloomer";
 import { API_URL } from "../../../constants";
 import CRUDContext from "../../../components/CRUDContext";
 
-const WorkerListItemContent = ({
-  worker,
-  openWorkerForm,
-  openDeleteConfirm
-}) => (
-  <>
-    <div className="worker__photo">
-      {worker.photoId ? (
-        <img src={`${API_URL}/files/${worker.photoId}`} alt="user" />
-      ) : null}
-    </div>
-    <div className="worker__info">
-      <div className="worker__name">
-        {worker.name} {worker.surname}{" "}
-        <span className="worker__username">@{worker.userName}</span>
-      </div>
-      <p className="worker__notes">{worker.notes}</p>
-      <div className="worker__email">{worker.email}</div>
-    </div>
-    <div className="worker__actions">
-      <Button className="is-light" onClick={() => openWorkerForm(worker)}>
-        <span className="icon is-small">
-          <i className="material-icons">edit</i>
-        </span>
-      </Button>
-      <Button className="is-light" onClick={() => openDeleteConfirm(worker)}>
-        <span className="icon is-small">
-          <i className="material-icons">delete</i>
-        </span>
-      </Button>
-    </div>
-  </>
-);
-
-function WorkerListItem(props) {
-  const { worker } = props;
-
+function WorkerListItem({ worker, openWorkerForm, openDeleteConfirm }) {
   const { floorsCRUD } = useContext(CRUDContext);
-  const floor =
+  const workerFloor =
     worker.floorId &&
+    floorsCRUD.store &&
     floorsCRUD.store.find(floor => worker.floorId === floor.id);
-  const content = <WorkerListItemContent {...props} />;
 
-  if (floor) {
-    return (
-      <li className="worker worker--on-map">
-        <Link
-          to={{
-            pathname: `/map/${floor.officeId}/${floor.id}`,
-            search: `?username=${worker.userName}`
-          }}
-        >
-          {content}
-        </Link>
-      </li>
-    );
-  }
-
-  return <li className="worker">{content}</li>;
+  return (
+    <li className={`worker${" worker--on-map"}`}>
+      <div className="worker__photo">
+        {worker.photoId ? (
+          <img src={`${API_URL}/files/${worker.photoId}`} alt="user" />
+        ) : null}
+      </div>
+      <div className="worker__info">
+        <div className="worker__name">
+          {worker.name} {worker.surname}{" "}
+          <span className="worker__username">@{worker.userName}</span>
+        </div>
+        <p className="worker__notes">{worker.notes}</p>
+        <div className="worker__email">{worker.email}</div>
+      </div>
+      <div className="worker__actions">
+        {workerFloor && (
+          <Link
+            className="button is-light"
+            to={{
+              pathname: `/map/${workerFloor.officeId}/${workerFloor.id}`,
+              search: `?username=${worker.userName}`
+            }}
+          >
+            <span className="icon is-small">
+              <i className="material-icons">my_location</i>
+            </span>
+          </Link>
+        )}
+        <Button className="is-light" onClick={() => openWorkerForm(worker)}>
+          <span className="icon is-small">
+            <i className="material-icons">edit</i>
+          </span>
+        </Button>
+        <Button className="is-light" onClick={() => openDeleteConfirm(worker)}>
+          <span className="icon is-small">
+            <i className="material-icons">delete</i>
+          </span>
+        </Button>
+      </div>
+    </li>
+  );
 }
 
 WorkerListItem.propTypes = {
