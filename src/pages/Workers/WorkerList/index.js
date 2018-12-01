@@ -73,7 +73,11 @@ function WorkerList({ workers }) {
           } ${workerSelected.surname}?`}
         />
       ) : null}
-      <Button isColor="primary" onClick={() => openWorkerForm()}>
+      <Button
+        className="add-worker"
+        isColor="primary"
+        onClick={() => openWorkerForm()}
+      >
         Create new worker
       </Button>
     </>

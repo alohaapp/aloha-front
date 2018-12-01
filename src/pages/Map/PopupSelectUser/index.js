@@ -37,6 +37,11 @@ function PopupSelectUser({ close, workstation, workstationsCRUD }) {
     setFilteredList(filteredWorkers);
   };
 
+  const deleteWorkstation = () => {
+    workstationsCRUD.del(workstation.id);
+    close();
+  };
+
   if (isNewUser) {
     // TODO: move to a component
     return (
@@ -80,6 +85,7 @@ function PopupSelectUser({ close, workstation, workstationsCRUD }) {
       <span className="popup-select-user__heading">Assign user</span>
       <span onClick={() => setIsNewUser(true)}>New user</span>
       <span onClick={() => setIsExistentUser(true)}>Existent user</span>
+      <span onClick={deleteWorkstation}>Delete workstation</span>
     </div>
   );
 }

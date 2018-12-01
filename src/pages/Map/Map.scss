@@ -1,9 +1,33 @@
 @import "../../styles/colors.scss";
 
-.office-info {
+.office-selector {
   display: flex;
   align-items: center;
   margin-bottom: 8px;
+  width: 100%;
+
+  .Dropdown-button {
+    cursor: pointer;
+
+    i {
+      vertical-align: bottom;
+    }
+  }
+
+  .dropdown-menu {
+    width: 240px;
+  }
+
+  .dropdown-menu .dropdown-item {
+    a {
+      color: $link;
+      font-weight: 500;
+    }
+  }
+
+  .office-info__selector {
+    width: 100%;
+  }
 
   .tag {
     background: $light-text;
@@ -22,29 +46,14 @@
     color: $light-text;
   }
 
-  button {
+  > button {
     margin-left: auto;
   }
 }
 
-.office-selector {
+.office-info {
   margin-bottom: 16px;
   font-size: 1.125rem;
-
-  .Dropdown-button {
-    cursor: pointer;
-
-    i {
-      vertical-align: bottom;
-    }
-  }
-
-  .dropdown-menu .dropdown-item {
-    a {
-      color: $link;
-      font-weight: 500;
-    }
-  }
 }
 
 .floors {
