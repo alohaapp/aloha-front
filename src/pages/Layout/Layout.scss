@@ -7,7 +7,7 @@
   height: 100vh;
   overflow: hidden;
 
-  &.cargando {
+  &.loading {
     &:after {
       position: absolute;
       z-index: 6;
