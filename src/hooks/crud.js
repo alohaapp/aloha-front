@@ -19,7 +19,13 @@ import MessageContext from "../components/MessageContext";
 import {
   WORKER_CREATED_OK,
   FLOOR_CREATED_OK,
-  OFFICE_CREATED_OK
+  OFFICE_CREATED_OK,
+  WORKER_UPDATED_OK,
+  FLOOR_UPDATED_OK,
+  OFFICE_UPDATED_OK,
+  WORKER_DELETED_OK,
+  FLOOR_DELETED_OK,
+  OFFICE_DELETED_OK
 } from "../constants";
 
 const CREATE = "CREATE";
@@ -108,17 +114,19 @@ export default function createCRUDHook(entityEndpoint) {
           switch (endpointType) {
             case "Workers":
               setMessage(WORKER_CREATED_OK);
+              setIsVisible(true);
               break;
             case "Floors":
               setMessage(FLOOR_CREATED_OK);
+              setIsVisible(true);
               break;
             case "Offices":
               setMessage(OFFICE_CREATED_OK);
+              setIsVisible(true);
               break;
             default:
-              return setMessage(`OK`);
+              break;
           }
-          setIsVisible(true);
           dispatch({ type: CREATE, payload: response });
         })
         .catch(error => {
@@ -147,6 +155,23 @@ export default function createCRUDHook(entityEndpoint) {
         options: { body: JSON.stringify(entity) }
       })
         .then(response => {
+          const endpointType = endpoint.substring(1);
+          switch (endpointType) {
+            case "Workers":
+              setMessage(WORKER_UPDATED_OK);
+              setIsVisible(true);
+              break;
+            case "Floors":
+              setMessage(FLOOR_UPDATED_OK);
+              setIsVisible(true);
+              break;
+            case "Offices":
+              setMessage(OFFICE_UPDATED_OK);
+              setIsVisible(true);
+              break;
+            default:
+              break;
+          }
           dispatch({ type: UPDATE, payload: response });
         })
         .catch(error => {
@@ -159,6 +184,23 @@ export default function createCRUDHook(entityEndpoint) {
       dispatch({ type: LOADING, payload: true });
       del({ url: `${endpoint}/${id}` })
         .then(() => {
+          const endpointType = endpoint.substring(1);
+          switch (endpointType) {
+            case "Workers":
+              setMessage(WORKER_DELETED_OK);
+              setIsVisible(true);
+              break;
+            case "Floors":
+              setMessage(FLOOR_DELETED_OK);
+              setIsVisible(true);
+              break;
+            case "Offices":
+              setMessage(OFFICE_DELETED_OK);
+              setIsVisible(true);
+              break;
+            default:
+              break;
+          }
           dispatch({ type: DELETE, payload: id });
         })
         .catch(error => {
