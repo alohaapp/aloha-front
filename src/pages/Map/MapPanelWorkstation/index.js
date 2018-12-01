@@ -1,13 +1,15 @@
 import "./MapPanelWorkstation.scss";
 
 import React, { useState, useContext } from "react";
+import PropTypes from "prop-types";
 import { Button } from "bloomer";
 import CRUDContext from "../../../components/CRUDContext";
 import PopupSelectUser from "../PopupSelectUser";
 import MapPanelWorkstationWorkerDetail from "../MapPanelWorkstationWorkerDetail";
 import { API_URL } from "../../../constants";
+import Person from "../../../assets/img/person.svg";
 
-function MapPanelWorkstation({ workstation }) {
+function MapPanelWorkstation({ workstation, workstationsCRUD }) {
   const [isPopupOpened, setIsPopupOpened] = useState(false);
   const [isWorkerDetailOpened, setIsWorkerDetailOpened] = useState(false);
   const { workersCRUD } = useContext(CRUDContext);
@@ -45,7 +47,11 @@ function MapPanelWorkstation({ workstation }) {
         <img
           onClick={() => toggleWorkerDetail()}
           className="assigned-worker-photo"
-          src={`${API_URL}/files/${assignedWorker.photoId}`}
+          src={
+            assignedWorker.photoId
+              ? `${API_URL}/files/${assignedWorker.photoId}`
+              : Person
+          }
           alt="user"
         />
       ) : (
@@ -55,7 +61,11 @@ function MapPanelWorkstation({ workstation }) {
       )}
 
       {isPopupOpened ? (
-        <PopupSelectUser close={closePopup} workstation={workstation} />
+        <PopupSelectUser
+          close={closePopup}
+          workstation={workstation}
+          workstationsCRUD={workstationsCRUD}
+        />
       ) : null}
 
       {isWorkerDetailOpened ? (
@@ -63,10 +73,16 @@ function MapPanelWorkstation({ workstation }) {
           close={closeWorkerDetail}
           workstation={workstation}
           assignedWorker={assignedWorker}
+          workstationsCRUD={workstationsCRUD}
         />
       ) : null}
     </div>
   );
 }
+
+MapPanelWorkstation.propTypes = {
+  workstation: PropTypes.object.isRequired,
+  workstationsCRUD: PropTypes.object.isRequired
+};
 
 export default MapPanelWorkstation;

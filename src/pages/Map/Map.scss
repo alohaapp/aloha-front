@@ -237,6 +237,11 @@
   justify-content: center;
   color: $dark-purple;
 
+  p {
+    // Alex
+    cursor: pointer;
+  }
+
   p:before {
     content: "";
     background: url(../../assets/img/layers.svg) no-repeat center center;

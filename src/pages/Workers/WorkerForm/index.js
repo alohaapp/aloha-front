@@ -1,8 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { ErrorMessage, Field, Form } from "formik";
-import { Button, Label } from "bloomer";
+import { Button, Label, ModalCardFooter } from "bloomer";
 
-export default function(props) {
+function WorkerForm({ closeDialog, isModal }) {
   const ErrorMessageComponent = ({ errorMessage }) => (
     <p className="help is-danger">{errorMessage} </p>
   );
@@ -72,9 +73,32 @@ export default function(props) {
           placeholder="Notes"
         />
       </div>
-      <Button type="submit" isColor="primary">
-        Submit
-      </Button>
+      {isModal ? (
+        <ModalCardFooter>
+          <Button className="is-light" onClick={closeDialog}>
+            Cancel
+          </Button>
+          <Button type="submit" isColor="primary">
+            Submit
+          </Button>
+        </ModalCardFooter>
+      ) : (
+        <>
+          <Button className="is-light" onClick={closeDialog}>
+            Cancel
+          </Button>
+          <Button type="submit" isColor="primary">
+            Submit
+          </Button>
+        </>
+      )}
     </Form>
   );
 }
+
+WorkerForm.propTypes = {
+  closeDialog: PropTypes.func.isRequired,
+  isModal: PropTypes.bool
+};
+
+export default WorkerForm;

@@ -9,7 +9,7 @@ import useClickOutside from "../../../hooks/useClickOutside";
 import WorkerFormContainer from "../../Workers/WorkerFormContainer";
 import PopupSelectUserWorkerPhoto from "../PopupSelectUserWorkerPhoto";
 
-function PopupSelectUser({ close, workstation }) {
+function PopupSelectUser({ close, workstation, workstationsCRUD }) {
   const { workersCRUD } = useContext(CRUDContext);
   const workers = workersCRUD.store;
 
@@ -50,26 +50,34 @@ function PopupSelectUser({ close, workstation }) {
     // TODO: move to a component
     return (
       <div className="popup-select-user existent-user" ref={ref}>
-        <span>User</span>
-        {filteredList.map(worker => (
-          <PopupSelectUserWorkerPhoto
-            worker={worker}
-            key={worker.id}
-            closePopup={close}
-            workstation={workstation}
-          />
-        ))}
-        <div className="search">
-          <i className="material-icons">search</i>
-          <Input autoFocus onInput={filterWorkers} type="text" />
+        <div>
+          <div className="search">
+            <i className="material-icons">search</i>
+            <Input autoFocus onInput={filterWorkers} type="text" />
+          </div>
+          <i onClick={close} className="material-icons md-18 close">
+            cancel
+          </i>
         </div>
+
+        {filteredList.length > 0
+          ? filteredList.map(worker => (
+              <PopupSelectUserWorkerPhoto
+                worker={worker}
+                key={worker.id}
+                closePopup={close}
+                workstation={workstation}
+                workstationsCRUD={workstationsCRUD}
+              />
+            ))
+          : "There are no results."}
       </div>
     );
   }
 
   return (
     <div className="popup-select-user" ref={ref}>
-      <span class="popup-select-user__heading">Assign user</span>
+      <span className="popup-select-user__heading">Assign user</span>
       <span onClick={() => setIsNewUser(true)}>New user</span>
       <span onClick={() => setIsExistentUser(true)}>Existent user</span>
     </div>
@@ -78,7 +86,8 @@ function PopupSelectUser({ close, workstation }) {
 
 PopupSelectUser.propTypes = {
   close: PropTypes.func.isRequired,
-  workstation: PropTypes.object.isRequired
+  workstation: PropTypes.object.isRequired,
+  workstationsCRUD: PropTypes.object.isRequired
 };
 
 export default PopupSelectUser;
