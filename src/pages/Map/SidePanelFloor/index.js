@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "bloomer";
 import SidePanelFloorEdit from "../SidePanelFloorEdit";
 import Confirm from "../../../components/Confirm";
+import FilterContext from "../../../components/FilterContext";
 
 const SidePanelFloor = ({ floor, active, updateFloor, deleteFloor }) => {
   const [editing, setEditing] = useState(false);
   const [isDeleteConfirmOpened, setIsDeleteConfirmOpened] = useState(false);
+
+  const { workers, search, username } = useContext(FilterContext);
+
+  const isFilter = workers && (search || username);
+  const foundCount =
+    isFilter && workers.filter(worker => worker.floorId === floor.id).length;
 
   const confirmDelete = () => {
     deleteFloor(floor.id);
@@ -23,7 +30,14 @@ const SidePanelFloor = ({ floor, active, updateFloor, deleteFloor }) => {
       onCancel={() => setEditing(false)}
     />
   ) : (
-    <div className="SidePanelFloor">
+    <div
+      className={`SidePanelFloor ${
+        !isFilter || foundCount ? "found" : "not-found"
+      }`}
+    >
+      {isFilter && foundCount ? (
+        <span className="floor-founded">{foundCount}</span>
+      ) : null}
       <Link
         className={`floor${active ? " floor--active" : ""}`}
         to={`/map/${floor.officeId}/${floor.id}`}
