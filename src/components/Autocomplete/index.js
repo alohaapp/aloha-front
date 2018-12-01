@@ -27,6 +27,7 @@ function Autocomplete({ children, onChange, value, onLeave }) {
             <input
               type="text"
               value={value}
+              placeholder="Select user"
               onChange={onChange}
               onFocus={() => {
                 setActive(true);

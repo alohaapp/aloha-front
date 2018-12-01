@@ -23,6 +23,7 @@ const FilterToolbar = ({ isMap }) => {
       <div className="filter-text">
         <input
           type="text"
+          placeholder="Search"
           value={searchText}
           onChange={event => {
             setSearchText(event.target.value);
@@ -61,7 +62,7 @@ const FilterToolbar = ({ isMap }) => {
                           : FallbackImage
                       }
                     />
-                    {worker.userName}
+                    <span>{worker.userName}</span>
                   </Link>
                 </div>
               ))) ||

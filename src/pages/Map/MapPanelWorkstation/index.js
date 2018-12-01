@@ -9,7 +9,12 @@ import MapPanelWorkstationWorkerDetail from "../MapPanelWorkstationWorkerDetail"
 import { API_URL } from "../../../constants";
 import Person from "../../../assets/img/person.svg";
 
-function MapPanelWorkstation({ workstation, workstationsCRUD }) {
+function MapPanelWorkstation({
+  workstation,
+  workstationsCRUD,
+  isFiltered,
+  found
+}) {
   const [isPopupOpened, setIsPopupOpened] = useState(false);
   const [isWorkerDetailOpened, setIsWorkerDetailOpened] = useState(false);
   const { workersCRUD } = useContext(CRUDContext);
@@ -42,7 +47,12 @@ function MapPanelWorkstation({ workstation, workstationsCRUD }) {
   };
 
   return (
-    <div className="workstation" style={positionStyle}>
+    <div
+      className={`workstation${
+        isFiltered ? ` ${found ? "found" : "not-found"}` : ""
+      }`}
+      style={positionStyle}
+    >
       {assignedWorker ? (
         <img
           onClick={() => toggleWorkerDetail()}

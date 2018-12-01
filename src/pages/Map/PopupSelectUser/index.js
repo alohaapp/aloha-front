@@ -6,8 +6,8 @@ import { Input } from "bloomer";
 import CRUDContext from "../../../components/CRUDContext";
 import "../../../hooks/useClickOutside";
 import useClickOutside from "../../../hooks/useClickOutside";
-import WorkerFormContainer from "../../Workers/WorkerFormContainer";
 import PopupSelectUserWorkerPhoto from "../PopupSelectUserWorkerPhoto";
+import WorkerDialog from "../../Workers/WorkerDialog";
 
 function PopupSelectUser({ close, workstation, workstationsCRUD }) {
   const { workersCRUD } = useContext(CRUDContext);
@@ -43,11 +43,12 @@ function PopupSelectUser({ close, workstation, workstationsCRUD }) {
   };
 
   if (isNewUser) {
-    // TODO: move to a component
     return (
-      <div className="popup-select-user" ref={ref}>
-        <WorkerFormContainer worker={{}} />
-      </div>
+      <WorkerDialog
+        worker={{}}
+        isActive={isNewUser}
+        closeDialog={() => setIsNewUser(false)}
+      />
     );
   }
 
@@ -55,27 +56,29 @@ function PopupSelectUser({ close, workstation, workstationsCRUD }) {
     // TODO: move to a component
     return (
       <div className="popup-select-user existent-user" ref={ref}>
-        <div>
+        <div className="existent-user__form">
           <div className="search">
-            <i className="material-icons">search</i>
-            <Input autoFocus onInput={filterWorkers} type="text" />
+            <Input
+              placeholder="Search user"
+              autoFocus
+              onInput={filterWorkers}
+              type="text"
+            />
           </div>
-          <i onClick={close} className="material-icons md-18 close">
-            cancel
-          </i>
         </div>
-
-        {filteredList.length > 0
-          ? filteredList.map(worker => (
-              <PopupSelectUserWorkerPhoto
-                worker={worker}
-                key={worker.id}
-                closePopup={close}
-                workstation={workstation}
-                workstationsCRUD={workstationsCRUD}
-              />
-            ))
-          : "There are no results."}
+        <div className="existent-user__list">
+          {filteredList.length > 0
+            ? filteredList.map(worker => (
+                <PopupSelectUserWorkerPhoto
+                  worker={worker}
+                  key={worker.id}
+                  closePopup={close}
+                  workstation={workstation}
+                  workstationsCRUD={workstationsCRUD}
+                />
+              ))
+            : "There are no results."}
+        </div>
       </div>
     );
   }
