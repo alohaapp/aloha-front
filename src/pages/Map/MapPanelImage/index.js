@@ -44,7 +44,13 @@ function generateWorkstation(event) {
   };
 }
 
-function MapPanelImage({ alt, image, workstations, onCreateWorkstation }) {
+function MapPanelImage({
+  alt,
+  image,
+  workstations,
+  onCreateWorkstation,
+  workstationsCRUD
+}) {
   return (
     <div className="map-panel-image">
       <img
@@ -56,7 +62,11 @@ function MapPanelImage({ alt, image, workstations, onCreateWorkstation }) {
         src={`${API_URL}/files/${image}`}
       />
       {workstations.map(workstation => (
-        <MapPanelWorkstation key={workstation.id} workstation={workstation} />
+        <MapPanelWorkstation
+          key={workstation.id}
+          workstation={workstation}
+          workstationsCRUD={workstationsCRUD}
+        />
       ))}
     </div>
   );

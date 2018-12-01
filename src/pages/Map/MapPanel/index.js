@@ -31,6 +31,7 @@ function MapPanel({ floor }) {
               onCreateWorkstation={workstation =>
                 workstationsCRUD.create(workstation)
               }
+              workstationsCRUD={workstationsCRUD}
             />
           )
         ) : (
