@@ -54,7 +54,7 @@ function MapPanelImage({
 }) {
   const { workers } = useContext(FilterContext);
   const isFoundedWorker = workerId => {
-    if (workerId) {
+    if (workerId && workers) {
       return workers.find(worker => worker.id === workerId);
     }
     return false;
