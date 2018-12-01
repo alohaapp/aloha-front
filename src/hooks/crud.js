@@ -124,7 +124,7 @@ const actionList = (dispatch, endpoint) => entity => {
 
 export default function createCRUDHook(entityEndpoint) {
   const initialState = {
-    store: [],
+    store: null,
     loading: false
   };
   return function useCRUD() {
