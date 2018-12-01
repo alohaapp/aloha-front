@@ -27,6 +27,21 @@ function WorkerForm({ closeDialog, isModal }) {
         </div>
         <div className="field">
           <Field
+            placeholder="Password"
+            className="input"
+            type="text"
+            name="password"
+            placeholder="Password"
+          />
+          <ErrorMessage
+            name="password"
+            render={errorMessage => (
+              <ErrorMessageComponent errorMessage={errorMessage} />
+            )}
+          />
+        </div>
+        <div className="field">
+          <Field
             className="input"
             placeholder="Name"
             type="text"

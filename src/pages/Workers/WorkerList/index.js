@@ -45,7 +45,6 @@ function WorkerList({ workers }) {
         <ul className="workers-list">
           {workers.map(worker => (
             <WorkerListItem
-              key={worker.id}
               openWorkerForm={openWorkerForm}
               openDeleteConfirm={openDeleteConfirm}
               worker={worker}
