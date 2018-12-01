@@ -26,7 +26,9 @@ function PopupSelectUserWorkerPhoto({
       onClick={assignWorkerToWorkstation}
     >
       {worker.workstationId ? (
-        <i className="material-icons md-18">check_circle</i>
+        <i className="popup-select-user-worker-mark material-icons md-18">
+          check_circle
+        </i>
       ) : null}
       <img
         className="worker-photo"

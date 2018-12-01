@@ -7,9 +7,7 @@ import Autocomplete from "../../../components/Autocomplete";
 import FallbackImage from "../../../assets/img/fallback.jpg";
 
 const FilterToolbar = ({ isMap }) => {
-  const { workers, workersSearch, search, username } = useContext(
-    FilterContext
-  );
+  const { workersSearch, search, username } = useContext(FilterContext);
   const [searchText, setSearchText] = useState(search);
   const [usernameText, setUsernameText] = useState(username);
   useEffect(

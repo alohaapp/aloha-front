@@ -6,7 +6,13 @@ import * as Yup from "yup";
 import WorkerForm from "../WorkerForm";
 import WorkerImageDropzone from "../WorkerImageDropzone";
 
-function WorkerFormContainer({ worker, closeDialog, isModal }) {
+function WorkerFormContainer({
+  worker,
+  closeDialog,
+  isModal,
+  isInMap,
+  onUnassign
+}) {
   const [workerPhoto, setWorkerPhoto] = useState(null);
   const initialValue = {
     userName: worker.userName || "",
@@ -52,7 +58,13 @@ function WorkerFormContainer({ worker, closeDialog, isModal }) {
         onSubmit={onSubmit}
       >
         {props => (
-          <WorkerForm {...props} closeDialog={closeDialog} isModal={isModal} />
+          <WorkerForm
+            {...props}
+            closeDialog={closeDialog}
+            isModal={isModal}
+            isInMap={isInMap}
+            onUnassign={onUnassign}
+          />
         )}
       </Formik>
     </>
@@ -62,7 +74,9 @@ function WorkerFormContainer({ worker, closeDialog, isModal }) {
 WorkerFormContainer.propTypes = {
   worker: PropTypes.object.isRequired,
   closeDialog: PropTypes.func.isRequired,
-  isModal: PropTypes.bool
+  isModal: PropTypes.bool,
+  isInMap: PropTypes.bool,
+  onUnassign: PropTypes.func
 };
 
 export default WorkerFormContainer;

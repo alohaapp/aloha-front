@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { ErrorMessage, Field, Form } from "formik";
 import { Button, ModalCardFooter } from "bloomer";
 
-function WorkerForm({ closeDialog, isModal }) {
+function WorkerForm({ closeDialog, isModal, isInMap, onUnassign }) {
   const ErrorMessageComponent = ({ errorMessage }) => (
     <p className="help is-danger">{errorMessage} </p>
   );
@@ -16,7 +16,6 @@ function WorkerForm({ closeDialog, isModal }) {
             className="input"
             type="text"
             name="userName"
-            placeholder="Username"
           />
           <ErrorMessage
             name="userName"
@@ -26,13 +25,7 @@ function WorkerForm({ closeDialog, isModal }) {
           />
         </div>
         <div className="field">
-          <Field
-            className="input"
-            placeholder="Name"
-            type="text"
-            name="name"
-            placeholder="Name"
-          />
+          <Field className="input" placeholder="Name" type="text" name="name" />
           <ErrorMessage
             name="name"
             render={errorMessage => (
@@ -46,7 +39,6 @@ function WorkerForm({ closeDialog, isModal }) {
             placeholder="Surname"
             type="text"
             name="surname"
-            placeholder="Surname"
           />
           <ErrorMessage
             name="surname"
@@ -61,7 +53,6 @@ function WorkerForm({ closeDialog, isModal }) {
             placeholder="Email"
             type="email"
             name="email"
-            placeholder="Email"
           />
           <ErrorMessage
             name="email"
@@ -87,6 +78,7 @@ function WorkerForm({ closeDialog, isModal }) {
           <Button type="submit" isColor="primary">
             Submit
           </Button>
+          <Button onClick={onUnassign}>Unassign</Button>
         </ModalCardFooter>
       ) : (
         <>
@@ -104,7 +96,9 @@ function WorkerForm({ closeDialog, isModal }) {
 
 WorkerForm.propTypes = {
   closeDialog: PropTypes.func.isRequired,
-  isModal: PropTypes.bool
+  isModal: PropTypes.bool,
+  isInMap: PropTypes.bool,
+  onUnassign: PropTypes.func
 };
 
 export default WorkerForm;

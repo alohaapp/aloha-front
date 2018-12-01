@@ -2,11 +2,26 @@
 
 .popup-select-user-worker-photo-container {
   display: inline-block;
+  width: 40px;
+  height: 40px;
   border-radius: 4px;
-  margin: 0 8px 8px 0;
+  margin: 8px;
+  position: relative;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.1);
 
-  .material-icons {
+  span {
+    display: none;
+  }
+
+  .popup-select-user-worker-mark {
     color: $link;
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    font-size: 0.875rem;
+    background: $primary;
+    border-radius: 50%;
   }
 
   img {

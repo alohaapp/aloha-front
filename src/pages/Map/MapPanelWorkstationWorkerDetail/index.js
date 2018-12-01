@@ -1,10 +1,9 @@
 import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
-import { Button } from "bloomer";
 import "../../../hooks/useClickOutside";
 import Confirm from "../../../components/Confirm";
 import useClickOutside from "../../../hooks/useClickOutside";
-import WorkerFormContainer from "../../Workers/WorkerFormContainer";
+import WorkerDialog from "../../Workers/WorkerDialog";
 
 export function MapPanelWorkstationWorkerDetail(props) {
   const { close, workstation, assignedWorker, workstationsCRUD } = props;
@@ -40,14 +39,13 @@ export function MapPanelWorkstationWorkerDetail(props) {
           content={`Are you sure you want to delete the workstation?`}
         />
       ) : (
-        <div ref={ref}>
-          <WorkerFormContainer
-            worker={assignedWorker}
-            closeDialog={closeConfirm}
-          />
-          <Button onClick={unnasign}>Unassign</Button>
-          <Button onClick={() => setIsConfirmOpened(true)}>Delete</Button>
-        </div>
+        <WorkerDialog
+          worker={assignedWorker}
+          closeDialog={close}
+          isActive={!isConfirmOpened}
+          onUnassign={unnasign}
+          isInMap
+        />
       )}
     </>
   );
