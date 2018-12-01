@@ -60,14 +60,16 @@ function PopupSelectUser({ close, workstation }) {
           </i>
         </div>
 
-        {filteredList.map(worker => (
-          <PopupSelectUserWorkerPhoto
-            worker={worker}
-            key={worker.id}
-            closePopup={close}
-            workstation={workstation}
-          />
-        ))}
+        {filteredList.length > 0
+          ? filteredList.map(worker => (
+              <PopupSelectUserWorkerPhoto
+                worker={worker}
+                key={worker.id}
+                closePopup={close}
+                workstation={workstation}
+              />
+            ))
+          : "There are no results."}
       </div>
     );
   }
