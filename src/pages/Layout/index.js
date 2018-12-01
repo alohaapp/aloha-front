@@ -25,9 +25,11 @@ function Layout(props) {
       </Columns>
 
       <Columns className="main-container is-8">
-        <Column className="sidebar" isSize="1/4">
-          {props.sidebar}
-        </Column>
+        {props.sidebar ? (
+          <Column className="sidebar" isSize="1/4">
+            {props.sidebar}
+          </Column>
+        ) : null}
         <Column className="content">
           <FilterToolbar isMap={Boolean(props.isMap)} filters={props.filters} />
           {props.content}

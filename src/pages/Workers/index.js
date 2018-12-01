@@ -14,11 +14,9 @@ function Workers({ filters }) {
     <h2>Loading...</h2>
   );
 
-  const sidebar = <div>SIDEBAR</div>;
-
   return (
     <div className="workers">
-      <Layout sidebar={sidebar} content={content} filters={filters} />
+      <Layout content={content} filters={filters} />
     </div>
   );
 }

@@ -44,7 +44,7 @@ function WorkerFormContainer({ worker, closeDialog, isModal }) {
   return (
     <>
       <div>
-        <WorkerImageDropzone onDrop={getPhoto} />
+        <WorkerImageDropzone onDrop={getPhoto} workerPhotoId={worker.photoId} />
       </div>
       <Formik
         initialValues={initialValue}
