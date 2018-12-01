@@ -5,6 +5,7 @@ import { Button } from "bloomer";
 import CRUDContext from "../../../components/CRUDContext";
 import PopupSelectUser from "../PopupSelectUser";
 import MapPanelWorkstationWorkerDetail from "../MapPanelWorkstationWorkerDetail";
+import { API_URL } from "../../../constants";
 
 function MapPanelWorkstation({ workstation }) {
   const [isPopupOpened, setIsPopupOpened] = useState(false);
@@ -44,7 +45,7 @@ function MapPanelWorkstation({ workstation }) {
         <img
           onClick={() => toggleWorkerDetail()}
           className="assigned-worker-photo"
-          src={assignedWorker.photoUrl}
+          src={`${API_URL}/files/${assignedWorker.photoId}`}
           alt="user"
         />
       ) : (
