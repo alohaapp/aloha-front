@@ -47,8 +47,14 @@ const FilterToolbar = ({ isMap }) => {
             setUsernameText(username);
           }}
         >
-          {(workersSearch &&
-            workersSearch
+          {(workersSearch && [
+            <div key={"clear"} className="filter-username-dropdown-clear">
+              <Link to={{ search: "" }}>
+                <i className="material-icons md-18">remove</i>
+                <span>Clear</span>
+              </Link>
+            </div>,
+            ...workersSearch
               .filter(worker =>
                 worker.userName
                   .toLowerCase()
@@ -68,7 +74,8 @@ const FilterToolbar = ({ isMap }) => {
                     <span>{worker.userName}</span>
                   </Link>
                 </div>
-              ))) ||
+              ))
+          ]) ||
             []}
         </Autocomplete>
       </div>
