@@ -50,28 +50,16 @@ function WorkerList({ workers }) {
   return (
     <>
       {workers.length > 0 ? (
-        <Table className="workers-list">
-          <thead>
-            <tr>
-              <th>{WORKER_PHOTO_URL}</th>
-              <th>{WORKER_USERNAME}</th>
-              <th>{WORKER_NAME}</th>
-              <th>{WORKER_EMAIL}</th>
-              <th>{WORKER_NOTES}</th>
-              <th>{WORKER_ACTIONS}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {workers.map(worker => (
-              <WorkerListItem
-                key={worker.id}
-                openWorkerForm={openWorkerForm}
-                openDeleteConfirm={openDeleteConfirm}
-                worker={worker}
-              />
-            ))}
-          </tbody>
-        </Table>
+        <ul className="workers-list">
+          {workers.map(worker => (
+            <WorkerListItem
+              key={worker.id}
+              openWorkerForm={openWorkerForm}
+              openDeleteConfirm={openDeleteConfirm}
+              worker={worker}
+            />
+          ))}
+        </ul>
       ) : null}
 
       {isDialogOpened ? (

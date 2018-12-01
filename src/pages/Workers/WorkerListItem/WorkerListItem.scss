@@ -1,0 +1,52 @@
+@import "../../../styles/colors.scss";
+
+.worker {
+  display: flex;
+  padding: 16px 0;
+  border-bottom: 1px solid $border;
+
+  .worker__photo {
+    width: 32px;
+    height: 32px;
+    margin-right: 20px;
+    border-radius: 50px;
+    background-image: url(../../../assets/img/person.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 24px 24px;
+    background-color: $grey;
+
+    img {
+      border-radius: 50px;
+    }
+  }
+
+  .worker__info {
+    width: auto;
+
+    .worker__name {
+      font-size: 1rem;
+      font-weight: 500;
+
+      .worker__username {
+        font-size: 0.875rem;
+        color: $disabled-text;
+      }
+    }
+
+    .worker__notes {
+      margin: 0 0 2px 0;
+    }
+
+    .worker__email {
+      font-weight: 700;
+      font-size: 0.75rem;
+    }
+  }
+
+  .worker__actions {
+    margin-left: auto;
+    width: 100px;
+    text-align: right;
+  }
+}

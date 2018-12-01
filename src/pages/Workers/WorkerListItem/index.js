@@ -6,23 +6,29 @@ import { Button } from "bloomer";
 
 function WorkerListItem({ worker, openWorkerForm, openDeleteConfirm }) {
   return (
-    <tr className="WorkerList">
-      <td>{worker.photoUrl}</td>
-      <td>{worker.userName}</td>
-      <td>
-        {worker.name} {worker.surname}
-      </td>
-      <td>{worker.email}</td>
-      <td>{worker.notes}</td>
-      <td>
-        <Button onClick={() => openWorkerForm(worker)}>
-          <i className="material-icons">edit</i>
+    <li className="worker">
+      <div className="worker__photo">{worker.photoUrl}</div>
+      <div className="worker__info">
+        <div className="worker__name">
+          {worker.name} {worker.surname}{" "}
+          <span className="worker__username">@{worker.userName}</span>
+        </div>
+        <p className="worker__notes">{worker.notes}</p>
+        <div className="worker__email">{worker.email}</div>
+      </div>
+      <div className="worker__actions">
+        <Button className="is-light" onClick={() => openWorkerForm(worker)}>
+          <span class="icon is-small">
+            <i className="material-icons">edit</i>
+          </span>
         </Button>
-        <Button onClick={() => openDeleteConfirm(worker)}>
-          <i className="material-icons">delete</i>
+        <Button className="is-light" onClick={() => openDeleteConfirm(worker)}>
+          <span class="icon is-small">
+            <i className="material-icons">delete</i>
+          </span>
         </Button>
-      </td>
-    </tr>
+      </div>
+    </li>
   );
 }
 
