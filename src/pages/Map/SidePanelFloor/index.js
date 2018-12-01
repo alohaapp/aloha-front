@@ -39,7 +39,7 @@ const SidePanelFloor = ({ floor, active, updateFloor, deleteFloor }) => {
           </div>
           <div className="floor-actions">
             <Button className="is-light" onClick={() => setEditing(true)}>
-              <span class="icon is-small">
+              <span className="icon is-small">
                 <i className="material-icons md-36">edit</i>
               </span>
             </Button>
@@ -50,7 +50,7 @@ const SidePanelFloor = ({ floor, active, updateFloor, deleteFloor }) => {
                 setIsDeleteConfirmOpened(true);
               }}
             >
-              <span class="icon is-small">
+              <span className="icon is-small">
                 <i className="material-icons md-36">delete</i>
               </span>
             </Button>

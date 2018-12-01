@@ -1,5 +1,4 @@
 import "material-design-icons/iconfont/material-icons.css";
-import QueryString from "query-string";
 import React, { useContext, useEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -11,6 +10,7 @@ import CRUDContext from "./components/CRUDContext";
 import Map from "./pages/Map";
 import Workers from "./pages/Workers";
 import NotFound from "./pages/NotFound";
+import { FilterProvider } from "./components/FilterContext";
 
 export default function() {
   const { officesCRUD, floorsCRUD, workersCRUD } = useContext(CRUDContext);
@@ -29,15 +29,21 @@ export default function() {
 
   const renderMap = ({ match, location }) => {
     return (
-      <Map
-        officeId={+match.params.officeId}
-        floorId={+match.params.floorId}
-        filters={QueryString.parse(location.search)}
-      />
+      <FilterProvider queryString={location.search}>
+        <Map
+          officeId={+match.params.officeId}
+          floorId={+match.params.floorId}
+        />
+      </FilterProvider>
     );
   };
-  const renderWorkwers = ({ location }) => {
-    return <Workers filters={QueryString.parse(location.search)} />;
+
+  const renderWorkers = ({ location }) => {
+    return (
+      <FilterProvider queryString={location.search}>
+        <Workers />
+      </FilterProvider>
+    );
   };
 
   return (
@@ -47,7 +53,7 @@ export default function() {
         <Route exact path="/map" render={renderMap} />
         <Route exact path="/map/:officeId" render={renderMap} />
         <Route exact path="/map/:officeId/:floorId" render={renderMap} />
-        <Route exact path="/workers" component={renderWorkwers} />
+        <Route exact path="/workers" render={renderWorkers} />
         <Route component={NotFound} />
       </Switch>
     </Router>
