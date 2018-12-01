@@ -18,7 +18,7 @@ export default function UserBadge(props) {
         <span>
           {user.name} {user.surname}
         </span>
-        <span>@{user.userName}</span>
+        <span className="user-badge-info__username">@{user.userName}</span>
       </div>
       <div className="user-badge-image">
         <img src={FallbackImage} alt="user" />
