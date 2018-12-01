@@ -106,3 +106,35 @@
     }
   }
 }
+
+.columns.message {
+  color: white;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  z-index: 6;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+
+  .column {
+    padding: 0;
+  }
+
+  .aloha-message {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    background: $primary;
+
+    button {
+      margin-left: auto;
+      background: none;
+      color: $link;
+      border: none;
+      cursor: pointer;
+      outline: none;
+    }
+  }
+}

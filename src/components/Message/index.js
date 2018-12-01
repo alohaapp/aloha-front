@@ -7,14 +7,18 @@ function AlohaMessage() {
   const onClick = () => setIsVisible(false);
 
   return (
-    <div>
+    <>
       {isVisible && (
         <div className="aloha-message">
           {message}
-          <button onClick={onClick}>X</button>
+          <button onClick={onClick}>
+            <span className="icon is-small">
+              <i className="material-icons md-36">close</i>
+            </span>
+          </button>
         </div>
       )}
-    </div>
+    </>
   );
 }
 export default AlohaMessage;
