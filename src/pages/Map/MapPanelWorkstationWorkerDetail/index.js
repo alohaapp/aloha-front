@@ -4,18 +4,12 @@ import { Button } from "bloomer";
 import "../../../hooks/useClickOutside";
 import Confirm from "../../../components/Confirm";
 import useClickOutside from "../../../hooks/useClickOutside";
-import createCRUDHook from "../../../hooks/crud";
 import WorkerFormContainer from "../../Workers/WorkerFormContainer";
 
 export function MapPanelWorkstationWorkerDetail(props) {
-  const { close, workstation, assignedWorker } = props;
+  const { close, workstation, assignedWorker, workstationsCRUD } = props;
 
   const [isConfirmOpened, setIsConfirmOpened] = useState(false);
-
-  const useWorkstations = createCRUDHook(
-    `/floors/${workstation.floorId}/workstations`
-  );
-  const workstationsCRUD = useWorkstations();
 
   const ref = useRef(null);
   useClickOutside(ref, () => close());
@@ -43,7 +37,7 @@ export function MapPanelWorkstationWorkerDetail(props) {
           onConfirm={deleteWorkstation}
           onCancel={() => closeConfirm()}
           title="Delete workstation"
-          content={`Are you sure you want to delete the workerstation?`}
+          content={`Are you sure you want to delete the workstation?`}
         />
       ) : (
         <div ref={ref}>
@@ -62,7 +56,8 @@ export function MapPanelWorkstationWorkerDetail(props) {
 MapPanelWorkstationWorkerDetail.propTypes = {
   close: PropTypes.func.isRequired,
   workstation: PropTypes.object.isRequired,
-  assignedWorker: PropTypes.object.isRequired
+  assignedWorker: PropTypes.object.isRequired,
+  workstationsCRUD: PropTypes.object.isRequired
 };
 
 export default MapPanelWorkstationWorkerDetail;

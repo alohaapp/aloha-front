@@ -9,7 +9,7 @@ import useClickOutside from "../../../hooks/useClickOutside";
 import WorkerFormContainer from "../../Workers/WorkerFormContainer";
 import PopupSelectUserWorkerPhoto from "../PopupSelectUserWorkerPhoto";
 
-function PopupSelectUser({ close, workstation }) {
+function PopupSelectUser({ close, workstation, workstationsCRUD }) {
   const { workersCRUD } = useContext(CRUDContext);
   const workers = workersCRUD.store;
 
@@ -67,6 +67,7 @@ function PopupSelectUser({ close, workstation }) {
                 key={worker.id}
                 closePopup={close}
                 workstation={workstation}
+                workstationsCRUD={workstationsCRUD}
               />
             ))
           : "There are no results."}
@@ -85,7 +86,8 @@ function PopupSelectUser({ close, workstation }) {
 
 PopupSelectUser.propTypes = {
   close: PropTypes.func.isRequired,
-  workstation: PropTypes.object.isRequired
+  workstation: PropTypes.object.isRequired,
+  workstationsCRUD: PropTypes.object.isRequired
 };
 
 export default PopupSelectUser;
