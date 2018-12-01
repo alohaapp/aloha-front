@@ -22,7 +22,12 @@ function Autocomplete({ children, onChange, value }) {
       <Dropdown isActive={active}>
         <DropdownTrigger onClick={toggleActive}>
           <div className="filter-username-trigger">
-            <input type="text" value={value} onChange={onChange} />
+            <input
+              type="text"
+              placeholder="Select user"
+              value={value}
+              onChange={onChange}
+            />
             <i className="material-icons">keyboard_arrow_down</i>
           </div>
         </DropdownTrigger>

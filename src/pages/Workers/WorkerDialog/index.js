@@ -29,8 +29,8 @@ function WorkerDialog({ isActive, closeDialog, worker, isInMap, onUnassign }) {
             worker={worker}
             closeDialog={closeDialog}
             isModal
-            isInMap
-            onUnassign
+            isInMap={isInMap}
+            onUnassign={onUnassign}
           />
         </ModalCardBody>
       </ModalCard>

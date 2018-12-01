@@ -66,6 +66,7 @@ function WorkerFormContainer({
             isModal={isModal}
             isInMap={isInMap}
             onUnassign={onUnassign}
+            isNewWorker={!Boolean(worker && worker.id)}
           />
         )}
       </Formik>

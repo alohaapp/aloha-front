@@ -3,7 +3,13 @@ import PropTypes from "prop-types";
 import { ErrorMessage, Field, Form } from "formik";
 import { Button, ModalCardFooter } from "bloomer";
 
-function WorkerForm({ closeDialog, isModal, isInMap, onUnassign }) {
+function WorkerForm({
+  closeDialog,
+  isModal,
+  isInMap,
+  onUnassign,
+  isNewWorker
+}) {
   const ErrorMessageComponent = ({ errorMessage }) => (
     <p className="help is-danger">{errorMessage} </p>
   );
@@ -96,10 +102,15 @@ function WorkerForm({ closeDialog, isModal, isInMap, onUnassign }) {
           <Button className="is-light" onClick={closeDialog}>
             Cancel
           </Button>
+          {isInMap && !isNewWorker ? (
+            <Button className="is-light" onClick={onUnassign}>
+              Unassign
+            </Button>
+          ) : null}
+
           <Button type="submit" isColor="primary">
             Submit
           </Button>
-          <Button onClick={onUnassign}>Unassign</Button>
         </ModalCardFooter>
       ) : (
         <>
@@ -119,7 +130,8 @@ WorkerForm.propTypes = {
   closeDialog: PropTypes.func.isRequired,
   isModal: PropTypes.bool,
   isInMap: PropTypes.bool,
-  onUnassign: PropTypes.func
+  onUnassign: PropTypes.func,
+  isNewWorker: PropTypes.bool.isRequired
 };
 
 export default WorkerForm;
