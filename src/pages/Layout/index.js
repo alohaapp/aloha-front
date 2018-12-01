@@ -31,7 +31,7 @@ function Layout(props) {
           </Column>
         ) : null}
         <Column className="content">
-          <FilterToolbar isMap={Boolean(props.isMap)} filters={props.filters} />
+          <FilterToolbar isMap={Boolean(props.isMap)} />
           {props.content}
         </Column>
       </Columns>

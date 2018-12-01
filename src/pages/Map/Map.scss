@@ -1,9 +1,33 @@
 @import "../../styles/colors.scss";
 
-.office-info {
+.office-selector {
   display: flex;
   align-items: center;
   margin-bottom: 8px;
+  width: 100%;
+
+  .Dropdown-button {
+    cursor: pointer;
+
+    i {
+      vertical-align: bottom;
+    }
+  }
+
+  .dropdown-menu {
+    width: 240px;
+  }
+
+  .dropdown-menu .dropdown-item {
+    a {
+      color: $link;
+      font-weight: 500;
+    }
+  }
+
+  .office-info__selector {
+    width: 100%;
+  }
 
   .tag {
     background: $light-text;
@@ -27,24 +51,9 @@
   }
 }
 
-.office-selector {
+.office-info {
   margin-bottom: 16px;
   font-size: 1.125rem;
-
-  .Dropdown-button {
-    cursor: pointer;
-
-    i {
-      vertical-align: bottom;
-    }
-  }
-
-  .dropdown-menu .dropdown-item {
-    a {
-      color: $link;
-      font-weight: 500;
-    }
-  }
 }
 
 .floors {
@@ -71,12 +80,13 @@
 
   .floor-actions {
     position: absolute;
-    bottom: 12px;
-    right: 12px;
+    bottom: 8px;
+    right: 8px;
   }
 
   button {
     background: none;
+    width: 28px;
 
     &:hover {
       color: $light-purple;
@@ -161,20 +171,6 @@
     padding: 3px;
     user-select: none;
     background-color: $link;
-
-    /*&:after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border: 4px solid transparent;
-      border-top-color: $link;
-      border-bottom: 0;
-      margin-left: -4px;
-      margin-bottom: -4px;
-    }*/
 
     .material-icons {
       font-size: 16px;
