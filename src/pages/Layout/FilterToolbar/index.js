@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const FilterToolbar = ({ isMap, filters = {} }) => {
   const [searchText, setSearchText] = useState(filters.search);
-  console.log(searchText);
   return (
     <div className="filter-toolbar">
       <div className="filter-text">
