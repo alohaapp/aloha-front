@@ -6,8 +6,8 @@ import { Input } from "bloomer";
 import CRUDContext from "../../../components/CRUDContext";
 import "../../../hooks/useClickOutside";
 import useClickOutside from "../../../hooks/useClickOutside";
-import WorkerFormContainer from "../../Workers/WorkerFormContainer";
 import PopupSelectUserWorkerPhoto from "../PopupSelectUserWorkerPhoto";
+import WorkerDialog from "../../Workers/WorkerDialog";
 
 function PopupSelectUser({ close, workstation, workstationsCRUD }) {
   const { workersCRUD } = useContext(CRUDContext);
@@ -43,11 +43,12 @@ function PopupSelectUser({ close, workstation, workstationsCRUD }) {
   };
 
   if (isNewUser) {
-    // TODO: move to a component
     return (
-      <div className="popup-select-user" ref={ref}>
-        <WorkerFormContainer worker={{}} />
-      </div>
+      <WorkerDialog
+        worker={{}}
+        isActive={isNewUser}
+        closeDialog={() => setIsNewUser(false)}
+      />
     );
   }
 
