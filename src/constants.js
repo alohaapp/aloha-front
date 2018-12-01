@@ -1,4 +1,4 @@
-export const API_URL = "http://ivancea.xyz/api/v1";
+export const API_URL = process.env.ALOHA_API_URL || "http://ivancea.xyz/api/v1";
 export const WORKER_PHOTO_URL = "Avatar";
 export const WORKER_USERNAME = "Username";
 export const WORKER_NAME = "Name";
