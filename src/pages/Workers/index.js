@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
-import CRUDContext from "../../components/CRUDContext";
+import FilterContext from "../../components/FilterContext";
 import WorkerList from "./WorkerList";
 import Layout from "../Layout";
 import "./Workers.scss";
 
-function Workers({ filters }) {
-  const { workersCRUD } = useContext(CRUDContext);
-  const workers = workersCRUD.store;
+function Workers() {
+  const { workers } = useContext(FilterContext);
 
   const content = workers ? (
     <WorkerList workers={workers} />
@@ -16,7 +15,7 @@ function Workers({ filters }) {
 
   return (
     <div className="workers">
-      <Layout content={content} filters={filters} />
+      <Layout content={content} />
     </div>
   );
 }
