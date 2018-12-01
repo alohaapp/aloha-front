@@ -40,7 +40,6 @@ const FilterToolbar = ({ isMap }) => {
             setUsernameText(event.target.value);
           }}
           onLeave={() => {
-            console.log(username);
             setUsernameText(username);
           }}
         >

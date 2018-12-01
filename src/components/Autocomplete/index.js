@@ -30,6 +30,7 @@ function Autocomplete({ children, onChange, value, onLeave }) {
               placeholder="Select user"
               onChange={onChange}
               onFocus={() => {
+                onChange({ target: { value: "" } });
                 setActive(true);
               }}
             />
