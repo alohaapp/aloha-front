@@ -52,7 +52,7 @@ function MapPanelImage({
   onCreateWorkstation,
   workstationsCRUD
 }) {
-  const { workers } = useContext(FilterContext);
+  const { workers, search, username } = useContext(FilterContext);
   const isFoundedWorker = workerId => {
     if (workerId && workers) {
       return workers.find(worker => worker.id === workerId);
@@ -76,6 +76,7 @@ function MapPanelImage({
           workstation={workstation}
           workstationsCRUD={workstationsCRUD}
           found={isFoundedWorker(workstation.workerId)}
+          isFiltered={workers && (search || username)}
         />
       ))}
     </div>
