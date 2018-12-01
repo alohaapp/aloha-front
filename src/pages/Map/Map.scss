@@ -154,6 +154,10 @@
 .workstation {
   position: absolute;
 
+  &.not-found {
+    display: none;
+  }
+
   .assigned-worker-photo {
     position: relative;
     width: 32px;
@@ -163,6 +167,34 @@
     box-shadow: 0 0 6px rgba($light-purple, 0.3);
     background: white;
   }
+
+  &.found .assigned-worker-photo {
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba($light-purple, 0.1);
+    }
+    70% {
+      box-shadow: 0 0 10px 6px rgba($light-purple, 0.3);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba($light-purple, 0.3);
+    }
+  }
+
+  /*@-webkit-keyframes pulse {
+    0% {
+      box-shadow: 0 0 6px rgba($light-purple, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 16px rgba($light-purple, 0.8);
+    }
+    100% {
+      box-shadow: 0 0 6px rgba($light-purple, 0.3);
+    }
+  }*/
 
   > button {
     border-radius: 4px;
