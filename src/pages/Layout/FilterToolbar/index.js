@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { API_URL } from "../../../constants";
 import FilterContext from "../../../components/FilterContext";
 import Autocomplete from "../../../components/Autocomplete";
-import FallbackImage from "../../../assets/img/fallback.jpg";
+import FallbackImage from "../../../assets/img/person.svg";
 
 const FilterToolbar = ({ isMap }) => {
   const { workersSearch, search, username } = useContext(FilterContext);
