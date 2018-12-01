@@ -11,7 +11,8 @@ function WorkerFormContainer({
   closeDialog,
   isModal,
   isInMap,
-  onUnassign
+  onUnassign,
+  workstation
 }) {
   const [workerPhoto, setWorkerPhoto] = useState(null);
   const initialValue = {
@@ -37,15 +38,24 @@ function WorkerFormContainer({
     email: Yup.string()
       .email()
       .required(requiredMessage),
-    notes: Yup.string().required(requiredMessage)
+    notes: Yup.string()
   });
 
   const { workersCRUD } = useContext(CRUDContext);
 
   const onSubmit = values => {
     worker.id
-      ? workersCRUD.update({ ...values, id: worker.id, photoUrl: workerPhoto })
-      : workersCRUD.create({ ...values, photoUrl: workerPhoto });
+      ? workersCRUD.update({
+          ...values,
+          id: worker.id,
+          photoUrl: workerPhoto,
+          workstationId: workstation ? workstation.id : null
+        })
+      : workersCRUD.create({
+          ...values,
+          photoUrl: workerPhoto,
+          workstationId: workstation ? workstation.id : null
+        });
     closeDialog();
   };
 
@@ -79,7 +89,8 @@ WorkerFormContainer.propTypes = {
   closeDialog: PropTypes.func.isRequired,
   isModal: PropTypes.bool,
   isInMap: PropTypes.bool,
-  onUnassign: PropTypes.func
+  onUnassign: PropTypes.func,
+  workstation: PropTypes.object
 };
 
 export default WorkerFormContainer;
