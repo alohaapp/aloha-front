@@ -32,6 +32,8 @@
   }
 
   .content {
+    display: flex;
+    flex-direction: column;
     height: calc(100% - 30px);
   }
 }
