@@ -26,7 +26,7 @@ function WorkerImageDropzone({ onDrop, workerPhotoId }) {
   }
 
   return (
-    <>
+    <div className="user-new-image-block">
       <Dropzone
         className="user-new-image"
         multiple={false}
@@ -37,7 +37,7 @@ function WorkerImageDropzone({ onDrop, workerPhotoId }) {
       </Dropzone>
 
       {photoSrc ? <img src={photoSrc} alt="user" /> : null}
-    </>
+    </div>
   );
 }
 
