@@ -34,7 +34,7 @@ function WorkerForm({
           <Field
             placeholder="Password"
             className="input"
-            type="text"
+            type="password"
             name="password"
           />
           <ErrorMessage

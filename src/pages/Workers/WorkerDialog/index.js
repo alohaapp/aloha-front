@@ -13,7 +13,14 @@ import {
 } from "bloomer";
 import WorkerFormContainer from "../WorkerFormContainer";
 
-function WorkerDialog({ isActive, closeDialog, worker, isInMap, onUnassign }) {
+function WorkerDialog({
+  isActive,
+  closeDialog,
+  worker,
+  isInMap,
+  onUnassign,
+  workstation
+}) {
   const title = worker.id ? `${worker.name} ${worker.surname}` : "New worker";
 
   return (
@@ -26,6 +33,7 @@ function WorkerDialog({ isActive, closeDialog, worker, isInMap, onUnassign }) {
         </ModalCardHeader>
         <ModalCardBody>
           <WorkerFormContainer
+            workstation={workstation}
             worker={worker}
             closeDialog={closeDialog}
             isModal
@@ -43,7 +51,8 @@ WorkerDialog.propTypes = {
   closeDialog: PropTypes.func.isRequired,
   worker: PropTypes.object,
   isInMap: PropTypes.bool,
-  onUnassign: PropTypes.func
+  onUnassign: PropTypes.func,
+  workstation: PropTypes.object
 };
 
 export default WorkerDialog;

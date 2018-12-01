@@ -21,7 +21,7 @@ function MapPanelWorkstation({
 
   // Get the worker if the worksation has one
   let assignedWorker = null;
-  if (workstation.workerId) {
+  if (workersCRUD.store && workstation && workstation.workerId) {
     assignedWorker = workersCRUD.store.find(
       worker => worker.id === workstation.workerId
     );
