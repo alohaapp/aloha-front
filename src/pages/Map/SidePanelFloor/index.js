@@ -11,6 +11,10 @@ const SidePanelFloor = ({ floor, active, updateFloor, deleteFloor }) => {
 
   const { workers, search, username } = useContext(FilterContext);
 
+  const queryString = `${search ? `?search=${search}` : ""}${
+    username ? `${search ? "&" : "?"}username=${username}` : ""
+  }`;
+
   const isFilter = workers && (search || username);
   const foundCount =
     isFilter && workers.filter(worker => worker.floorId === floor.id).length;
@@ -40,7 +44,7 @@ const SidePanelFloor = ({ floor, active, updateFloor, deleteFloor }) => {
       ) : null}
       <Link
         className={`floor${active ? " floor--active" : ""}`}
-        to={`/map/${floor.officeId}/${floor.id}`}
+        to={`/map/${floor.officeId}/${floor.id}${queryString}`}
       >
         <div className="floor-header">{floor.name}</div>
         <div className="floor-footer">
