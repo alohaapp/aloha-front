@@ -36,7 +36,6 @@ function WorkerForm({
             className="input"
             type="text"
             name="password"
-            placeholder="Password"
           />
           <ErrorMessage
             name="password"
@@ -46,13 +45,7 @@ function WorkerForm({
           />
         </div>
         <div className="field">
-          <Field
-            className="input"
-            placeholder="Name"
-            type="text"
-            name="name"
-            placeholder="Name"
-          />
+          <Field className="input" placeholder="Name" type="text" name="name" />
           <ErrorMessage
             name="name"
             render={errorMessage => (
