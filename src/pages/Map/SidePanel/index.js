@@ -19,25 +19,25 @@ function SidePanel({ officeId, floorId }) {
     offices &&
     floors && (
       <div className="side-panel">
-        <div className="office-info">
-          <Tag>{offices.length}</Tag>
-          <span className="office-info__legend">
-            {offices.length === 1 ? "OFFICE" : "OFFICES"}
-          </span>
-          <Button
-            onClick={() => setIsOfficesEditOpened(true)}
-            className="button is-small"
-          >
-            Edit
-          </Button>
-        </div>
         {offices.length !== 0 && (
           <div className="office-selector">
             <Dropdown
               trigger={
                 <div className="Dropdown-button">
+                  <div className="office-info">
+                    <Tag>{offices.length}</Tag>
+                    <span className="office-info__legend">
+                      {offices.length === 1 ? "OFFICE" : "OFFICES"}
+                    </span>
+                    <i className="material-icons md-36">keyboard_arrow_down</i>
+                    <Button
+                      onClick={() => setIsOfficesEditOpened(true)}
+                      className="button is-small"
+                    >
+                      Edit
+                    </Button>
+                  </div>
                   {office.name}
-                  <i className="material-icons md-36">keyboard_arrow_down</i>
                 </div>
               }
             >
