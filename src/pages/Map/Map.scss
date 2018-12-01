@@ -146,25 +146,12 @@
 
   .assigned-worker-photo {
     position: relative;
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     border-radius: 4px;
     border: 2px solid white;
     box-shadow: 0 0 6px rgba($light-purple, 0.3);
-
-    &:after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border: 8px solid transparent;
-      border-top-color: white;
-      border-bottom: 0;
-      margin-left: -8px;
-      margin-bottom: -8px;
-    }
+    background: white;
   }
 
   button {
@@ -175,7 +162,7 @@
     user-select: none;
     background-color: $link;
 
-    &:after {
+    /*&:after {
       content: "";
       position: absolute;
       bottom: 0;
@@ -187,7 +174,7 @@
       border-bottom: 0;
       margin-left: -4px;
       margin-bottom: -4px;
-    }
+    }*/
 
     .material-icons {
       font-size: 16px;
