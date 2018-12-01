@@ -75,10 +75,12 @@ function WorkerForm({ closeDialog, isModal, isInMap, onUnassign }) {
           <Button className="is-light" onClick={closeDialog}>
             Cancel
           </Button>
+          <Button className="is-light" onClick={onUnassign}>
+            Unassign
+          </Button>
           <Button type="submit" isColor="primary">
             Submit
           </Button>
-          <Button onClick={onUnassign}>Unassign</Button>
         </ModalCardFooter>
       ) : (
         <>
