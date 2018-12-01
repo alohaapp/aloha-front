@@ -30,8 +30,28 @@
 
   span {
     display: block;
-    margin-bottom: 4px;
+    line-height: 1em;
+    margin-bottom: 10px;
     cursor: pointer;
+  }
+
+  & .existent-user__list {
+    height: 92px;
+    overflow-y: auto;
+  }
+
+  & .existent-user__form .search {
+    input {
+      width: 100%;
+      font-size: 0.875rem;
+      margin-bottom: 10px;
+
+      color: white;
+
+      &::placeholder {
+        color: $light-text;
+      }
+    }
   }
 
   .popup-select-user__heading {
@@ -39,14 +59,13 @@
     color: $disabled-text;
     font-size: 0.625rem;
     cursor: default;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
   }
 
   &.existent-user {
-    width: 360px;
+    width: 320px;
   }
 
-  // Alex
   .close {
     cursor: pointer;
   }
