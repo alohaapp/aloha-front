@@ -11,7 +11,7 @@ function WorkerListItem({ worker, openWorkerForm, openDeleteConfirm }) {
     <li className="worker">
       <div className="worker__photo">
         <img
-          src={worker.imageId ? `${API_URL}/files/${worker.imageId}` : Person}
+          src={worker.photoId ? `${API_URL}/files/${worker.photoId}` : Person}
           alt="user"
         />
       </div>
