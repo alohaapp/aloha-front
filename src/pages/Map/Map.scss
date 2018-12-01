@@ -243,6 +243,31 @@
   width: 100%;
   flex: 1;
   position: relative;
+
+  &.cargando {
+    &:after {
+      position: absolute;
+      z-index: 6;
+      left: 50%;
+      top: 50%;
+      content: "";
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      transform: translate(-50%, -50%);
+      background-color: $primary;
+      border-radius: 100%;
+      animation: scaleout 1s infinite ease-in-out;
+    }
+    &:before {
+      background: rgba(255, 255, 255, 0.8);
+      content: "";
+      position: absolute;
+      z-index: 5;
+      width: 100%;
+      height: 100%;
+    }
+  }
 }
 
 .map-panel-display-area {
