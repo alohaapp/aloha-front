@@ -3,31 +3,25 @@ import PropTypes from "prop-types";
 import Login from "./Login";
 
 // TODO: after a real API login, we don't need sessionStorage anymore
-const sessionUser = {
-  set: user => window.sessionStorage.setItem("aloha", JSON.stringify(user)),
+const sessionToken = {
+  set: token => window.sessionStorage.setItem("aloha", token),
   get: () => JSON.parse(window.sessionStorage.getItem("aloha"))
 };
 
 class LoginErrorBoundary extends Component {
   // TODO: after a real API login, we can remove constructor and add:
-  // state = { user: null }
-  constructor(props) {
-    super(props);
-    let user;
-    try {
-      user = sessionUser.get();
-    } catch (e) {
-      user = null;
-    }
-    this.state = { user };
-  }
+  state = { user: null };
 
-  setUser = ({ name, rol }) => {
+  setUser = ({ name, surName, userName, imageId, token }) => {
     this.setState(
       {
-        user: { name, rol }
+        user: {
+          userName,
+          name: `${name} ${surName}`,
+          imageId
+        }
       },
-      () => sessionUser.set(this.state.user)
+      () => sessionToken.set(token)
     );
   };
 
