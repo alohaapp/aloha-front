@@ -16,6 +16,7 @@ function WorkerFormContainer({
   const [workerPhoto, setWorkerPhoto] = useState(null);
   const initialValue = {
     userName: worker.userName || "",
+    password: worker.password || "",
     name: worker.name || "",
     surname: worker.surname || "",
     email: worker.email || "",
@@ -30,6 +31,7 @@ function WorkerFormContainer({
 
   const WorkerSchema = Yup.object().shape({
     userName: Yup.string().required(requiredMessage),
+    password: Yup.string().required(requiredMessage),
     name: Yup.string().required(requiredMessage),
     surname: Yup.string().required(requiredMessage),
     email: Yup.string()
