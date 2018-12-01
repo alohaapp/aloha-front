@@ -7,9 +7,7 @@ import Autocomplete from "../../../components/Autocomplete";
 import FallbackImage from "../../../assets/img/fallback.jpg";
 
 const FilterToolbar = ({ isMap }) => {
-  const { workers, workersSearch, search, username } = useContext(
-    FilterContext
-  );
+  const { workersSearch, search, username } = useContext(FilterContext);
   const [searchText, setSearchText] = useState(search);
   const [usernameText, setUsernameText] = useState(username);
   useEffect(
@@ -40,6 +38,10 @@ const FilterToolbar = ({ isMap }) => {
           onChange={event => {
             setUsernameText(event.target.value);
           }}
+          onLeave={() => {
+            console.log(username);
+            setUsernameText(username);
+          }}
         >
           {(workersSearch &&
             workersSearch
@@ -49,7 +51,7 @@ const FilterToolbar = ({ isMap }) => {
                   .includes(usernameText.toLowerCase())
               )
               .map(worker => (
-                <div className="filter-username-dropdown-item">
+                <div key={worker.id} className="filter-username-dropdown-item">
                   <Link to={{ search: `username=${worker.userName}` }}>
                     <img
                       alt="user"

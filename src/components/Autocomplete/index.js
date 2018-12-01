@@ -8,28 +8,43 @@ import {
 } from "bloomer";
 import useClickOutside from "../../hooks/useClickOutside";
 
-function Autocomplete({ children, onChange, value }) {
+function Autocomplete({ children, onChange, value, onLeave }) {
   const [active, setActive] = useState(false);
-  const toggleActive = () => {
-    setActive(!active);
-  };
 
   const ref = useRef(null);
-  useClickOutside(ref, () => setActive(false));
+  useClickOutside(ref, () => {
+    if (active) {
+      onLeave();
+      setActive(false);
+    }
+  });
 
   return (
     <div className="Dropdown" ref={ref}>
       <Dropdown isActive={active}>
-        <DropdownTrigger onClick={toggleActive}>
+        <DropdownTrigger>
           <div className="filter-username-trigger">
-            <input type="text" value={value} onChange={onChange} />
+            <input
+              type="text"
+              value={value}
+              onChange={onChange}
+              onFocus={() => {
+                setActive(true);
+              }}
+            />
             <i className="material-icons">keyboard_arrow_down</i>
           </div>
         </DropdownTrigger>
         <DropdownMenu>
           <DropdownContent>
             {children.map((child, index) => (
-              <DropdownItem onClick={() => setActive(false)} key={index}>
+              <DropdownItem
+                onClick={() => {
+                  onLeave();
+                  setActive(false);
+                }}
+                key={index}
+              >
                 {child}
               </DropdownItem>
             ))}

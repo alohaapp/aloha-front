@@ -1,40 +1,71 @@
 import "./WorkerListItem.scss";
 
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import { Button } from "bloomer";
 import { API_URL } from "../../../constants";
+import CRUDContext from "../../../components/CRUDContext";
 
-function WorkerListItem({ worker, openWorkerForm, openDeleteConfirm }) {
-  return (
-    <li className="worker">
-      <div className="worker__photo">
-        {worker.photoId ? (
-          <img src={`${API_URL}/files/${worker.photoId}`} alt="user" />
-        ) : null}
+const WorkerListItemContent = ({
+  worker,
+  openWorkerForm,
+  openDeleteConfirm
+}) => (
+  <>
+    <div className="worker__photo">
+      {worker.photoId ? (
+        <img src={`${API_URL}/files/${worker.photoId}`} alt="user" />
+      ) : null}
+    </div>
+    <div className="worker__info">
+      <div className="worker__name">
+        {worker.name} {worker.surname}{" "}
+        <span className="worker__username">@{worker.userName}</span>
       </div>
-      <div className="worker__info">
-        <div className="worker__name">
-          {worker.name} {worker.surname}{" "}
-          <span className="worker__username">@{worker.userName}</span>
-        </div>
-        <p className="worker__notes">{worker.notes}</p>
-        <div className="worker__email">{worker.email}</div>
-      </div>
-      <div className="worker__actions">
-        <Button className="is-light" onClick={() => openWorkerForm(worker)}>
-          <span className="icon is-small">
-            <i className="material-icons">edit</i>
-          </span>
-        </Button>
-        <Button className="is-light" onClick={() => openDeleteConfirm(worker)}>
-          <span className="icon is-small">
-            <i className="material-icons">delete</i>
-          </span>
-        </Button>
-      </div>
-    </li>
-  );
+      <p className="worker__notes">{worker.notes}</p>
+      <div className="worker__email">{worker.email}</div>
+    </div>
+    <div className="worker__actions">
+      <Button className="is-light" onClick={() => openWorkerForm(worker)}>
+        <span className="icon is-small">
+          <i className="material-icons">edit</i>
+        </span>
+      </Button>
+      <Button className="is-light" onClick={() => openDeleteConfirm(worker)}>
+        <span className="icon is-small">
+          <i className="material-icons">delete</i>
+        </span>
+      </Button>
+    </div>
+  </>
+);
+
+function WorkerListItem(props) {
+  const { worker } = props;
+
+  const { floorsCRUD } = useContext(CRUDContext);
+  const floor =
+    worker.floorId &&
+    floorsCRUD.store.find(floor => worker.floorId === floor.id);
+  const content = <WorkerListItemContent {...props} />;
+
+  if (floor) {
+    return (
+      <li className="worker worker--on-map">
+        <Link
+          to={{
+            pathname: `/map/${floor.officeId}/${floor.id}`,
+            search: `?username=${worker.userName}`
+          }}
+        >
+          {content}
+        </Link>
+      </li>
+    );
+  }
+
+  return <li className="worker">{content}</li>;
 }
 
 WorkerListItem.propTypes = {

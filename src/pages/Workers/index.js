@@ -5,7 +5,7 @@ import Layout from "../Layout";
 import "./Workers.scss";
 
 function Workers() {
-  const { workers, search } = useContext(FilterContext);
+  const { workers } = useContext(FilterContext);
 
   const content = workers ? (
     <WorkerList workers={workers} />
