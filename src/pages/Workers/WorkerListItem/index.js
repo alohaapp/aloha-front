@@ -4,16 +4,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "bloomer";
 import { API_URL } from "../../../constants";
-import Person from "../../../assets/img/person.svg";
 
 function WorkerListItem({ worker, openWorkerForm, openDeleteConfirm }) {
   return (
     <li className="worker">
       <div className="worker__photo">
-        <img
-          src={worker.photoId ? `${API_URL}/files/${worker.photoId}` : Person}
-          alt="user"
-        />
+        {worker.photoId ? (
+          <img src={`${API_URL}/files/${worker.photoId}`} alt="user" />
+        ) : null}
       </div>
       <div className="worker__info">
         <div className="worker__name">
