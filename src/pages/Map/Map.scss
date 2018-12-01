@@ -198,7 +198,7 @@
   }
 
   &.not-found .assigned-worker-photo,
-  &.not-found button {
+  &.not-found > button {
     opacity: 0.2;
     transform: scale(0.7);
   }
@@ -206,7 +206,7 @@
   &.found .assigned-worker-photo {
     animation: pulse 2s infinite;
     transform: scale(1.2);
-    z-index: 99;
+    z-index: 3;
   }
 
   @keyframes pulse {
