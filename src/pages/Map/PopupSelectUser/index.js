@@ -48,6 +48,7 @@ function PopupSelectUser({ close, workstation, workstationsCRUD }) {
         worker={{}}
         isActive={isNewUser}
         closeDialog={() => setIsNewUser(false)}
+        workstation={workstation}
       />
     );
   }
