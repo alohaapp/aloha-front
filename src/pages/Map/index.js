@@ -9,7 +9,7 @@ const findFirstFloorId = (floors, officeId) => {
   return floor && floor.id;
 };
 
-function Map({ officeId, floorId, queryString }) {
+function Map({ officeId, floorId, filters }) {
   const { officesCRUD, floorsCRUD } = useContext(CRUDContext);
   const offices = officesCRUD.store;
   const floors = floorsCRUD.store;
@@ -44,7 +44,7 @@ function Map({ officeId, floorId, queryString }) {
         (redirect ? (
           <Redirect to={`/map/${redirect}`} />
         ) : (
-          <Site office={office} floor={floor} queryString={queryString} />
+          <Site office={office} floor={floor} filters={filters} />
         ))}
     </div>
   );

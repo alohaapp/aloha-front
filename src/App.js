@@ -1,5 +1,5 @@
 import "material-design-icons/iconfont/material-icons.css";
-
+import QueryString from "query-string";
 import React, { useContext, useEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -28,15 +28,18 @@ export default function() {
   );
 
   const renderMap = ({ match, location }) => {
-    const queryString = location.search && location.search.slice(1);
     return (
       <Map
         officeId={+match.params.officeId}
         floorId={+match.params.floorId}
-        queryString={queryString}
+        filters={QueryString.parse(location.search)}
       />
     );
   };
+  const renderWorkwers = ({ location }) => {
+    return <Workers filters={QueryString.parse(location.search)} />;
+  };
+
   return (
     <Router>
       <Switch>
@@ -44,7 +47,7 @@ export default function() {
         <Route exact path="/map" render={renderMap} />
         <Route exact path="/map/:officeId" render={renderMap} />
         <Route exact path="/map/:officeId/:floorId" render={renderMap} />
-        <Route exact path="/workers" component={Workers} />
+        <Route exact path="/workers" component={renderWorkwers} />
         <Route component={NotFound} />
       </Switch>
     </Router>

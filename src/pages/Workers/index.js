@@ -4,8 +4,7 @@ import WorkerList from "./WorkerList";
 import Layout from "../Layout";
 import "./Workers.scss";
 
-function Workers(props) {
-  const queryString = props.location.search && props.location.search.slice(1);
+function Workers({ filters }) {
   const { workersCRUD } = useContext(CRUDContext);
   const workers = workersCRUD.store;
 
@@ -19,7 +18,7 @@ function Workers(props) {
 
   return (
     <div className="workers">
-      <Layout sidebar={sidebar} content={content} queryString={queryString} />
+      <Layout sidebar={sidebar} content={content} filters={filters} />
     </div>
   );
 }

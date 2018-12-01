@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const FilterToolbar = ({ isMap, queryString = "" }) => {
-  const [searchText, setSearchText] = useState(queryString);
-
+const FilterToolbar = ({ isMap, filters = {} }) => {
+  const [searchText, setSearchText] = useState(filters.search);
+  console.log(searchText);
   return (
     <div className="filter-toolbar">
       <div className="filter-text">
