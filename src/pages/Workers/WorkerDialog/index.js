@@ -1,3 +1,5 @@
+import "./WorkerDialog.scss";
+
 import React from "react";
 import PropTypes from "prop-types";
 import {
@@ -11,7 +13,7 @@ import WorkerFormContainer from "../WorkerFormContainer";
 
 function WorkerDialog({ isActive, closeDialog, worker }) {
   return (
-    <Modal isActive={isActive}>
+    <Modal className="worker-modal" isActive={isActive}>
       <ModalBackground />
       <ModalCard>
         <ModalCardBody>

@@ -1,0 +1,16 @@
+@import "../../../styles/colors.scss";
+
+.map-new-image {
+  background: $grey;
+  border-radius: 50%;
+  width: 132px;
+  height: 132px;
+  margin: 0 auto;
+
+  p {
+    font-size: 0.75rem;
+    text-align: center;
+    padding: 20px;
+    line-height: 1rem;
+  }
+}

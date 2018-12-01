@@ -23,14 +23,20 @@ code {
   font-family: "Work Sans", sans-serif;
 }
 
-input {
+input,
+.input {
   border: none;
   border-bottom: 1px solid $border;
   color: $light-text;
   font-size: 1.125rem;
   font-weight: 100;
-  padding-bottom: 4px;
+  padding: 0;
   outline: none;
+}
+
+.input:focus {
+  border-bottom: 1px solid $border;
+  box-shadow: none;
 }
 
 .button {
