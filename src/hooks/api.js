@@ -59,7 +59,7 @@ async function get({ url, options }) {
 
 async function del({ url, options }) {
   try {
-    let response = fetch(API_URL + url, {
+    let response = await fetch(API_URL + url, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
@@ -67,11 +67,10 @@ async function del({ url, options }) {
       },
       ...options
     });
-    switch (response.status) {
-      case 200:
-        return response.json();
-      default:
-        throw response;
+    if (response.status < 400) {
+      return response;
+    } else {
+      throw response;
     }
   } catch (e) {
     throw e;
