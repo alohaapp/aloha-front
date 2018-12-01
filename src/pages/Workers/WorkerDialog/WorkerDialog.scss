@@ -27,6 +27,15 @@
   position: absolute;
   left: 20px;
   top: 20px;
+
+  img {
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    width: 132px;
+    height: 132px;
+  }
 }
 
 .user-new-image {
