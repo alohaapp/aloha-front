@@ -6,6 +6,7 @@ import CRUDContext from "../../../components/CRUDContext";
 import PopupSelectUser from "../PopupSelectUser";
 import MapPanelWorkstationWorkerDetail from "../MapPanelWorkstationWorkerDetail";
 import { API_URL } from "../../../constants";
+import Person from "../../../assets/img/person.svg";
 
 function MapPanelWorkstation({ workstation }) {
   const [isPopupOpened, setIsPopupOpened] = useState(false);
@@ -45,7 +46,11 @@ function MapPanelWorkstation({ workstation }) {
         <img
           onClick={() => toggleWorkerDetail()}
           className="assigned-worker-photo"
-          src={`${API_URL}/files/${assignedWorker.photoId}`}
+          src={
+            assignedWorker.photoId
+              ? `${API_URL}/files/${assignedWorker.photoId}`
+              : Person
+          }
           alt="user"
         />
       ) : (

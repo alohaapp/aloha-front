@@ -47,7 +47,10 @@ export function MapPanelWorkstationWorkerDetail(props) {
         />
       ) : (
         <div ref={ref}>
-          <WorkerFormContainer worker={assignedWorker} />
+          <WorkerFormContainer
+            worker={assignedWorker}
+            closeDialog={closeConfirm}
+          />
           <Button onClick={unnasign}>Unassign</Button>
           <Button onClick={() => setIsConfirmOpened(true)}>Delete</Button>
         </div>

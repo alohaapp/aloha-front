@@ -50,7 +50,16 @@ function PopupSelectUser({ close, workstation }) {
     // TODO: move to a component
     return (
       <div className="popup-select-user existent-user" ref={ref}>
-        <span>User</span>
+        <div>
+          <div className="search">
+            <i className="material-icons">search</i>
+            <Input autoFocus onInput={filterWorkers} type="text" />
+          </div>
+          <i onClick={close} className="material-icons md-18 close">
+            cancel
+          </i>
+        </div>
+
         {filteredList.map(worker => (
           <PopupSelectUserWorkerPhoto
             worker={worker}
@@ -59,17 +68,13 @@ function PopupSelectUser({ close, workstation }) {
             workstation={workstation}
           />
         ))}
-        <div className="search">
-          <i className="material-icons">search</i>
-          <Input autoFocus onInput={filterWorkers} type="text" />
-        </div>
       </div>
     );
   }
 
   return (
     <div className="popup-select-user" ref={ref}>
-      <span class="popup-select-user__heading">Assign user</span>
+      <span className="popup-select-user__heading">Assign user</span>
       <span onClick={() => setIsNewUser(true)}>New user</span>
       <span onClick={() => setIsExistentUser(true)}>Existent user</span>
     </div>

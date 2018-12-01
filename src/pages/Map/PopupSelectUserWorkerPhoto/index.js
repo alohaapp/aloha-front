@@ -3,7 +3,8 @@ import "./PopupSelectUserWorkerPhoto.scss";
 import React from "react";
 import PropTypes from "prop-types";
 import createCRUDHook from "../../../hooks/crud";
-import FallbackImage from "../../../assets/img/fallback.jpg";
+import Person from "../../../assets/img/person.svg";
+import { API_URL } from "../../../constants";
 
 function PopupSelectUserWorkerPhoto({ worker, closePopup, workstation }) {
   const { floorId } = workstation;
@@ -29,7 +30,7 @@ function PopupSelectUserWorkerPhoto({ worker, closePopup, workstation }) {
       ) : null}
       <img
         className="worker-photo"
-        src={worker.photoUrl ? worker.photoUrl : FallbackImage}
+        src={worker.photoId ? `${API_URL}/files/${worker.photoId}` : Person}
         alt="user"
       />
       <span>{worker.name}</span>
