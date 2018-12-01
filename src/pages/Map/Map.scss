@@ -71,12 +71,13 @@
 
   .floor-actions {
     position: absolute;
-    bottom: 12px;
-    right: 12px;
+    bottom: 8px;
+    right: 8px;
   }
 
   button {
     background: none;
+    width: 28px;
 
     &:hover {
       color: $light-purple;
