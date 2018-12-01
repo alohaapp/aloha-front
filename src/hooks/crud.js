@@ -108,7 +108,11 @@ export default function createCRUDHook(entityEndpoint) {
 
     const actionCreate = (dispatch, endpoint) => entity => {
       dispatch({ type: LOADING, payload: true });
-      post({ url: endpoint, options: { body: JSON.stringify(entity) } })
+      const promise = post({
+        url: endpoint,
+        options: { body: JSON.stringify(entity) }
+      });
+      promise
         .then(response => {
           const endpointType = endpoint.substring(1);
           switch (endpointType) {
@@ -133,11 +137,13 @@ export default function createCRUDHook(entityEndpoint) {
           setMessage(`${error.status} ${error.statusText}`);
           setIsVisible(true);
         });
+      return promise;
     };
 
     const actionRead = (dispatch, endpoint) => id => {
       dispatch({ type: LOADING, payload: true });
-      get({ url: `${endpoint}/${id}` })
+      const promise = get({ url: `${endpoint}/${id}` });
+      promise
         .then(response => {
           dispatch({ type: READ, payload: response });
         })
@@ -145,15 +151,17 @@ export default function createCRUDHook(entityEndpoint) {
           setMessage(`${error.status} ${error.statusText}`);
           setIsVisible(true);
         });
+      return promise;
     };
 
     const actionUpdate = (dispatch, endpoint) => entity => {
       const { id } = entity;
       dispatch({ type: LOADING, payload: true });
-      put({
+      const promise = put({
         url: `${endpoint}/${id}`,
         options: { body: JSON.stringify(entity) }
-      })
+      });
+      promise
         .then(response => {
           const endpointType = endpoint.substring(1);
           switch (endpointType) {
@@ -178,11 +186,13 @@ export default function createCRUDHook(entityEndpoint) {
           setMessage(`${error.status} ${error.statusText}`);
           setIsVisible(true);
         });
+      return promise;
     };
 
     const actionDelete = (dispatch, endpoint) => id => {
       dispatch({ type: LOADING, payload: true });
-      del({ url: `${endpoint}/${id}` })
+      const promise = del({ url: `${endpoint}/${id}` });
+      promise
         .then(() => {
           const endpointType = endpoint.substring(1);
           switch (endpointType) {
@@ -207,11 +217,13 @@ export default function createCRUDHook(entityEndpoint) {
           setMessage(`${error.status} ${error.statusText}`);
           setIsVisible(true);
         });
+      return promise;
     };
 
     const actionList = (dispatch, endpoint) => entity => {
       dispatch({ type: LOADING, payload: true });
-      get({ url: endpoint })
+      const promise = get({ url: endpoint });
+      promise
         .then(response => {
           dispatch({ type: LIST, payload: response });
         })
@@ -219,6 +231,7 @@ export default function createCRUDHook(entityEndpoint) {
           setMessage(`${error.status} ${error.statusText}`);
           setIsVisible(true);
         });
+      return promise;
     };
 
     return {
