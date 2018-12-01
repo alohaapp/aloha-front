@@ -18,6 +18,10 @@ const FilterToolbar = ({ isMap }) => {
     [search, username]
   );
 
+  const queryString = `${search ? `?search=${search}` : ""}${
+    username ? `${search ? "&" : "?"}username=${username}` : ""
+  }`;
+
   return (
     <div className="filter-toolbar">
       <div className="filter-text">
@@ -70,10 +74,13 @@ const FilterToolbar = ({ isMap }) => {
         </Autocomplete>
       </div>
       <div className="filter-switch">
-        <Link className={`map-link${isMap ? " active" : ""}`} to={`/map`} />
+        <Link
+          className={`map-link${isMap ? " active" : ""}`}
+          to={`/map${queryString}`}
+        />
         <Link
           className={`workers-link${isMap ? "" : " active"}`}
-          to={`/workers`}
+          to={`/workers${queryString}`}
         />
       </div>
     </div>

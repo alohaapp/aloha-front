@@ -5,7 +5,7 @@ import Map from "./";
 import { CRUDProvider } from "../../components/CRUDContext";
 import { MessageProvider } from "../../components/MessageContext";
 
-it("renders without crashing", () => {
+xit("renders without crashing", () => {
   const div = document.createElement("div");
   ReactDOM.render(
     <MessageProvider>
