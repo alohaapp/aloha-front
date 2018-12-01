@@ -39,6 +39,10 @@ const FilterToolbar = ({ isMap }) => {
           onChange={event => {
             setUsernameText(event.target.value);
           }}
+          onLeave={() => {
+            console.log(username);
+            setUsernameText(username);
+          }}
         >
           {(workersSearch &&
             workersSearch
@@ -48,7 +52,7 @@ const FilterToolbar = ({ isMap }) => {
                   .includes(usernameText.toLowerCase())
               )
               .map(worker => (
-                <div className="filter-username-dropdown-item">
+                <div key={worker.id} className="filter-username-dropdown-item">
                   <Link to={{ search: `username=${worker.userName}` }}>
                     <img
                       alt="user"
