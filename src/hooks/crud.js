@@ -14,6 +14,13 @@
 */
 import { useReducer } from "react";
 import { get, post, put, del } from "./api.js";
+import { useContext } from "react";
+import MessageContext from "../components/MessageContext";
+import {
+  WORKER_CREATED_OK,
+  FLOOR_CREATED_OK,
+  OFFICE_CREATED_OK
+} from "../constants";
 
 const CREATE = "CREATE";
 const READ = "READ";
@@ -81,47 +88,6 @@ const crudReducer = (state, { type, payload }) => {
   }
 };
 
-const actionCreate = (dispatch, endpoint) => entity => {
-  dispatch({ type: LOADING, payload: true });
-  post({ url: endpoint, options: { body: JSON.stringify(entity) } }).then(
-    response => {
-      dispatch({ type: CREATE, payload: response });
-    }
-  );
-};
-
-const actionRead = (dispatch, endpoint) => id => {
-  dispatch({ type: LOADING, payload: true });
-  get({ url: `${endpoint}/${id}` }).then(response => {
-    dispatch({ type: READ, payload: response });
-  });
-};
-
-const actionUpdate = (dispatch, endpoint) => entity => {
-  const { id } = entity;
-  dispatch({ type: LOADING, payload: true });
-  put({
-    url: `${endpoint}/${id}`,
-    options: { body: JSON.stringify(entity) }
-  }).then(response => {
-    dispatch({ type: UPDATE, payload: response });
-  });
-};
-
-const actionDelete = (dispatch, endpoint) => id => {
-  dispatch({ type: LOADING, payload: true });
-  del({ url: `${endpoint}/${id}` }).then(() => {
-    dispatch({ type: DELETE, payload: id });
-  });
-};
-
-const actionList = (dispatch, endpoint) => entity => {
-  dispatch({ type: LOADING, payload: true });
-  get({ url: endpoint }).then(response => {
-    dispatch({ type: LIST, payload: response });
-  });
-};
-
 export default function createCRUDHook(entityEndpoint) {
   const initialState = {
     store: null,
@@ -132,6 +98,86 @@ export default function createCRUDHook(entityEndpoint) {
       crudReducer,
       initialState
     );
+    const { setMessage, setIsVisible } = useContext(MessageContext);
+
+    const actionCreate = (dispatch, endpoint) => entity => {
+      dispatch({ type: LOADING, payload: true });
+      post({ url: endpoint, options: { body: JSON.stringify(entity) } })
+        .then(response => {
+          const endpointType = endpoint.substring(1);
+          switch (endpointType) {
+            case "Workers":
+              setMessage(WORKER_CREATED_OK);
+              break;
+            case "Floors":
+              setMessage(FLOOR_CREATED_OK);
+              break;
+            case "Offices":
+              setMessage(OFFICE_CREATED_OK);
+              break;
+            default:
+              return setMessage(`OK`);
+          }
+          setIsVisible(true);
+          dispatch({ type: CREATE, payload: response });
+        })
+        .catch(error => {
+          setMessage(`${error.status} ${error.statusText}`);
+          setIsVisible(true);
+        });
+    };
+
+    const actionRead = (dispatch, endpoint) => id => {
+      dispatch({ type: LOADING, payload: true });
+      get({ url: `${endpoint}/${id}` })
+        .then(response => {
+          dispatch({ type: READ, payload: response });
+        })
+        .catch(error => {
+          setMessage(`${error.status} ${error.statusText}`);
+          setIsVisible(true);
+        });
+    };
+
+    const actionUpdate = (dispatch, endpoint) => entity => {
+      const { id } = entity;
+      dispatch({ type: LOADING, payload: true });
+      put({
+        url: `${endpoint}/${id}`,
+        options: { body: JSON.stringify(entity) }
+      })
+        .then(response => {
+          dispatch({ type: UPDATE, payload: response });
+        })
+        .catch(error => {
+          setMessage(`${error.status} ${error.statusText}`);
+          setIsVisible(true);
+        });
+    };
+
+    const actionDelete = (dispatch, endpoint) => id => {
+      dispatch({ type: LOADING, payload: true });
+      del({ url: `${endpoint}/${id}` })
+        .then(() => {
+          dispatch({ type: DELETE, payload: id });
+        })
+        .catch(error => {
+          setMessage(`${error.status} ${error.statusText}`);
+          setIsVisible(true);
+        });
+    };
+
+    const actionList = (dispatch, endpoint) => entity => {
+      dispatch({ type: LOADING, payload: true });
+      get({ url: endpoint })
+        .then(response => {
+          dispatch({ type: LIST, payload: response });
+        })
+        .catch(error => {
+          setMessage(`${error.status} ${error.statusText}`);
+          setIsVisible(true);
+        });
+    };
 
     return {
       store,

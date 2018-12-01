@@ -4,10 +4,16 @@ import { Columns, Column } from "bloomer";
 import logoCorunet from "../../assets/logos/logo-corunet.svg";
 import logo from "../../assets/logos/logo.svg";
 import FilterToolbar from "./FilterToolbar";
+import AlohaMessage from "../../components/Message";
 
 function Layout(props) {
   return (
     <Fragment>
+      <Columns className="message">
+        <Column>
+          <AlohaMessage />
+        </Column>
+      </Columns>
       <Columns className="header">
         <Column className="logo-company">
           <img src={logoCorunet} alt="logo-corunet" />
