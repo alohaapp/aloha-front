@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
+import PropTypes from "prop-types";
 import CRUDContext from "../../../components/CRUDContext";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import WorkerForm from "../WorkerForm";
 import WorkerImageDropzone from "../WorkerImageDropzone";
 
-export default function({ worker, closeDialog }) {
+function WorkerFormContainer({ worker, closeDialog, isModal }) {
   const [workerPhoto, setWorkerPhoto] = useState(null);
   const initialValue = {
     userName: worker.userName || "",
@@ -47,10 +48,21 @@ export default function({ worker, closeDialog }) {
       </div>
       <Formik
         initialValues={initialValue}
-        render={WorkerForm}
         validationSchema={WorkerSchema}
         onSubmit={onSubmit}
-      />
+      >
+        {props => (
+          <WorkerForm {...props} closeDialog={closeDialog} isModal={isModal} />
+        )}
+      </Formik>
     </>
   );
 }
+
+WorkerFormContainer.propTypes = {
+  worker: PropTypes.object.isRequired,
+  closeDialog: PropTypes.func.isRequired,
+  isModal: PropTypes.bool
+};
+
+export default WorkerFormContainer;

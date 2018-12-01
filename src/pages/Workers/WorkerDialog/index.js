@@ -6,19 +6,30 @@ import {
   Modal,
   ModalCard,
   ModalCardBody,
+  ModalCardHeader,
+  ModalCardTitle,
   ModalBackground,
   Delete
 } from "bloomer";
 import WorkerFormContainer from "../WorkerFormContainer";
 
 function WorkerDialog({ isActive, closeDialog, worker }) {
+  const title = worker.id ? `${worker.name} ${worker.surname}` : "New worker";
+
   return (
     <Modal className="worker-modal" isActive={isActive}>
       <ModalBackground />
       <ModalCard>
-        <ModalCardBody>
+        <ModalCardHeader>
+          <ModalCardTitle>{title}</ModalCardTitle>
           <Delete onClick={closeDialog} />
-          <WorkerFormContainer worker={worker} closeDialog={closeDialog} />
+        </ModalCardHeader>
+        <ModalCardBody>
+          <WorkerFormContainer
+            worker={worker}
+            closeDialog={closeDialog}
+            isModal
+          />
         </ModalCardBody>
       </ModalCard>
     </Modal>

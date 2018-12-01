@@ -3,18 +3,10 @@ import "./WorkerList.scss";
 import React, { useState, useContext } from "react";
 import CRUDContext from "../../../components/CRUDContext";
 import PropTypes from "prop-types";
-import { Table, Button } from "bloomer";
+import { Button } from "bloomer";
 import Confirm from "../../../components/Confirm";
 import WorkerListItem from "../WorkerListItem";
 import WorkerDialog from "../WorkerDialog";
-import {
-  WORKER_PHOTO_URL,
-  WORKER_USERNAME,
-  WORKER_NAME,
-  WORKER_EMAIL,
-  WORKER_NOTES,
-  WORKER_ACTIONS
-} from "../../../constants";
 
 function WorkerList({ workers }) {
   const [isDialogOpened, setIsDialogOpened] = useState(false);
