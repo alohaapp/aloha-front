@@ -31,6 +31,20 @@ function WorkerForm({
           />
         </div>
         <div className="field">
+          <Field
+            placeholder="Password"
+            className="input"
+            type="text"
+            name="password"
+          />
+          <ErrorMessage
+            name="password"
+            render={errorMessage => (
+              <ErrorMessageComponent errorMessage={errorMessage} />
+            )}
+          />
+        </div>
+        <div className="field">
           <Field className="input" placeholder="Name" type="text" name="name" />
           <ErrorMessage
             name="name"
