@@ -3,14 +3,17 @@ import ReactDOM from "react-dom";
 import { StaticRouter } from "react-router-dom";
 import Map from "./";
 import { CRUDProvider } from "../../components/CRUDContext";
+import { FilterProvider } from "../../components/FilterContext";
 
-xit("renders without crashing", () => {
+it("renders without crashing", () => {
   const div = document.createElement("div");
   ReactDOM.render(
     <CRUDProvider>
-      <StaticRouter initialEntries={["/map/1"]} context={{}}>
-        <Map />
-      </StaticRouter>
+      <FilterProvider queryString={""}>
+        <StaticRouter initialEntries={["/map/1"]} context={{}}>
+          <Map />
+        </StaticRouter>
+      </FilterProvider>
     </CRUDProvider>,
     div
   );
