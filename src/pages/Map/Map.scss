@@ -213,6 +213,11 @@
   justify-content: center;
   color: $dark-purple;
 
+  p {
+    // Alex
+    cursor: pointer;
+  }
+
   p:before {
     content: "";
     background: url(../../assets/img/layers.svg) no-repeat center center;
@@ -220,8 +225,5 @@
     width: 32px;
     height: 32px;
     margin: 0 auto;
-
-    // Alex
-    cursor: pointer;
   }
 }
