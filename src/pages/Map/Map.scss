@@ -71,12 +71,13 @@
 
   .floor-actions {
     position: absolute;
-    bottom: 12px;
-    right: 12px;
+    bottom: 8px;
+    right: 8px;
   }
 
   button {
     background: none;
+    width: 28px;
 
     &:hover {
       color: $light-purple;
@@ -161,20 +162,6 @@
     padding: 3px;
     user-select: none;
     background-color: $link;
-
-    /*&:after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border: 4px solid transparent;
-      border-top-color: $link;
-      border-bottom: 0;
-      margin-left: -4px;
-      margin-bottom: -4px;
-    }*/
 
     .material-icons {
       font-size: 16px;
