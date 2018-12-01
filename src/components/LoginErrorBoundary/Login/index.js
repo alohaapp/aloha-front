@@ -39,7 +39,7 @@ function Login(props) {
             value={password}
           />
         </label>
-        <button className="button is-large is-link" type="submit" name="Login">
+        <button className="button is-large" type="submit" name="Login">
           Come in
         </button>
       </form>

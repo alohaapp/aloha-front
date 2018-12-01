@@ -4,18 +4,20 @@ import { StaticRouter } from "react-router-dom";
 import Map from "./";
 import { CRUDProvider } from "../../components/CRUDContext";
 import { MessageProvider } from "../../components/MessageContext";
+import { FilterProvider } from "../../components/FilterContext";
 
-xit("renders without crashing", () => {
+it("renders without crashing", () => {
   const div = document.createElement("div");
   ReactDOM.render(
     <MessageProvider>
       <CRUDProvider>
-        <StaticRouter initialEntries={["/map/1"]} context={{}}>
-          <Map />
-        </StaticRouter>
+        <FilterProvider queryString={""}>
+          <StaticRouter initialEntries={["/map/1"]} context={{}}>
+            <Map />
+          </StaticRouter>
+        </FilterProvider>
       </CRUDProvider>
     </MessageProvider>,
-
     div
   );
   ReactDOM.unmountComponentAtNode(div);
