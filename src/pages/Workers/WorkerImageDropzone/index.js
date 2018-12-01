@@ -16,7 +16,7 @@ function WorkerImageDropzone({ onDrop }) {
 
   return (
     <Dropzone
-      className="map-new-image"
+      className="user-new-image"
       multiple={false}
       accept="image/svg+xml, image/jpeg, image/png"
       onDrop={onImageDrop}

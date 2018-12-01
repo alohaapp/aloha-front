@@ -1,6 +1,6 @@
 @import "../../../styles/colors.scss";
 
-.map-new-image {
+.user-new-image {
   background: $grey;
   border-radius: 50%;
   width: 132px;
@@ -12,5 +12,14 @@
     text-align: center;
     padding: 20px;
     line-height: 1rem;
+
+    &:before {
+      content: "";
+      background: url(../../../assets/img/person.svg) no-repeat center center;
+      display: block;
+      width: 32px;
+      height: 32px;
+      margin: 0 auto;
+    }
   }
 }
