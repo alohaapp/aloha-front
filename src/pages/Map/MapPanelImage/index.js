@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import FilterContext from "../../../components/FilterContext";
 import MapPanelWorkstation from "../MapPanelWorkstation";
 import { API_URL } from "../../../constants";
 
@@ -51,6 +52,14 @@ function MapPanelImage({
   onCreateWorkstation,
   workstationsCRUD
 }) {
+  const { workers } = useContext(FilterContext);
+  const isFoundedWorker = workerId => {
+    if (workerId) {
+      return workers.find(worker => worker.id === workerId);
+    }
+    return false;
+  };
+
   return (
     <div className="map-panel-image">
       <img
@@ -66,6 +75,7 @@ function MapPanelImage({
           key={workstation.id}
           workstation={workstation}
           workstationsCRUD={workstationsCRUD}
+          found={isFoundedWorker(workstation.workerId)}
         />
       ))}
     </div>
