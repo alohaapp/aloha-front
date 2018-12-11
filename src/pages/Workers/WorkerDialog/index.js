@@ -19,7 +19,8 @@ function WorkerDialog({
   worker,
   isInMap,
   onUnassign,
-  workstation
+  workstation,
+  workstationsCRUD
 }) {
   const title = worker.id ? `${worker.name} ${worker.surname}` : "New worker";
 
@@ -39,6 +40,7 @@ function WorkerDialog({
             isModal
             isInMap={isInMap}
             onUnassign={onUnassign}
+            workstationsCRUD={workstationsCRUD}
           />
         </ModalCardBody>
       </ModalCard>
@@ -52,7 +54,8 @@ WorkerDialog.propTypes = {
   worker: PropTypes.object,
   isInMap: PropTypes.bool,
   onUnassign: PropTypes.func,
-  workstation: PropTypes.object
+  workstation: PropTypes.object,
+  workstationsCRUD: PropTypes.object
 };
 
 export default WorkerDialog;
