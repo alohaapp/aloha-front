@@ -1,18 +1,40 @@
 import React, { useState } from "react";
 import "./Login.scss";
 import logoLogin from "../../../assets/logos/logo-login.svg";
+import { API_URL } from "../../../constants";
 
 function Login(props) {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = event => {
     event.preventDefault();
-    // TODO: do the real login
-    props.onLogin({
-      name: "God",
-      rol: "Admiminstrator"
-    });
+    fetch(`${API_URL}/security/authenticate`, {
+      method: "POST",
+      body: JSON.stringify({ userName: user, password }),
+      headers: {
+        "Content-type": "application/json"
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else if (response.status === 401) {
+          setErrorMessage("Incorrect username or password.");
+        } else {
+          setErrorMessage("There was an error. Please try again later.");
+        }
+      })
+      .then(userData => {
+        if (userData) {
+          props.onLogin({
+            name: userData.userName,
+            rol: "Administrator"
+          });
+        }
+      })
+      .catch(error => setErrorMessage(error));
   };
 
   return (
@@ -42,6 +64,7 @@ function Login(props) {
         <button className="button is-large" type="submit" name="Login">
           Come in
         </button>
+        <label htmlFor="error">{errorMessage}</label>
       </form>
     </div>
   );
