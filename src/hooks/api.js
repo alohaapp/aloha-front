@@ -1,13 +1,18 @@
 /* TODO: Temporary fetch module to get the CRUD working */
 import { API_URL } from "../constants";
 
+const token = JSON.parse(window.sessionStorage.getItem("aloha"))
+  ? JSON.parse(window.sessionStorage.getItem("aloha")).token
+  : null;
+
 async function post({ url, options }) {
   try {
     let response = await fetch(API_URL + url, {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
       },
       ...options
     });
@@ -28,7 +33,8 @@ async function put({ url, options }) {
       method: "PUT",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
       },
       ...options
     });
@@ -45,7 +51,13 @@ async function put({ url, options }) {
 
 async function get({ url, options }) {
   try {
-    let response = await fetch(API_URL + url, { method: "GET", ...options });
+    let response = await fetch(API_URL + url, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      ...options
+    });
     switch (response.status) {
       case 200:
         return response.json();
@@ -63,7 +75,8 @@ async function del({ url, options }) {
       method: "DELETE",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
       },
       ...options
     });
