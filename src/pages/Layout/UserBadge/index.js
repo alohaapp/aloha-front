@@ -5,19 +5,13 @@ import { API_URL } from "../../../constants";
 import FallbackImage from "../../../assets/img/fallback.jpg";
 
 export default function UserBadge(props) {
-  const user = {
-    name: "Alex",
-    surname: "López",
-    userName: "alopez",
-    isAdmin: true,
-    imageId: null
-  };
+  const user = JSON.parse(window.sessionStorage.getItem("aloha"));
 
   return (
     <div className="user-badge">
       <div className="user-badge-info">
         <span>
-          {user.name} {user.surname}
+          {user.name} {user.surName}
         </span>
         <span className="user-badge-info__username">@{user.userName}</span>
       </div>

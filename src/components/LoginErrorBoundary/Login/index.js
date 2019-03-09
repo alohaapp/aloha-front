@@ -8,9 +8,9 @@ function Login(props) {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
-    fetch(`${API_URL}/security/authenticate`, {
+    await fetch(`${API_URL}/security/authenticate`, {
       method: "POST",
       body: JSON.stringify({ userName: user, password }),
       headers: {
@@ -28,10 +28,7 @@ function Login(props) {
       })
       .then(userData => {
         if (userData) {
-          props.onLogin({
-            name: userData.userName,
-            rol: "Administrator"
-          });
+          props.onLogin({ ...userData, rol: "Administrator" });
         }
       })
       .catch(error => setErrorMessage(error));

@@ -22,13 +22,8 @@ class LoginErrorBoundary extends Component {
     this.state = { user };
   }
 
-  setUser = ({ name, rol }) => {
-    this.setState(
-      {
-        user: { name, rol }
-      },
-      () => sessionUser.set(this.state.user)
-    );
+  setUser = user => {
+    this.setState({ user }, () => sessionUser.set(this.state.user));
   };
 
   componentDidCatch(error) {
