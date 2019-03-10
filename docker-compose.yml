@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    ports:
+      - "80:8000"
+    environment:
+      PORT: 8000
+      NODE_ENV: production
+      REACT_APP_API_URL: "http://aloha.ivancea.xyz/api/v1"
