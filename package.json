@@ -4,20 +4,20 @@
   "private": true,
   "dependencies": {
     "bloomer": "^0.6.5",
-    "bulma": "^0.7.2",
-    "connect-history-api-fallback": "^1.5.0",
+    "bulma": "^0.7.4",
+    "connect-history-api-fallback": "^1.6.0",
     "express": "^4.16.4",
-    "formik": "^1.3.2",
+    "formik": "^1.5.1",
     "material-design-icons": "^3.0.1",
-    "node-sass": "^4.10.0",
-    "prop-types": "^15.6.2",
-    "query-string": "^6.2.0",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "react-dropzone": "^7.0.1",
+    "node-sass": "^4.11.0",
+    "prop-types": "^15.7.2",
+    "query-string": "^6.3.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-dropzone": "^10.0.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.1",
-    "yup": "^0.26.6"
+    "react-scripts": "2.1.8",
+    "yup": "^0.26.10"
   },
   "scripts": {
     "start": "if test \"$NODE_ENV\" = \"production\" ; then node server ; else react-scripts start ; fi ",
@@ -45,12 +45,12 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "eslint-config-prettier": "^3.1.0",
-    "eslint-plugin-prettier": "^3.0.0",
-    "eslint-plugin-react-hooks": "^0.0.0",
-    "husky": "^1.1.3",
-    "lint-staged": "^8.0.4",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react-hooks": "^1.5.0",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
     "node-fetch": "^2.3.0",
-    "prettier": "1.14.3"
+    "prettier": "1.16.4"
   }
 }
